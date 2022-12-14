@@ -7,7 +7,7 @@ import SignUp from "./SignUp";
 import SingleProduct from "./SingleProduct";
 import Products from "./Products";
 import Payment from "./Payment";
-
+import AdminLogin from "./AdminLogin";
 function MainRoutes() {
   return (
     <div>
@@ -20,6 +20,7 @@ function MainRoutes() {
         <Route path="/payment" element={<Payment />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<SingleProduct />} />
+        <Route path="/adminlogin" element={<AdminLogin />} />
       </Routes>
     </div>
   );
