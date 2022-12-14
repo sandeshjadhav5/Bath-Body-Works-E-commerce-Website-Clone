@@ -1,4 +1,4 @@
-import { Box, Button, HStack, Input, InputGroup, InputRightElement, useDisclosure } from '@chakra-ui/react';
+import { Box, Button, HStack, Image, Input, InputGroup, InputRightElement, Popover, PopoverBody, PopoverCloseButton, PopoverContent, PopoverHeader, PopoverTrigger, useDisclosure } from '@chakra-ui/react';
 import styled from 'styled-components';
 import React from 'react';
 import {
@@ -19,7 +19,7 @@ const Navbar = () => {
        <Upeernav>
         <div className='unavstyled'> POINTS. PERKS. EXCLUSIVES. <a>Join Rewards!</a></div>
         <div className='navright-divflex'>
-        <img src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/Sites-BathAndBodyWorks-Site/-/en_US/v1670961565504/images/svg-icons/bopis-icon-small.svg?yocs=o_s_"/>
+        <img src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/Sites-BathAndBodyWorks-Site/-/en_US/v1670961565504/images/svg-icons/bopis-icon-small.svg?yocs=o_s_" alt ="location"/>
         <b className='pickupstyle'>PICK UP IN STORE</b>
         <p className='setstorestyle' onClick={onOpen}>Set Store</p>
         <Modal isOpen={isOpen} onClose={onClose}>
@@ -27,7 +27,7 @@ const Navbar = () => {
         <ModalContent marginTop={"20%"} borderRadius={"0px"}>
           <ModalHeader padding={"0px 36px"}>
           <SetstoreModelhead>
-          <img src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/Sites-BathAndBodyWorks-Site/-/en_US/v1670961565504/images/svg-icons/bopis-icon-small.svg?yocs=o_s_"/>
+          <img src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/Sites-BathAndBodyWorks-Site/-/en_US/v1670961565504/images/svg-icons/bopis-icon-small.svg?yocs=o_s_" alt ="location"/>
         <b className='pickupstylemodel'>PICK UP IN STORE</b>
           </SetstoreModelhead>
           </ModalHeader>
@@ -60,6 +60,49 @@ const Navbar = () => {
       </Modal>
         </div>
        </Upeernav>
+       <MidNavbarWrapper>
+        <div>Logo</div>
+        <div>
+        <InputGroup size='md' marginBottom={"20px"}>
+      <Input
+        pr='5rem'
+        width={"320px"}
+        fontSize='13px'
+        placeholder='Search by Fragrance and Product...'
+        focusBorderColor='lightgray'
+        borderStyle={"dotted"}
+        borderRadius={"0px"}
+      />
+      <InputRightElement width='3.5rem'>
+        <Button
+        children={<Search2Icon size="md"/>}
+        backgroundColor="Background"
+         size='md' >
+        </Button>
+      </InputRightElement>
+    </InputGroup>
+        </div>
+        <div style={{width:"30px"}}>
+        <Popover trigger="hover" placement="bottom-end">
+  <PopoverTrigger>
+    <img src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/Sites-BathAndBodyWorks-Site/-/default/dw8f5c8e40/images/svg-icons/UI-MyAccount.svg?yocs=o_s_" alt="user login"/>
+  </PopoverTrigger>
+  <PopoverContent borderRadius="none" width={"220px"}>
+    <PopoverBody sx={{padding:"30px 10px",margin:"0px", textAlign:"left"}}>
+      <ul style={{listStyleType:"none",fontSize:"13px",cursor:"pointer"}}>
+        <li>Sign In Or Sign Up</li>
+        <li>Order Tacking</li>
+        <li>My Auto Refresh</li>
+        <li>My Love-It List</li>
+      </ul>
+    </PopoverBody>
+  </PopoverContent>
+</Popover>
+    </div>
+        <div style={{border:"1px solid green", width:"30px",paddingTop:"3px"}}>
+        <img src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/Sites-BathAndBodyWorks-Site/-/en_US/v1671014791573/images/svg-icons/UI-AddToBag.svg?yocs=o_s_" alt="cart"/>
+        </div>
+       </MidNavbarWrapper>
     </div>
   )
 }
@@ -154,4 +197,12 @@ color: #333;
     line-height: 17px;
     margin-top: 20px;
     margin-bottom: 8px;
+`
+const MidNavbarWrapper = styled.div`
+display: flex;
+justify-content: right;
+gap: 12px;
+border: 1px solid red;
+padding-right: 24px;
+
 `
