@@ -11,22 +11,19 @@ import {
 } from "@chakra-ui/react";
 import ProductList from "../Components/ProductList";
 import FilterComp from "../Components/FilterComp";
-import { useSelector } from "react-redux";
-const Products = () => {
-  const getProducts = () => {
-    axios
-      .get(`https://database-bath-body-works-vercel.vercel.app/products`)
-      .then((r) => {
-        console.log(r.data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
-  getProducts();
+import { getProducts } from "../Redux/AppReducer/action";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
-  const products = useSelector((state) => state.products);
-  console.log(products);
+// Function Component Starts Here //
+
+const Products = () => {
+  const products = useSelector((state) => state.AppReducer.products);
+  const dispatch = useDispatch();
+  console.log("this are products", products);
+  useEffect(() => {
+    dispatch(getProducts());
+  }, []);
   return (
     <Box w="95%" m="auto">
       <h1>Products Page</h1>
@@ -52,7 +49,7 @@ const Products = () => {
           <FilterComp />
         </Box>
         <Box w="80%" border="1px" borderColor="gray.200">
-          <ProductList />
+          <ProductList products={products} />
         </Box>
       </Box>
     </Box>
