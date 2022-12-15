@@ -1,4 +1,3 @@
-
 import { Box, Button, HStack, Image, Input, InputGroup, InputRightElement, Popover, PopoverBody, PopoverCloseButton, PopoverContent, PopoverHeader, PopoverTrigger, useDisclosure } from '@chakra-ui/react';
 import styled from 'styled-components';
 import React from 'react';
@@ -12,6 +11,7 @@ import {
     ModalCloseButton,
   } from '@chakra-ui/react';
 import { Search2Icon } from '@chakra-ui/icons';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -62,23 +62,26 @@ const Navbar = () => {
         </div>
        </Upeernav>
        <MidNavbarWrapper>
-        <div>Logo</div>
-        <div>
-        <InputGroup size='md' marginBottom={"20px"}>
+        <div style={{height:"36px", width:"25%",marginRight:"10%",paddingTop:"10px"}}><img src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/en_US/v1671014791573/images/Christmas2022/Logos-Christmas-2022.svg?yocs=o_s_" alt ="logo" /></div>
+        <div style={{display:"flex",gap:"12px",justifyContent:"right"}}>
+        <div >
+        <InputGroup size='md'  margin={"5px"}>
       <Input
-        pr='5rem'
-        width={"320px"}
+        pr='4.5rem'
+        width={"280px"}
         fontSize='13px'
         placeholder='Search by Fragrance and Product...'
-        focusBorderColor='lightgray'
-        borderStyle={"dotted"}
+        borderColor={"black"}
+        focusBorderColor='black'
         borderRadius={"0px"}
+        padding="0px 10px"
       />
-      <InputRightElement width='3.5rem'>
+      <InputRightElement width='3.8rem'>
         <Button
-        children={<Search2Icon size="md"/>}
+        padding={"0px"}
+        children={<Search2Icon color={"#005699"} />}
         backgroundColor="Background"
-         size='md' >
+         size='xl' >
         </Button>
       </InputRightElement>
     </InputGroup>
@@ -88,10 +91,10 @@ const Navbar = () => {
   <PopoverTrigger>
     <img src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/Sites-BathAndBodyWorks-Site/-/default/dw8f5c8e40/images/svg-icons/UI-MyAccount.svg?yocs=o_s_" alt="user login"/>
   </PopoverTrigger>
-  <PopoverContent borderRadius="none" width={"220px"}>
-    <PopoverBody sx={{padding:"30px 10px",margin:"0px", textAlign:"left"}}>
-      <ul style={{listStyleType:"none",fontSize:"13px",cursor:"pointer"}}>
-        <li>Sign In Or Sign Up</li>
+  <PopoverContent borderRadius="none" width={"200px"}>
+    <PopoverBody sx={{padding:"20px 10px",margin:"0px", textAlign:"left"}}>
+      <ul className='list-login'>
+        <Link to="/login"><li>Sign In Or Sign Up</li></Link>
         <li>Order Tacking</li>
         <li>My Auto Refresh</li>
         <li>My Love-It List</li>
@@ -100,8 +103,9 @@ const Navbar = () => {
   </PopoverContent>
 </Popover>
     </div>
-        <div style={{border:"1px solid green", width:"30px",paddingTop:"3px"}}>
+        <div style={{width:"30px",paddingTop:"3px"}}>
         <img src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/Sites-BathAndBodyWorks-Site/-/en_US/v1671014791573/images/svg-icons/UI-AddToBag.svg?yocs=o_s_" alt="cart"/>
+        </div>
         </div>
        </MidNavbarWrapper>
     </div>
@@ -111,7 +115,7 @@ const Navbar = () => {
 export default Navbar;
 
 const Upeernav = styled.div`
-padding: 10px 25px;
+padding: 10px 5%;
 display: flex;
 justify-content: space-between;
 background-color: #f2f2f2;
@@ -200,8 +204,17 @@ color: #333;
     margin-bottom: 8px;
 `
 const MidNavbarWrapper = styled.div`
+padding: 10px 5%;
 display: flex;
-justify-content: right;
-gap: 12px;
+justify-content:right;
 border: 1px solid red;
-padding-right: 24px;
+
+.list-login{
+  list-style-type:none;
+  font-size:13px;
+  cursor:pointer;
+}
+.list-login li{
+  padding: 5px 0px;
+}
+`
