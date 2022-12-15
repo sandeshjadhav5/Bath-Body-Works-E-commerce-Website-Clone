@@ -12,14 +12,22 @@ const getProductsError = () => {
   return { type: types.GET_PRODUCTS_ERROR };
 };
 
-const getProducts = () => {
-  axios
+const getProducts = () => (dispatch) => {
+  console.log("invoked");
+  dispatch(getProductsRequest);
+  return axios
     .get(`https://database-bath-body-works-vercel.vercel.app/products`)
     .then((r) => {
-      console.log(r.data);
+      dispatch(getProductsSuccess(r.data));
     })
     .catch((e) => {
-      console.log(e);
+      dispatch(getProductsError);
     });
 };
-export { getProductsError, getProductsRequest, getProductsSuccess };
+
+export {
+  getProductsError,
+  getProductsRequest,
+  getProductsSuccess,
+  getProducts,
+};
