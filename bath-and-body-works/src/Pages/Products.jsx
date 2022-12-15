@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -10,7 +11,22 @@ import {
 } from "@chakra-ui/react";
 import ProductList from "../Components/ProductList";
 import FilterComp from "../Components/FilterComp";
+import { useSelector } from "react-redux";
 const Products = () => {
+  const getProducts = () => {
+    axios
+      .get(`https://database-bath-body-works-vercel.vercel.app/products`)
+      .then((r) => {
+        console.log(r.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+  getProducts();
+
+  const products = useSelector((state) => state.products);
+  console.log(products);
   return (
     <Box w="95%" m="auto">
       <h1>Products Page</h1>

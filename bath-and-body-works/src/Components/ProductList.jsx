@@ -44,7 +44,7 @@ const ProductList = () => {
           <option value="topSellers">Top Sellers</option>
         </Select>
       </Box>
-      <Heading>Hello</Heading>
+      {}
     </Box>
   );
 };
