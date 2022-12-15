@@ -1,3 +1,4 @@
+
 import { Box, Button, HStack, Image, Input, InputGroup, InputRightElement, Popover, PopoverBody, PopoverCloseButton, PopoverContent, PopoverHeader, PopoverTrigger, useDisclosure } from '@chakra-ui/react';
 import styled from 'styled-components';
 import React from 'react';
@@ -204,5 +205,3 @@ justify-content: right;
 gap: 12px;
 border: 1px solid red;
 padding-right: 24px;
-
-`
