@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  SimpleGrid,
   Grid,
   Box,
   Heading,
@@ -68,9 +69,14 @@ const ProductList = ({ products }) => {
           <option value="topSellers">Top Sellers</option>
         </Select>
       </Box>
-      <Grid w="95%" m="auto" templateColumns="repeat(4, 1fr)" gap={6}>
+      <SimpleGrid
+        // w="95%"
+        minChildWidth="220px"
+        m="auto"
+        spacing="20px"
+      >
         {products.map((el) => (
-          <GridItem m="auto">
+          <Box m="auto" key={el.id}>
             <Image w="170px" m="auto" src={el.image} alt="beautyProduct" />
             <Text fontWeight="bold">{el.name}</Text>
             <Text fontWeight="light">{el.category.split("_")}</Text>
@@ -84,9 +90,9 @@ const ProductList = ({ products }) => {
             >
               Add To Cart
             </Button>
-          </GridItem>
+          </Box>
         ))}
-      </Grid>
+      </SimpleGrid>
     </Box>
   );
 };
