@@ -10,6 +10,10 @@ import Payment from "./Payment";
 import AdminLogin from "./AdminLogin";
 import Dashboard from "./Dashboard";
 import AddProducts from "./AddProducts";
+import Categories from "./Categories";
+import AllProducts from "./AllProducts";
+import AdminPayments from "./AdminPayments";
+import AdminOrders from "./AdminOrders";
 function MainRoutes() {
   return (
     <div>
@@ -25,6 +29,10 @@ function MainRoutes() {
         <Route path="/adminlogin" element={<AdminLogin />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/addproducts" element={<AddProducts />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/allproducts" element={<AllProducts />} />
+        <Route path="/adminpayments" element={<AdminPayments />} />
+        <Route path="/adminorders" element={<AdminOrders />} />
       </Routes>
     </div>
   );

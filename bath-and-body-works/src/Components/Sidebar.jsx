@@ -23,18 +23,25 @@ import {
   FiStar,
   FiSettings,
   FiMenu,
+  FiPlusCircle,
 } from "react-icons/fi";
+import { BiCart, BiCategory } from "react-icons/bi";
 import { IconType } from "react-icons";
+import {
+  MdProductionQuantityLimits,
+  MdPayment,
+  MdOutlinePreview,
+} from "react-icons/md";
 import { ReactText } from "react";
 
 const LinkItems = [
-  { name: "Dashboard", icon: FiHome },
-  { name: "Products", icon: FiTrendingUp },
-  { name: "Products Categories", icon: FiCompass },
-  { name: "Customers", icon: FiStar },
-  { name: "Add Products", icon: FiSettings },
-  { name: "View Orders  ", icon: FiCompass },
-  { name: "View Payments", icon: FiStar },
+  { name: "Dashboard", icon: FiHome, to: "/dashboard" },
+  { name: "Products", icon: MdProductionQuantityLimits, to: "/allproducts" },
+  { name: "Products Categories", icon: BiCategory, to: "/categories" },
+
+  { name: "Add Products", icon: FiPlusCircle, to: "/addproducts" },
+  { name: "View Orders  ", icon: MdOutlinePreview, to: "/adminorders" },
+  { name: "View Payments", icon: MdPayment, to: "/adminpayments" },
   { name: "Settings", icon: FiSettings },
 ];
 
@@ -87,19 +94,19 @@ const SidebarContent = ({ onClose, ...rest }) => {
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
-          {link.name}
-        </NavItem>
+        <TextName key={link.name} icon={link.icon}>
+          <ReachLink to={link.to}>{link.name}</ReachLink>
+        </TextName>
       ))}
     </Box>
   );
 };
 
-const NavItem = ({ icon, children, ...rest }) => {
+const TextName = ({ icon, children, ...rest }) => {
   return (
-    <Link
-      as={ReachLink}
-      to="/addproducts"
+    <Box
+      // as={ReachLink}
+      // to="/addproducts"
       style={{ textDecoration: "none" }}
       _focus={{ boxShadow: "none" }}
     >
@@ -128,7 +135,7 @@ const NavItem = ({ icon, children, ...rest }) => {
         )}
         {children}
       </Flex>
-    </Link>
+    </Box>
   );
 };
 
@@ -151,10 +158,6 @@ const MobileNav = ({ onOpen, ...rest }) => {
         aria-label="open menu"
         icon={<FiMenu />}
       />
-
-      <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
-        Bath and Body Works
-      </Text>
     </Flex>
   );
 };
