@@ -1,6 +1,7 @@
 import { Box, Button, HStack, Image, Input, InputGroup, InputRightElement, Popover, PopoverBody, PopoverCloseButton, PopoverContent, PopoverHeader, PopoverTrigger, useDisclosure } from '@chakra-ui/react';
 import styled from 'styled-components';
 import React from 'react';
+import { extendTheme } from '@chakra-ui/react';
 import {
     Modal,
     ModalOverlay,
@@ -15,8 +16,17 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
+
+    const breakpoints = {
+      sm: '320px',
+      md: '768px',
+      lg: '960px',
+      xl: '1200px',
+      '2xl': '1536px',
+    }
+    const theme = extendTheme({ breakpoints })
   return (
-    <div>
+    <div style={{margin:"auto",width:"100%"}}>
        <Upeernav>
         <div className='unavstyled'> POINTS. PERKS. EXCLUSIVES. <a>Join Rewards!</a></div>
         <div className='navright-divflex'>
@@ -109,15 +119,14 @@ const Navbar = () => {
         </div>
        </MidNavbarWrapper>
        <BottomNavbar>
-
-
     <ul className='navbar-product-section'>
     <li>TOP OFFERS</li>
+    {/* Body care */}
     <Popover trigger="hover" isLazy openDelay={300} placement="bottom" >
   <PopoverTrigger>
   <li>BODY CARE</li>
   </PopoverTrigger>
-  <PopoverContent borderRadius="none" width={"1520px"} >
+  <PopoverContent borderRadius="none" width={"100vw"} >
     <PopoverBody sx={{padding:"20px 10%",margin:"0px", textAlign:"left", display:"flex"}}>
       <LeftSubsection>
       <ul className='navbar-product-rightsubsection'>
@@ -179,7 +188,7 @@ const Navbar = () => {
       </ul>
       <p>EXPLORE BODY CARE</p>
       </LeftSubsection>
-      <div style={{width:"20%"}}></div>
+      <div style={{width:"220px"}}></div>
       <Rightsubsection >
       <p>BODY CARE OFFERS</p>
       <ul className='navbar-product-lastsubsection'>
@@ -191,12 +200,13 @@ const Navbar = () => {
     </PopoverBody>
   </PopoverContent>
 </Popover>
+{/* Candles */}
  <Popover trigger="hover" isLazy openDelay={300} placement="bottom" >
   <PopoverTrigger>
   <li>CANDLES</li>
   </PopoverTrigger>
-  <PopoverContent borderRadius="none" width={"1520px"} >
-    <PopoverBody sx={{padding:"20px 15%",margin:"0px", textAlign:"left", display:"flex"}}>
+  <PopoverContent borderRadius="none" width={"100vw"} >
+    <PopoverBody sx={{padding:"20px 10%",margin:"0px", textAlign:"left", display:"flex"}}>
       <LeftSubsection>
       <ul className='navbar-product-rightsubsection'>
       <Popover trigger="hover" placement="right-start">
@@ -213,11 +223,10 @@ const Navbar = () => {
     </PopoverBody>
   </PopoverContent>
 </Popover>
-
       </ul>
       <p>EXPLORE CANDLES</p>
       </LeftSubsection>
-      <div style={{width:"25%"}}></div>
+      <div style={{width:"270px",height:"160px"}}></div>
       <Rightsubsection >
       <p>CANDLES OFFERS</p>
       <ul className='navbar-product-lastsubsection'>
@@ -228,12 +237,12 @@ const Navbar = () => {
     </PopoverBody>
   </PopoverContent>
 </Popover>
-
+{/* Wallflowers and Air FRESHENERS part */}
 <Popover trigger="hover" isLazy openDelay={300} placement="bottom" >
   <PopoverTrigger>
   <li>WALLFLOWERS & AIR FRESHENERS</li>
   </PopoverTrigger>
-  <PopoverContent borderRadius="none" width={"1520px"} >
+  <PopoverContent borderRadius="none" width={"100vw"} >
     <PopoverBody sx={{padding:"20px 10%",margin:"0px", textAlign:"left", display:"flex"}}>
       <LeftSubsection>
       <ul className='navbar-product-rightsubsection'>
@@ -270,7 +279,7 @@ const Navbar = () => {
       </ul>
       <p>EXPLORE WALLFLOWERS & AIR FRESHENERS</p>
       </LeftSubsection>
-      <div style={{width:"20%"}}></div>
+      <div style={{width:"220px"}}></div>
       <Rightsubsection >
       <p> WALLFLOWERS & AIR FRESHENERS OFFERS</p>
       <ul className='navbar-product-lastsubsection'>
@@ -282,12 +291,190 @@ const Navbar = () => {
     </PopoverBody>
   </PopoverContent>
 </Popover>
-
-
-    <li>HAND SOAPS & SANITIZERS</li>
-    <li>MEN'S SHOP</li>
+{/* Hand Soaps and Sanitizer */}
+<Popover trigger="hover" isLazy openDelay={300} placement="bottom">
+  <PopoverTrigger>
+  <li>HAND SOAPS & SANITIZERS</li>
+  </PopoverTrigger>
+  <PopoverContent borderRadius="none" width={"100vw"} >
+    <PopoverBody sx={{padding:"20px 10%",margin:"0px", textAlign:"left", display:"flex"}}>
+      <LeftSubsection>
+      <ul className='navbar-product-rightsubsection'>
+      <Popover trigger="hover" placement="right-start">
+  <PopoverTrigger>
+  <li>HAND SOAPS <ChevronRightIcon  fontSize={"20px"} marginLeft="30px"/></li>
+  </PopoverTrigger>
+  <PopoverContent borderRadius="none" width={"200px"} >
+    <PopoverBody backgroundColor="transparent" boxShadow={"none"} border={"none"}>
+      <ul className='hoverdata'>
+       <li>All Hand Soaps </li>
+       <li>Foaming Soaps </li>
+       <li>Gel Soaps</li>
+       <li>Soap Holders</li>
+       <li>Gentle & Clean Hand Soaps</li>
+      </ul>
+    </PopoverBody>
+  </PopoverContent>
+</Popover>
+<Popover trigger="hover" placement="right-start">
+  <PopoverTrigger>
+  <li>HAND SANITIZERS <ChevronRightIcon  fontSize={"20px"} marginLeft="30px"/></li>
+  </PopoverTrigger>
+  <PopoverContent borderRadius="none" width={"200px"} >
+    <PopoverBody backgroundColor="transparent" boxShadow={"none"} border={"none"}>
+      <ul className='hoverdata'>
+       <li>All Hand Sanitizers</li>
+       <li>PocketBac Hand Sanitizers</li>
+       <li>Hand Sanitizer Sprays</li>
+       <li>Full-Size Sanitizers</li>
+       <li>Hand Sanitizer Holders</li>
+      </ul>
+    </PopoverBody>
+  </PopoverContent>
+</Popover>
+      </ul>
+      <p>EXPLORE HAND SOAPS & SANITIZERS</p>
+      </LeftSubsection>
+      <div style={{width:"220px",height:"250px"}}></div>
+      <Rightsubsection >
+      <p>HAND SOAPS & SANITIZERS OFFERS</p>
+      <ul className='navbar-product-lastsubsection'>
+        <li>5/$25 Hand Soaps</li>
+        <li>$8 Hand Sanitizer 5-Packs</li>
+        <li>3/$12 Hand Sanitizer Sprays</li>
+      </ul>
+      </Rightsubsection>
+    </PopoverBody>
+  </PopoverContent>
+</Popover>
+{/* Mens Shopping */}
+<Popover trigger="hover" isLazy openDelay={300} placement="bottom" >
+  <PopoverTrigger>
+  <li>MEN'S SHOP</li>
+  </PopoverTrigger>
+  <PopoverContent borderRadius="none" width={"100vw"} >
+    <PopoverBody sx={{padding:"20px 10%",margin:"0px", textAlign:"left", display:"flex"}}>
+      <LeftSubsection>
+      <ul className='navbar-product-rightsubsection'>
+      <Popover trigger="hover" placement="right-start">
+  <PopoverTrigger>
+  <li>THE MEN'S SHOP <ChevronRightIcon  fontSize={"20px"} marginLeft="30px"/></li>
+  </PopoverTrigger>
+  <PopoverContent borderRadius="none" width={"250px"} >
+    <PopoverBody backgroundColor="transparent" boxShadow={"none"} border={"none"}>
+      <ul className='hoverdata'>
+       <li>All Men's Body Care</li>
+       <li>Body Wash & Shower Gel</li>
+       <li>CMoisturizers</li>
+       <li>Body Spray & Cologne</li>
+       <li>Home Fragrance</li>
+      </ul>
+    </PopoverBody>
+  </PopoverContent>
+</Popover>
+      </ul>
+      <p>EXPLORE MEN'S SHOP</p>
+      </LeftSubsection>
+      <div style={{width:"270px",height:"200px"}}></div>
+      <Rightsubsection style={{border:"none"}}>
+      <ul className='navbar-product-lastsubsection'>
+        <li>Hand Soaps & Sanitizers</li>
+      </ul>
+      </Rightsubsection>
+    </PopoverBody>
+  </PopoverContent>
+</Popover>
     <li>MOXY</li>
-    <li>HOLIDAY SHOP</li>
+    <Popover trigger="hover" isLazy openDelay={300} placement="bottom" >
+  <PopoverTrigger>
+  <li style={{color:"tomato",fontWeight:"bold"}}>HOLIDAY SHOP</li>
+  </PopoverTrigger>
+  <PopoverContent borderRadius="none" width={"100vw"} >
+    <PopoverBody sx={{padding:"20px 10%",margin:"0px", textAlign:"left", display:"flex"}}>
+      <LeftSubsection>
+      <ul className='navbar-product-rightsubsection'>
+      <Popover trigger="hover" placement="right-start">
+  <PopoverTrigger>
+  <li>GIFTS BY PRICE <ChevronRightIcon  fontSize={"20px"} marginLeft="30px"/></li>
+  </PopoverTrigger>
+  <PopoverContent borderRadius="none" width={"250px"} >
+    <PopoverBody backgroundColor="transparent" boxShadow={"none"} border={"none"}>
+      <ul className='hoverdata'>
+       <li>Christmas Collection</li>
+       <li>$15 & Under Gifts</li>
+       <li>$40 & Under Gifts</li>
+       <li>Gift Sets</li>
+       <li>Stocking Stuffers</li>
+      </ul>
+    </PopoverBody>
+  </PopoverContent>
+</Popover>
+ <Popover trigger="hover" placement="right-start">
+  <PopoverTrigger>
+  <li>NEW & NOW <ChevronRightIcon  fontSize={"20px"} marginLeft="30px"/></li>
+  </PopoverTrigger>
+  <PopoverContent borderRadius="none" width={"250px"} >
+    <PopoverBody backgroundColor="transparent" boxShadow={"none"} border={"none"}>
+      <ul className='hoverdata'>
+       <li>New Arrivals</li>
+       <li>Aromatherapy Shop</li>
+       <li>Best Sellers</li>
+       <li>Get Inspired</li>
+       <li>Shop By Fragrance</li>
+      </ul>
+    </PopoverBody>
+  </PopoverContent>
+</Popover>
+ <Popover trigger="hover" placement="right-end">
+  <PopoverTrigger>
+  <li>FEATURED <ChevronRightIcon  fontSize={"20px"} marginLeft="30px"/></li>
+  </PopoverTrigger>
+  <PopoverContent borderRadius="none" width={"250px"} >
+    <PopoverBody backgroundColor="transparent" boxShadow={"none"} border={"none"}>
+      <ul className='hoverdata'>
+       <li>Make Joy Happen Gift List</li>
+       <li>Gift Boxes & Bags</li>
+       <li>Accessories</li>
+      </ul>
+    </PopoverBody>
+  </PopoverContent>
+</Popover>
+ <Popover trigger="hover" placement="right">
+  <PopoverTrigger>
+  <li>THE MEN'S SHOP <ChevronRightIcon  fontSize={"20px"} marginLeft="30px"/></li>
+  </PopoverTrigger>
+  <PopoverContent borderRadius="none" width={"250px"} >
+    <PopoverBody backgroundColor="transparent" boxShadow={"none"} border={"none"}>
+      <ul className='hoverdata'>
+       <li>GIFTS BY RECIPIENT</li>
+       <li>Gifts for Her</li>
+       <li>Gifts for Him</li>
+       <li>Gifts for Everyone</li>
+       <li>Housewarming Gifts</li>
+      </ul>
+    </PopoverBody>
+  </PopoverContent>
+</Popover>
+ <Popover trigger="hover" placement="right-end">
+  <PopoverTrigger>
+  <li>GIFT CARDS <ChevronRightIcon  fontSize={"20px"} marginLeft="30px"/></li>
+  </PopoverTrigger>
+  <PopoverContent borderRadius="none" width={"250px"} >
+    <PopoverBody backgroundColor="transparent" boxShadow={"none"} border={"none"}>
+      <ul className='hoverdata'>
+       <li>E-Gift Cards</li>
+       <li>Gift Cards</li>
+      </ul>
+    </PopoverBody>
+  </PopoverContent>
+</Popover>
+      </ul>
+      <p>EXPLORE HOLIDAY SHOP</p>
+      </LeftSubsection>
+      <div style={{width:"270px",height:"200px"}}></div>
+    </PopoverBody>
+  </PopoverContent>
+</Popover>
     </ul>
        </BottomNavbar>
     </div>
@@ -401,6 +588,7 @@ justify-content:right;
 `
 const BottomNavbar =styled.div`
 padding: 10px 5%;
+width: 100%;
 
 .navbar-product-section{
   display: flex;
@@ -443,6 +631,7 @@ p{
 }
 .hoverdata li{
   cursor:pointer;
+  maxWidth:1536px;
   font-weight:lighter;
   :hover{
     color:#005699;
