@@ -10,7 +10,7 @@ import {
     ModalBody,
     ModalCloseButton,
   } from '@chakra-ui/react';
-import { Search2Icon } from '@chakra-ui/icons';
+import { ChevronRightIcon, Search2Icon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
@@ -62,7 +62,7 @@ const Navbar = () => {
         </div>
        </Upeernav>
        <MidNavbarWrapper>
-        <div style={{height:"36px", width:"25%",marginRight:"10%",paddingTop:"10px"}}><img src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/en_US/v1671014791573/images/Christmas2022/Logos-Christmas-2022.svg?yocs=o_s_" alt ="logo" /></div>
+        <div style={{height:"36px", width:"25%", minWidth:"180px",marginRight:"10%",paddingTop:"10px"}}><img src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/en_US/v1671014791573/images/Christmas2022/Logos-Christmas-2022.svg?yocs=o_s_" alt ="logo" /></div>
         <div style={{display:"flex",gap:"12px",justifyContent:"right"}}>
         <div >
         <InputGroup size='md'  margin={"5px"}>
@@ -108,6 +108,188 @@ const Navbar = () => {
         </div>
         </div>
        </MidNavbarWrapper>
+       <BottomNavbar>
+
+
+    <ul className='navbar-product-section'>
+    <li>TOP OFFERS</li>
+    <Popover trigger="hover" isLazy openDelay={300} placement="bottom" >
+  <PopoverTrigger>
+  <li>BODY CARE</li>
+  </PopoverTrigger>
+  <PopoverContent borderRadius="none" width={"1520px"} >
+    <PopoverBody sx={{padding:"20px 10%",margin:"0px", textAlign:"left", display:"flex"}}>
+      <LeftSubsection>
+      <ul className='navbar-product-rightsubsection'>
+      <Popover trigger="hover" placement="right-start">
+  <PopoverTrigger>
+  <li>BATH & SHOWER <ChevronRightIcon  fontSize={"20px"} marginLeft="30px"/></li>
+  </PopoverTrigger>
+  <PopoverContent borderRadius="none" width={"200px"} >
+    <PopoverBody backgroundColor="transparent" boxShadow={"none"} border={"none"}>
+      <ul className='hoverdata'>
+       <li>All Bath & Shower</li>
+       <li>Body Wash & Shower Gel</li>
+      </ul>
+    </PopoverBody>
+  </PopoverContent>
+</Popover>
+<Popover trigger="hover" placement="right">
+  <PopoverTrigger>
+  <li>MOISTURIZERS <ChevronRightIcon  fontSize={"20px"} marginLeft="30px"/></li>
+  </PopoverTrigger>
+  <PopoverContent borderRadius="none" width={"200px"} >
+    <PopoverBody backgroundColor="transparent" boxShadow={"none"} border={"none"}>
+      <ul className='hoverdata'>
+       <li>All Moisturizers</li>
+       <li>Body Lotion</li>
+       <li>Body Cream</li>
+      </ul>
+    </PopoverBody>
+  </PopoverContent>
+</Popover>
+
+<Popover trigger="hover" placement="right-end">
+  <PopoverTrigger>
+  <li>FRAGRANCE <ChevronRightIcon  fontSize={"20px"} marginLeft="30px"/></li>
+  </PopoverTrigger>
+  <PopoverContent borderRadius="none" width={"200px"} >
+    <PopoverBody backgroundColor="transparent" boxShadow={"none"} border={"none"}>
+      <ul className='hoverdata'>
+       <li>All Fragrance</li>
+       <li>Body Sprays & Mists</li>
+       <li>Perfume & Cologne</li>
+      </ul>
+    </PopoverBody>
+  </PopoverContent>
+</Popover>
+
+<Popover trigger="hover" placement="right-end">
+  <PopoverTrigger>
+  <li>NEW & NOW <ChevronRightIcon  fontSize={"20px"} marginLeft="30px"/></li>
+  </PopoverTrigger>
+  <PopoverContent borderRadius="none" width={"200px"} >
+    <PopoverBody backgroundColor="transparent" boxShadow={"none"} border={"none"}>
+      <ul className='hoverdata'>
+       <li>All Aromatherapy</li>
+      </ul>
+    </PopoverBody>
+  </PopoverContent>
+</Popover>
+      </ul>
+      <p>EXPLORE BODY CARE</p>
+      </LeftSubsection>
+      <div style={{width:"20%"}}></div>
+      <Rightsubsection >
+      <p>BODY CARE OFFERS</p>
+      <ul className='navbar-product-lastsubsection'>
+        <li>Buy 3, Get 3 FREE All Full-Size Body Care</li>
+        <li>2/$10, 4/$18, 6/$24 Shea Butter Cleansing Bars</li>
+        <li>Buy 3, Get 1 FREE Travel, Hand & Lip Care</li>
+      </ul>
+      </Rightsubsection>
+    </PopoverBody>
+  </PopoverContent>
+</Popover>
+ <Popover trigger="hover" isLazy openDelay={300} placement="bottom" >
+  <PopoverTrigger>
+  <li>CANDLES</li>
+  </PopoverTrigger>
+  <PopoverContent borderRadius="none" width={"1520px"} >
+    <PopoverBody sx={{padding:"20px 15%",margin:"0px", textAlign:"left", display:"flex"}}>
+      <LeftSubsection>
+      <ul className='navbar-product-rightsubsection'>
+      <Popover trigger="hover" placement="right-start">
+  <PopoverTrigger>
+  <li>ALL CANDLES <ChevronRightIcon  fontSize={"20px"} marginLeft="30px"/></li>
+  </PopoverTrigger>
+  <PopoverContent borderRadius="none" width={"250px"} >
+    <PopoverBody backgroundColor="transparent" boxShadow={"none"} border={"none"}>
+      <ul className='hoverdata'>
+       <li>3-Wick Candles</li>
+       <li>Single Wick Candles</li>
+       <li>Candle Holders & Accessories</li>
+      </ul>
+    </PopoverBody>
+  </PopoverContent>
+</Popover>
+
+      </ul>
+      <p>EXPLORE CANDLES</p>
+      </LeftSubsection>
+      <div style={{width:"25%"}}></div>
+      <Rightsubsection >
+      <p>CANDLES OFFERS</p>
+      <ul className='navbar-product-lastsubsection'>
+        <li>$16.95 All 3-Wick Candles</li>
+        <li>2/$22 Single Wick Candles</li>
+      </ul>
+      </Rightsubsection>
+    </PopoverBody>
+  </PopoverContent>
+</Popover>
+
+<Popover trigger="hover" isLazy openDelay={300} placement="bottom" >
+  <PopoverTrigger>
+  <li>WALLFLOWERS & AIR FRESHENERS</li>
+  </PopoverTrigger>
+  <PopoverContent borderRadius="none" width={"1520px"} >
+    <PopoverBody sx={{padding:"20px 10%",margin:"0px", textAlign:"left", display:"flex"}}>
+      <LeftSubsection>
+      <ul className='navbar-product-rightsubsection'>
+      <Popover trigger="hover" placement="right-start">
+  <PopoverTrigger>
+  <li>WALLFLOWERS <ChevronRightIcon  fontSize={"20px"} marginLeft="30px"/></li>
+  </PopoverTrigger>
+  <PopoverContent borderRadius="none" width={"200px"} >
+    <PopoverBody backgroundColor="transparent" boxShadow={"none"} border={"none"}>
+      <ul className='hoverdata'>
+       <li>All Wallflowers</li>
+       <li>Wallflowers Plugs</li>
+       <li>Auto Refresh Wallflowers</li>
+      </ul>
+    </PopoverBody>
+  </PopoverContent>
+
+</Popover>
+<Popover trigger="hover" placement="right">
+  <PopoverTrigger>
+  <li>AIR FRESHENERS <ChevronRightIcon  fontSize={"20px"} marginLeft="30px"/></li>
+  </PopoverTrigger>
+  <PopoverContent borderRadius="none" width={"200px"} >
+    <PopoverBody backgroundColor="transparent" boxShadow={"none"} border={"none"}>
+      <ul className='hoverdata'>
+       <li>Room Sprays & Mists</li>
+       <li>Car Fragrance</li>
+      </ul>
+    </PopoverBody>
+  </PopoverContent>
+</Popover>
+
+
+      </ul>
+      <p>EXPLORE WALLFLOWERS & AIR FRESHENERS</p>
+      </LeftSubsection>
+      <div style={{width:"20%"}}></div>
+      <Rightsubsection >
+      <p> WALLFLOWERS & AIR FRESHENERS OFFERS</p>
+      <ul className='navbar-product-lastsubsection'>
+        <li>5/$25 Wallflowers Fragrance Refills</li>
+        <li>3/$22 Room Sprays</li>
+        <li>3/$10 Car Fragrance Refills</li>
+      </ul>
+      </Rightsubsection>
+    </PopoverBody>
+  </PopoverContent>
+</Popover>
+
+
+    <li>HAND SOAPS & SANITIZERS</li>
+    <li>MEN'S SHOP</li>
+    <li>MOXY</li>
+    <li>HOLIDAY SHOP</li>
+    </ul>
+       </BottomNavbar>
     </div>
   )
 }
@@ -207,7 +389,6 @@ const MidNavbarWrapper = styled.div`
 padding: 10px 5%;
 display: flex;
 justify-content:right;
-border: 1px solid red;
 
 .list-login{
   list-style-type:none;
@@ -216,5 +397,77 @@ border: 1px solid red;
 }
 .list-login li{
   padding: 5px 0px;
+}
+`
+const BottomNavbar =styled.div`
+padding: 10px 5%;
+
+.navbar-product-section{
+  display: flex;
+  justify-content: space-between;
+  list-style-type:none;
+  font-size:13px;
+  cursor:pointer;
+}
+
+.navbar-product-section li{
+
+  :hover{
+    border-bottom:2px solid #005699;
+  }
+}
+
+`
+const LeftSubsection = styled.div`
+p{
+  padding: 10px 10px 10px 15px;
+  font-weight:bold;
+}
+.navbar-product-rightsubsection{
+  list-style-type: none;
+  font-size:13px;
+}
+.navbar-product-rightsubsection li{
+  padding: 10px 10px 10px 15px;
+  font-weight:bold;
+  cursor:pointer;
+  :hover{
+    color:#005699;
+    border-bottom:none;
+    border-left: 3px solid #005699;
+  }
+}
+.hoverdata{
+  list-style-type: none;
+  font-size:13px;
+}
+.hoverdata li{
+  cursor:pointer;
+  font-weight:lighter;
+  :hover{
+    color:#005699;
+    border-bottom:none;
+    border-left: none;
+  }
+}
+`
+const Rightsubsection= styled.div`
+border-left: 1px solid lightgray;
+padding:10px 30px 0px 30px;
+p{
+  padding:5px 0px 10px 0px;
+  font-weight:bold;
+}
+.navbar-product-lastsubsection{
+  list-style-type: none;
+  font-size:13px;
+}
+.navbar-product-lastsubsection li{
+  padding: 5px 0px;
+  cursor:pointer;
+  :hover{
+    color:#005699;
+    border-bottom:none;
+  }
 }
 `
