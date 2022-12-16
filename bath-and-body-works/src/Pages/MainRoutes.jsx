@@ -8,6 +8,8 @@ import SingleProduct from "./SingleProduct";
 import Products from "./Products";
 import Payment from "./Payment";
 import AdminLogin from "./AdminLogin";
+import Dashboard from "./Dashboard";
+import AddProducts from "./AddProducts";
 function MainRoutes() {
   return (
     <div>
@@ -21,6 +23,8 @@ function MainRoutes() {
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<SingleProduct />} />
         <Route path="/adminlogin" element={<AdminLogin />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/addproducts" element={<AddProducts />} />
       </Routes>
     </div>
   );

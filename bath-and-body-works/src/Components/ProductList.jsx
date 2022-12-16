@@ -1,6 +1,17 @@
 import React from "react";
-import { Box, Heading, Divider, Select } from "@chakra-ui/react";
-const ProductList = () => {
+import {
+  Grid,
+  Box,
+  Heading,
+  Divider,
+  Select,
+  Image,
+  Text,
+  Button,
+  GridItem,
+} from "@chakra-ui/react";
+const ProductList = ({ products }) => {
+  console.log("products - - - > ", products);
   return (
     <Box>
       <Heading
@@ -15,7 +26,13 @@ const ProductList = () => {
         MEN'S
       </Heading>
       <Divider h="2" />
-      <Box display="flex" justifyContent="right" alignItems="center">
+      <Box
+        display="flex"
+        m="auto"
+        w="98%"
+        justifyContent="right"
+        alignItems="center"
+      >
         SORT BY
         <Select placeholder="Most Popular" ml="2" alignItems="right" w="20%">
           <option value="ascending">Price Low To High</option>
@@ -24,27 +41,52 @@ const ProductList = () => {
           <option value="topSellers">Top Sellers</option>
         </Select>
       </Box>
-      <Box display="flex" justifyContent="space-evenly">
-        <Select placeholder="Most Popular" ml="2" alignItems="right" w="33%">
+      <Box
+        m="auto"
+        w="98%"
+        mt="2"
+        mb="2"
+        display="flex"
+        justifyContent="space-evenly"
+      >
+        <Select placeholder="CATEGORY" ml="2" alignItems="right" w="33%">
           <option value="ascending">Price Low To High</option>
           <option value="descending">Price High To Low</option>
           <option value="bestMatches">Best Matches</option>
           <option value="topSellers">Top Sellers</option>
         </Select>
-        <Select placeholder="Most Popular" ml="2" alignItems="right" w="33%">
+        <Select placeholder="NAME" ml="2" alignItems="right" w="33%">
           <option value="ascending">Price Low To High</option>
           <option value="descending">Price High To Low</option>
           <option value="bestMatches">Best Matches</option>
           <option value="topSellers">Top Sellers</option>
         </Select>
-        <Select placeholder="Most Popular" ml="2" alignItems="right" w="33%">
+        <Select placeholder="TYPE" ml="2" alignItems="right" w="33%">
           <option value="ascending">Price Low To High</option>
           <option value="descending">Price High To Low</option>
           <option value="bestMatches">Best Matches</option>
           <option value="topSellers">Top Sellers</option>
         </Select>
       </Box>
-      {}
+      <Grid w="95%" m="auto" templateColumns="repeat(4, 1fr)" gap={6}>
+        {products.map((el) => (
+          <GridItem m="auto">
+            <Image w="170px" m="auto" src={el.image} alt="beautyProduct" />
+            <Text fontWeight="bold">{el.name}</Text>
+            <Text fontWeight="light">{el.category.split("_")}</Text>
+            <Text>₹{el.price}</Text>
+            <Button
+              w="100%"
+              _hover={{ bg: "#433333" }}
+              borderRadius="0"
+              bgColor="#333333"
+              color="white"
+            >
+              Add To Cart
+            </Button>
+          </GridItem>
+        ))}
+      </Grid>
     </Box>
   );
 };
