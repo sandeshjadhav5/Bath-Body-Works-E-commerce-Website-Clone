@@ -44,11 +44,19 @@ const Products = () => {
         </BreadcrumbItem> */}
       </Breadcrumb>
       <Divider h="4" />
-      <Box display="flex">
-        <Box w="20%" border="1px" borderColor="gray.200">
+      <Box display={{ base: "grid", md: "grid", lg: "flex" }}>
+        <Box
+          w={{ base: "100%", sm: "100%", md: "100%", lg: "20%", xl: "20%" }}
+          border="1px"
+          borderColor="gray.200"
+        >
           <FilterComp />
         </Box>
-        <Box w="80%" border="1px" borderColor="gray.200">
+        <Box
+          w={{ base: "100%", sm: "100%", md: "100%", lg: "80%", xl: "80%" }}
+          border="1px"
+          borderColor="gray.200"
+        >
           <ProductList products={products} />
         </Box>
       </Box>
