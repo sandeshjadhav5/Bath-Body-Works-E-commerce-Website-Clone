@@ -2,6 +2,8 @@ import { Alert, Center, Link, Button, Text, AlertIcon } from "@chakra-ui/react";
 import "./CartPage.css";
 import { CalendarIcon } from "@chakra-ui/icons";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 let styles = {
   display: "flex",
@@ -10,16 +12,32 @@ let styles = {
 };
 
 export const CartPage = () => {
+  let data=useSelector((s)=>s.products)
+  let [state, setstate] = useState(0);
   let [coupons, setcoupons] = useState(0);
   let [total, settotal] = useState(0);
+  let dispatch = useDispatch();
+  let navigate = useNavigate();
 
-
+  let sumProduct = () => {
+    if (data.filter((e) => e.cartquantity > 0) === 0) {
+      settotal(0);
+    } else {
+      let sum = 0;
+      data
+        .filter((e) => e.cartquantity > 0)
+        .forEach((e) => (sum += e.price * e.cartquantity));
+      settotal(sum);
+    }
+  };
   let handlecoupons = () => {
     setcoupons(30);
   };
   let handlecheakoutbutton = () => {
    
+    navigate("/address");
   };
+  
 
   return (
     <>

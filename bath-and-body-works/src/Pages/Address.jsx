@@ -1,8 +1,12 @@
 import { Heading, Text, Button, Select, Input } from "@chakra-ui/react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Address = () => {
-  let handleaddress = () => {};
+  let Navigate=useNavigate()
+  let handleaddress = () => {
+    Navigate("/payment")
+  };
   return (
     <>
       <div
