@@ -7,7 +7,7 @@
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
-body {
+/* body {
   min-height: 100vh;
   display: flex;  
   justify-content: center;
@@ -17,11 +17,20 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-}
+} */
 
 .container {
   max-width: 1200px;
   margin: auto;
+  min-height: 100vh;
+  display: flex;  
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  /* background: #eee; */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 #form {

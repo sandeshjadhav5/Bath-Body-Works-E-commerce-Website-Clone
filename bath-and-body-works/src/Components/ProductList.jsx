@@ -11,6 +11,7 @@ import {
   Button,
   GridItem,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 const ProductList = ({ products }) => {
   console.log("products - - - > ", products);
   return (
