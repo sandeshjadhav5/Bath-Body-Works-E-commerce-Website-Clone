@@ -82,8 +82,8 @@ const Navbar = () => {
         <InputGroup size='md'  margin={"5px"}>
       <Input
         pr='4.5rem'
-        width={"280px"}
-        fontSize='13px'
+        width={"20vw"}
+        fontSize='xs'
         placeholder='Search by Fragrance and Product...'
         borderColor={"black"}
         focusBorderColor='black'
@@ -490,9 +490,9 @@ export default Navbar;
 const Upeernav = styled.div`
 padding: 10px 5%;
 display: flex;
+flex-wrap: wrap;
 justify-content: space-between;
 background-color: #f2f2f2;
-
 .unavstyled{
     color: #e20887;
     font-family: Trade Gothic W01 Bold_2,Arial,sans-serif;
@@ -596,6 +596,7 @@ width: 100%;
 
 .navbar-product-section{
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   list-style-type:none;
   font-size:13px;
