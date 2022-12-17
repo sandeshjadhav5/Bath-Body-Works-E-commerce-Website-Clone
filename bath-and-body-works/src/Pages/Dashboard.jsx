@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { getProducts } from "../Redux/AppReducer/action";
 import { useSelector, useDispatch } from "react-redux";
 import SimpleSidebar from "../Components/Sidebar";
-import Chart from "chart.js/auto";
+
 import { TriangleUpIcon } from "@chakra-ui/icons";
 import { FaUserAlt, FaProductHunt } from "react-icons/fa";
 import { BsFillCartCheckFill } from "react-icons/bs";
