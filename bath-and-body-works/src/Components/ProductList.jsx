@@ -78,7 +78,7 @@ const ProductList = ({ products }) => {
       >
         {products.map((el) => (
           <Box m="auto" key={el.id}>
-            <Image w="170px" m="auto" src={el.image} alt="beautyProduct" />
+           <Link to ={`/products/${el.id}`}><Image w="170px" m="auto" src={el.image} alt="beautyProduct" /></Link>
             <Text fontWeight="bold">{el.name}</Text>
             <Text fontWeight="light">{el.category.split("_")}</Text>
             <Text>₹{el.price}</Text>

@@ -1,3 +1,4 @@
+import { Image } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
@@ -8,8 +9,8 @@ const SingleProduct = () => {
   const SingleItem =useSelector((store)=> store.AppReducer.products);
   const dispatch = useDispatch();
   const {id} = useParams();
-  // const SingleData = SingleItem.find(p => p.id == id);
-  console.log(SingleItem);
+  const SingleData = SingleItem.find(p => p.id == id);
+  // console.log(SingleData);
   // const test ={
   //   "id": 1,
   //   "image": "https://www.bathandbodyworks.in/on/demandware.static/-/Sites-bathandbody_master_catalog/default/dwcab0bc33/large/026335796.jpg",
@@ -18,32 +19,37 @@ const SingleProduct = () => {
   //   "price": 1899
   // }
   useEffect(()=>{
-    if(id){
-      if(SingleItem.length === 0){
-        getProducts();
-      }
-    }
-  },[SingleItem.length])
+      dispatch(getProducts());
+  },[])
   return <div>
 <TopContainer>
 Perk Alert: All new Rewards members get $10 off any $30 purchase! Join the VIPs
 </TopContainer>
-<ProductPath><Link to="/"><span>HOME</span></Link> / <span>{test.category}</span> / {test.name}</ProductPath>
+<ProductPath><Link to="/"><span>HOME</span></Link> / <span>{SingleData.category}</span> / {SingleData.name}</ProductPath>
 
     <MainDataWrapper>
       <div className="img-data-container">
-        <div style={{maxWidth:"360px"}}>
-          <img style={{border:"1px solid gray"}} src={test.image} alt="image"/>
-          <button
-          style={{width:"38px",position:"relative",
-           top:"3rem",
-           zIndex:"10",
-           right:"2.5rem"
+        <div style={{maxWidth:"360px",display:"block", margin:"0px"}}>
+        <button
+          style={{
+    position: "relative",
+    width: "38px",
+    height: "36px",
+    fontSize: "0",
+    float: "right",
+    top:"50px",
+    right:"20px",
+    cursor: "pointer",
+    opacity: "1",
+    zIndex: "101"
            }}>
-           <img src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/Sites-BathAndBodyWorks-Site/-/en_US/v1671187578937/images/svg-icons/PDP-Wishlist-1.svg?yocs=o_s_" alt ="like"/></button>
+           <Image src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/Sites-BathAndBodyWorks-Site/-/en_US/v1671187578937/images/svg-icons/PDP-Wishlist-1.svg?yocs=o_s_" alt ="like"/>
+           </button>
+          <Image style={{border:"1px solid gray"}} src={SingleData.image} alt="image"/>
         </div>
-        <div>
-          data
+        <div className="left-Side">
+          <h1>{SingleData.name}</h1>
+          <span style={{fontSize:"14px"}}>{SingleData.category}</span>
         </div>
       </div>
     </MainDataWrapper>
@@ -91,7 +97,10 @@ const MainDataWrapper = styled.div`
 border:1px solid green;
     margin:auto;
     display: flex;
-    justify-content: space-between;
+    gap:20px;
   }
-
+.left-Side{
+  text-align:left;
+  padding-top:30px;
+}
 `
