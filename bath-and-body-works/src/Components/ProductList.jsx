@@ -10,6 +10,7 @@ import {
   Button,
   GridItem,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 const ProductList = ({ products }) => {
   console.log("products - - - > ", products);
   return (
@@ -71,7 +72,7 @@ const ProductList = ({ products }) => {
       <Grid w="95%" m="auto" templateColumns="repeat(4, 1fr)" gap={6}>
         {products.map((el) => (
           <GridItem m="auto">
-            <Image w="170px" m="auto" src={el.image} alt="beautyProduct" />
+          <Link to={`/products/${el.id}`}><Image w="170px" m="auto" src={el.image} alt="beautyProduct" /></Link>
             <Text fontWeight="bold">{el.name}</Text>
             <Text fontWeight="light">{el.category.split("_")}</Text>
             <Text>₹{el.price}</Text>

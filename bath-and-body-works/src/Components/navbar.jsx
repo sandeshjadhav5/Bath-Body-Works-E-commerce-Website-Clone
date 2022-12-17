@@ -72,7 +72,11 @@ const Navbar = () => {
         </div>
        </Upeernav>
        <MidNavbarWrapper>
-        <div style={{height:"36px", width:"25%", minWidth:"180px",marginRight:"10%",paddingTop:"10px"}}><img src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/en_US/v1671014791573/images/Christmas2022/Logos-Christmas-2022.svg?yocs=o_s_" alt ="logo" /></div>
+        <div style={{height:"36px", width:"25%", minWidth:"180px",marginRight:"10%",paddingTop:"10px"}}>
+        <Link to="/">
+        <img style={{cursor:"pointer"}} src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/en_US/v1671014791573/images/Christmas2022/Logos-Christmas-2022.svg?yocs=o_s_" alt ="logo" />
+        </Link>
+        </div>
         <div style={{display:"flex",gap:"12px",justifyContent:"right"}}>
         <div >
         <InputGroup size='md'  margin={"5px"}>
