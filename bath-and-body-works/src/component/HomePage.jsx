@@ -1,4 +1,4 @@
-import {Heading,Text,Box,Image,SimpleGrid,Button} from '@chakra-ui/react'
+import {Heading,Text,Box,Image,SimpleGrid,Button, Container} from '@chakra-ui/react'
 const Home=()=>{
     return <>
   <Box width="85%" margin="auto" >
@@ -8,12 +8,31 @@ const Home=()=>{
 
   <Box  height="300px" mt="50px" bg="gray.200" width="85%" ml="100px">
     <Heading as="h6" pt="20px">TODAY`S TOP OFFERS</Heading>
-    <SimpleGrid columns={5} spacing={10} mt="10px" pl="30px">
-  <Box bg='white' height='170px' ></Box>
-  <Box bg='white' height='170px'></Box>
-  <Box bg='white' height='170px'></Box>
-  <Box bg='white' height='170px'></Box>
-  <Box bg='white' height='170px'></Box>
+    <SimpleGrid columns={4} spacing={10} mt="10px" pl="30px">
+  <Box bg='white' height='190px' >
+    <Heading fontSize="20px" color="blue" mt="5px">Today only!</Heading>
+    <Text mt="6px">All Single Wick Candles</Text>
+    <Text>$5.95</Text>
+    <Text fontSize="15px" textAlign="left" ml="10px">Limit 20 with code:ADORABLE</Text>
+    <Button  bg="blackAlpha.800" color="white" borderRadius="0" mt="5px">SHOP</Button>
+  </Box>
+  <Box bg='white' height='190px'>
+  <Heading fontSize="20px" color="blue" mt="5px">Limited Time only !</Heading>
+    <Text textAlign="left" mt="15px" ml="22px">$35 with any$30purchase</Text>
+    <Text fontSize="15px" textAlign="left" ml="20px" mt="10px">Limit 20 with code:ADORABLE</Text>
+    <Button  bg="blackAlpha.800" color="white" borderRadius="0" mt="15px">SHOP</Button>
+  </Box>
+  <Box bg='white' height='170px' justifyContent="center" pt="50px"    >
+    <Text>All Hand Soaps</Text>
+    <Text>$3.50</Text>
+    <Button  bg="blackAlpha.800" color="white" borderRadius="0" mt="15px">SHOP</Button>
+  </Box>
+  <Box bg='white' height='170px'>
+  <Text textAlign="left" mt="15px" ml="22px">$35 with any$30purchase</Text>
+    <Text fontSize="15px" textAlign="left" ml="20px" mt="10px">Limit 20 with code:ADORABLE</Text>
+    <Button  bg="blackAlpha.800" color="white" borderRadius="0" mt="15px">SHOP</Button>
+  </Box>
+  
 </SimpleGrid>
   </Box>
   <Box width="85%" ml="100px" mt="50px" >
@@ -107,24 +126,38 @@ const Home=()=>{
   </Box>
 </SimpleGrid>
   </Box>
+  <Box mt="50px" justifyContent="left">
+  <SimpleGrid columns={3} >
+  <Box  height='80px'> <hr></hr></Box>
+  <Box  height='80px'><Text>@BATHANDBODYWORKS</Text></Box>
+  <Box  height='80px'><hr></hr></Box>
+  
+</SimpleGrid>
+  </Box>
   <Box>
   <SimpleGrid columns={4} spacing={10} width="85%" ml="100px" mt="100px">
-  <Box bg='tomato' height='200px'>
+  <Box  height='280px'>
     <Image src="https://images.dashhudson.com/aHR0cHM6Ly9jZG4uZGFzaGh1ZHNvbi5jb20vbWVkaWEvZnVsbC8xNjcxMDQ4MDgwLjE2Mjc1MTQyNDQ2Ny5qcGVn.jpg?w=640&h=640&fit=cover" />
   </Box>
-  <Box bg='tomato' height='200px'>
+  <Box  height='280px'>
     <Image src="https://images.dashhudson.com/aHR0cHM6Ly9jZG4uZGFzaGh1ZHNvbi5jb20vbWVkaWEvZnVsbC8xNjcxMDMwMzg3LjI2MjU1MDQyNTI5MS5qcGVn.jpg?w=640&h=640&fit=cover" />
 
   </Box>
-  <Box bg='tomato' height='200px'>
+  <Box  height='280px'>
     <Image src="https://images.dashhudson.com/aHR0cHM6Ly9jZG4uZGFzaGh1ZHNvbi5jb20vbWVkaWEvZnVsbC8xNjcwOTYxNjgyLjg3OTUxNTQ0NDg1Ni5qcGVn.jpg?w=640&h=640&fit=cover"/>
   </Box>
-  <Box bg='tomato' height='200px'>
+  <Box  height='280px'>
     <Image src="https://images.dashhudson.com/aHR0cHM6Ly9jZG4uZGFzaGh1ZHNvbi5jb20vbWVkaWEvZnVsbC8xNjcwOTQzNzA3LjQ0NTgwOTY4NDUzMC5qcGVn.jpg?w=640&h=640&fit=cover" />
   </Box>
   
 </SimpleGrid>
   </Box>
+
+  <Box  height="200px" width="85%" ml="100px" mt="30px">
+    <Heading>Bath & Body Works</Heading>
+    <Text mt="30px">Bath and Body Works is your go-to place for gifts & goodies that surprise & delight. From fresh fragrances to soothing skin care, we make finding your perfect something special a happy-memory-making experience. Searching for new seasonal creations or your favorite discontinued scents? We’ve got you covered there, too. Oh! And while you're browsing, shop our latest & greatest selection of lotions, soaps and candles!</Text>
+  </Box>
+
        
 
 
