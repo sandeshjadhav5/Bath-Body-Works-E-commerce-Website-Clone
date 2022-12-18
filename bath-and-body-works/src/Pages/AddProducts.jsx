@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import SimpleSidebar from "../Components/Sidebar";
 import { useRef } from "react";
+import { useToast } from "@chakra-ui/react";
 import {
   Heading,
   Flex,
@@ -28,7 +29,7 @@ const AddProducts = () => {
   const [productImage, setProductImage] = useState({});
   const apiKey = `5a4693ba7a98dbdd237c153b5f6ab2e6`;
   const imageRef = useRef("");
-
+  const toast = useToast();
   //console.log(name, category, price);
   const handleSubmit = () => {
     const productData = {
@@ -52,6 +53,13 @@ const AddProducts = () => {
     setName("");
     setCategory("");
     setPrice("");
+    toast({
+      title: `${name} Successfully Added`,
+      description: `in the ${category} Category`,
+      status: "success",
+      duration: 6000,
+      isClosable: true,
+    });
   };
   let img_url;
   async function handleImage(event) {
