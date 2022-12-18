@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import {
@@ -8,6 +8,8 @@ import {
   BreadcrumbSeparator,
   Box,
   Divider,
+  Button,
+  Text,
 } from "@chakra-ui/react";
 import ProductList from "../Components/ProductList";
 import FilterComp from "../Components/FilterComp";
@@ -19,11 +21,13 @@ import { useEffect } from "react";
 
 const Products = () => {
   const products = useSelector((state) => state.AppReducer.products);
+  const [page, setPage] = useState(1);
+  console.log("page is ", page);
   const dispatch = useDispatch();
   console.log("this are products", products);
   useEffect(() => {
-    dispatch(getProducts());
-  }, []);
+    dispatch(getProducts(page));
+  }, [page]);
   return (
     <Box w="95%" m="auto">
       <h1>Products Page</h1>
@@ -47,6 +51,7 @@ const Products = () => {
       <Box display={{ base: "grid", md: "grid", lg: "flex" }}>
         <Box
           w={{ base: "100%", sm: "100%", md: "100%", lg: "20%", xl: "20%" }}
+          display={{ base: "none", sm: "none", md: "grid", lg: "flex" }}
           border="1px"
           borderColor="gray.200"
         >
@@ -58,6 +63,25 @@ const Products = () => {
           borderColor="gray.200"
         >
           <ProductList products={products} />
+          <Box w="40" m="auto" mb={20} mt={10} display="flex">
+            <Button
+              disabled={page <= 1}
+              p="2"
+              onClick={() => setPage((pre) => pre - 1)}
+            >
+              Previous
+            </Button>
+            <Text p="2" fontWeight="semibold">
+              {page}
+            </Text>
+            <Button
+              disabled={page >= 3}
+              p="2"
+              onClick={() => setPage((pre) => pre + 1)}
+            >
+              Next
+            </Button>
+          </Box>
         </Box>
       </Box>
     </Box>
