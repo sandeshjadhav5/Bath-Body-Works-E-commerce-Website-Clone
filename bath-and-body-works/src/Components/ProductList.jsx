@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { useToast } from "@chakra-ui/react";
 import {
+  Spinner,
   SimpleGrid,
   Grid,
   Box,
@@ -27,9 +29,14 @@ import { cartSuccess } from "../Redux/CartReducer/action";
 const ProductList = ({ products }) => {
   const [cartData, setCartData] = useState([]);
   // const cart = useSelector((state) => state.CartReducer.carts);
+  const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
-
   const dispatch = useDispatch();
+
+  const loadingIndicator = useSelector(
+    (state) => state.AppReducer.isProductsLoading
+  );
+  console.log(loadingIndicator);
 
   const addToReduxStore = () => {
     dispatch(cartSuccess(cartData));
@@ -37,8 +44,30 @@ const ProductList = ({ products }) => {
   const addToCart = (el) => {
     setCartData([...cartData, el]);
     addToReduxStore();
+    toast({
+      title: `${el.name}`,
+      description: "Successfully Added To Cart",
+      status: "success",
+      duration: 9000,
+      isClosable: true,
+    });
   };
   console.log(cartData);
+  if (loadingIndicator) {
+    return (
+      <>
+        <Spinner
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="blue.500"
+          size="xl"
+          mt="200"
+          mb="200"
+        />
+      </>
+    );
+  }
   return (
     <Box>
       <Heading
