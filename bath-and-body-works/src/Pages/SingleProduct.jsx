@@ -94,28 +94,35 @@ const SingleProduct = () => {
 
       <MainDataWrapper>
         <div className="img-data-container">
-          <div style={{ maxWidth: "350px", display: "block", margin: "0px" }}>
-            <button
+          <Box style={{display: "block", margin: "0px" }}>
+            <Button
               style={{
                 position: "relative",
-                width: "38px",
-                height: "36px",
+                width: "10%",
                 fontSize: "0",
                 float: "right",
-                top: "50px",
-                right: "20px",
+                top: "30px",
+                right: "10px",
                 cursor: "pointer",
                 opacity: "1",
                 zIndex: "101",
+                padding:"0",
+                backgroundColor:"transparent"
               }}
             >
+            <Box minWidth="16px">
               <Image
+              w="38px"
                 src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/Sites-BathAndBodyWorks-Site/-/en_US/v1671187578937/images/svg-icons/PDP-Wishlist-1.svg?yocs=o_s_"
                 alt="like"
               />
-            </button>
-            <Image src={SingleData.image} alt="image" />
-          </div>
+              </Box>
+            </Button>
+            <Box minWidth="120px">
+            <Image  w="350px" src={SingleData.image} alt="image" />
+            </Box>
+
+          </Box>
           <Box className="left-Side">
             <Box>
               <h1>{SingleData.name}</h1>
@@ -123,7 +130,7 @@ const SingleProduct = () => {
             </Box>
             <Box>
               <Popover trigger="hover" placement="bottom-start">
-                <Box display={"flex"} gap={"1"}>
+                <Box display={"flex"} flexWrap="wrap" gap={"1"}>
                   <PopoverTrigger>
                     <Box className="btn-spanvalue">
                       <Box>
@@ -291,13 +298,13 @@ const SingleProduct = () => {
               </Button>
             </Box>
 
-            <Accordion w="md" allowToggle>
+            <Accordion w="90%" allowToggle>
               <AccordionItem>
                 <h2>
                   <AccordionButton
                     _focus={{ borderStyle: "doted", border: "1px solid gray" }}
                   >
-                    <Box as="span" flex="1" textAlign="left">
+                    <Box as="span" padding={"10px 10px"} flex="1" textAlign="left">
                       FRAGRANCE
                     </Box>
                     <AccordionIcon />
@@ -316,7 +323,7 @@ const SingleProduct = () => {
                   <AccordionButton
                     _focus={{ borderStyle: "doted", border: "1px solid gray" }}
                   >
-                    <Box as="span" flex="1" textAlign="left">
+                    <Box as="span" padding={"10px 10px"} flex="1" textAlign="left">
                       OVERVIEW
                     </Box>
                     <AccordionIcon />
@@ -335,7 +342,7 @@ const SingleProduct = () => {
                   <AccordionButton
                     _focus={{ borderStyle: "doted", border: "1px solid gray" }}
                   >
-                    <Box as="span" flex="1" textAlign="left">
+                    <Box as="span" padding={"10px 10px"} flex="1" textAlign="left">
                       USAGE
                     </Box>
                     <AccordionIcon />
@@ -387,20 +394,18 @@ const ProductPath = styled.div`
   }
 `;
 const MainDataWrapper = styled.div`
-  width: 80%;
-  margin: auto;
   margin-bottom: 30px;
   border: 1px solid red;
   .img-data-container {
-    width: 86%;
+    width:86%;
     padding-left: 10%;
-    border: 1px solid green;
     margin: auto;
     display: flex;
     gap: 20px;
   }
   .left-Side {
     text-align: left;
+    width:50%;
     padding-top: 30px;
   }
   .btn-spanvalue {

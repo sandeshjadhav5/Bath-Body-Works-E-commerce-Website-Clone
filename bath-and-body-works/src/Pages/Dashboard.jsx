@@ -29,10 +29,10 @@ const Dashboard = () => {
   return (
     <div>
       <Box display="flex">
-        <Box w="18%">
+        <Box >
           <SimpleSidebar />
         </Box>
-        <Box w="82%">
+        <Box w="100%">
           <PureComponent />
           <SimpleGrid
             minChildWidth="220px"
@@ -46,18 +46,17 @@ const Dashboard = () => {
               display="flex"
               boxShadow="2xl"
               rounded="md"
-              bg="rgb(67,156,145)"
-              background="linear-gradient(90deg, rgba(67,156,145,1) 0%, rgba(29,229,253,1) 50%, rgba(219,241,241,1) 100%)"
+              bg="skyblue"
             >
               <Icon
                 as={FaProductHunt}
                 w="40%"
+                color="whiteAlpha.900"
                 h={16}
-                color="#702459"
                 m="auto"
               />
               <Box m="auto">
-                <Text color="#319795">New Users</Text>
+                <Text color="#319795"> Products</Text>
                 <Text color="#D53F8C">+25438</Text>
               </Box>
             </Box>
@@ -66,10 +65,10 @@ const Dashboard = () => {
               display="flex"
               boxShadow="2xl"
               rounded="md"
-              bg=" rgb(217,36,58)"
-              background="linear-gradient(90deg, rgba(217,36,58,1) 0%, rgba(215,94,94,1) 50%, rgba(232,199,203,1) 100%)"
+
+              bg="skyblue"
             >
-              <Icon as={FaUserAlt} w="40%" h={14} color="green.500" m="auto" />
+              <Icon as={FaUserAlt} w="40%" h={14} color={"whiteAlpha.900"} m="auto" />
               <Box m="auto">
                 <Text color="#9C4221">New Users</Text>
                 <Text color="#9C4221">+25438</Text>
@@ -80,14 +79,13 @@ const Dashboard = () => {
               display="flex"
               boxShadow="2xl"
               rounded="md"
-              bg=" rgb(217,75,36)"
-              background=" linear-gradient(90deg, rgba(217,75,36,1) 0%, rgba(215,94,94,1) 50%, rgba(232,199,203,1) 100%)"
+              bg="skyblue"
             >
               <Icon
                 as={BsFillCartCheckFill}
                 w="40%"
                 h={16}
-                color="#805AD5"
+                color="whiteAlpha.900"
                 m="auto"
               />
               <Box m="auto">
@@ -100,11 +98,10 @@ const Dashboard = () => {
               display="flex"
               boxShadow="2xl"
               rounded="md"
-              bg="rgb(20,179,38)"
-              background="linear-gradient(90deg, rgba(20,179,38,1) 0%, rgba(24,226,105,1) 50%, rgba(199,232,205,1) 100%)"
+              bg="skyblue"
             >
-              <Icon as={TbReportMoney} w="40%" h={16} m="auto" />
-              <Box m="auto">
+              <Icon as={TbReportMoney} w="40%" color="whiteAlpha.900" h={16} m="auto" />
+              <Box m="auto" >
                 <Text color="#319795">Profits</Text>
                 <Text color="#D53F8C">
                   <Icon color="green" as={TriangleUpIcon} />
@@ -115,25 +112,25 @@ const Dashboard = () => {
           </SimpleGrid>
           <Box></Box>
           <Box display="flex" mt={10}>
-            <Box>
-              <Heading color="#319795">Recent Orders</Heading>
-              <TableContainer mt="5">
-                <Table variant="striped" colorScheme="red">
+            <Box w="96%" m="auto">
+              <Heading color="gray.400">Recent Orders</Heading>
+              <TableContainer mt="5" w="auto" >
+                <Table variant='simple'>
                   <TableCaption>
                     Bath and Body Works All Products List
                   </TableCaption>
-                  <Thead>
-                    <Tr bg="yellow">
+                  <Thead bg="skyblue" color={"gray"} textAlign={"center"} p="0">
+                    <Tr>
                       <Th>No.</Th>
                       <Th>NAME</Th>
                       <Th>CATEGORY</Th>
                       <Th isNumeric>PRICE</Th>
                     </Tr>
                   </Thead>
-                  <Tbody>
+                  <Tbody bg="lightgray" color={"black"} >
                     {products.map((el) => (
-                      <Tr>
-                        <Td>{el.id}</Td>
+                      <Tr textAlign={"center"}>
+                        <Td >{el.id}</Td>
                         <Td>{el.name}</Td>
                         <Td>{el.category}</Td>
 
