@@ -4,6 +4,7 @@ import { CalendarIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { cartSuccess } from "../Redux/CartReducer/action";
 
 let styles = {
   display: "flex",
@@ -12,7 +13,8 @@ let styles = {
 };
 
 export const CartPage = () => {
-  let data = useSelector((s) => s.products);
+  let data = useSelector((store) => store.CartReducer.carts);
+  console.log("data", data);
   let [state, setstate] = useState(0);
   let [coupons, setcoupons] = useState(0);
   let [total, settotal] = useState(0);
@@ -65,7 +67,9 @@ export const CartPage = () => {
         </div>
         <div className="Product-Cart-right">
           <div>
-            <label>Coupons</label>
+            <label>
+              <span style={{ color: "red" }}>Coupons</span>
+            </label>
             <br />
             <hr />
             <br />
@@ -73,7 +77,7 @@ export const CartPage = () => {
               <CalendarIcon />
               <Text fontSize="md"> Apply Coupons</Text>
               <Button
-                // disabled={coupons > 0 || total == 0}
+                disabled={coupons > 0 || total == 0}
                 onClick={handlecoupons}
                 size="sm"
                 colorScheme="red"
@@ -95,7 +99,9 @@ export const CartPage = () => {
           </div>
           <br />
           <div>
-            <label>Gifting & Personalization</label>
+            <label>
+              <span style={{ color: "red" }}>Gifting & Personalization</span>
+            </label>
             <br />
             <hr />
             <br />
@@ -103,7 +109,9 @@ export const CartPage = () => {
           </div>
           <br />
           <div>
-            <label>Price Details</label>
+            <label>
+              <span style={{ color: "red" }}>Price Details</span>
+            </label>
             <br />
             <hr />
             <br />
@@ -112,11 +120,13 @@ export const CartPage = () => {
               <label>₹{total.toFixed(2)}</label>
             </div>
             <div style={styles}>
-              <label>Total Discount MRP</label>
+              <label>
+                Total Discount <span style={{ color: "red" }}>MRP</span>
+              </label>
               <label>-₹{(total / 10).toFixed(2)}</label>
             </div>
             <div style={styles}>
-              <label>Coupos DisCount</label>
+              <label>Coupons Discount</label>
               <label>-₹{coupons}</label>
             </div>
             <div style={styles}>
@@ -124,18 +134,19 @@ export const CartPage = () => {
                 Convenience Fee <span style={{ color: "red" }}>Know more</span>
               </label>
               <label>
-                <Text as="s">₹99</Text>{" "}
+                <Text as="s">₹199</Text>{" "}
                 <span style={{ color: "red" }}>FREE</span>
               </label>
             </div>
             <hr />
             <div style={styles}>
               <label>Total Amount</label>
+              <label>₹{(total - total / 10 - coupons).toFixed(2)}</label>
             </div>
             <br />
             <Center>
               <Button
-                // disabled={total == 0}
+                disabled={total == 0}
                 onClick={handlecheakoutbutton}
                 colorScheme="teal"
               >
