@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import { useToast } from "@chakra-ui/react";
 import {
+  Spinner,
   SimpleGrid,
   Grid,
   Box,
@@ -10,10 +12,62 @@ import {
   Text,
   Button,
   GridItem,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
 } from "@chakra-ui/react";
+
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { cartSuccess } from "../Redux/CartReducer/action";
+
 const ProductList = ({ products }) => {
-  console.log("products - - - > ", products);
+  const [cartData, setCartData] = useState([]);
+  // const cart = useSelector((state) => state.CartReducer.carts);
+  const toast = useToast();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const dispatch = useDispatch();
+
+  const loadingIndicator = useSelector(
+    (state) => state.AppReducer.isProductsLoading
+  );
+  console.log(loadingIndicator);
+
+  const addToReduxStore = () => {
+    dispatch(cartSuccess(cartData));
+  };
+  const addToCart = (el) => {
+    setCartData([...cartData, el]);
+    addToReduxStore();
+    toast({
+      title: `${el.name}`,
+      description: "Successfully Added To Cart",
+      status: "success",
+      duration: 9000,
+      isClosable: true,
+    });
+  };
+  console.log(cartData);
+  if (loadingIndicator) {
+    return (
+      <>
+        <Spinner
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="blue.500"
+          size="xl"
+          mt="200"
+          mb="200"
+        />
+      </>
+    );
+  }
   return (
     <Box>
       <Heading
@@ -28,6 +82,7 @@ const ProductList = ({ products }) => {
         MEN'S
       </Heading>
       <Divider h="2" />
+      <Link to="/cartpage">cartpage</Link>
       <Box
         display="flex"
         m="auto"
@@ -90,6 +145,9 @@ const ProductList = ({ products }) => {
               borderRadius="0"
               bgColor="#333333"
               color="white"
+              onClick={() => {
+                addToCart(el);
+              }}
             >
               Add To Cart
             </Button>

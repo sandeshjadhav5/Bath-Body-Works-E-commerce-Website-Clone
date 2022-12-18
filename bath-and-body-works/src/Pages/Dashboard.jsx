@@ -20,6 +20,7 @@ import {
   TableCaption,
   TableContainer,
 } from "@chakra-ui/react";
+import styled from "styled-components";
 const Dashboard = () => {
   const products = useSelector((state) => state.AppReducer.products);
   const dispatch = useDispatch();
@@ -29,10 +30,10 @@ const Dashboard = () => {
   return (
     <div>
       <Box display="flex">
-        <Box w="18%">
+        <Box >
           <SimpleSidebar />
         </Box>
-        <Box w="82%">
+        <Box w="100%">
           <PureComponent />
           <SimpleGrid
             minChildWidth="220px"
@@ -46,18 +47,17 @@ const Dashboard = () => {
               display="flex"
               boxShadow="2xl"
               rounded="md"
-              bg="rgb(67,156,145)"
-              background="linear-gradient(90deg, rgba(67,156,145,1) 0%, rgba(29,229,253,1) 50%, rgba(219,241,241,1) 100%)"
+              bg="skyblue"
             >
               <Icon
                 as={FaProductHunt}
                 w="40%"
+                color="whiteAlpha.900"
                 h={16}
-                color="#702459"
                 m="auto"
               />
               <Box m="auto">
-                <Text color="#319795">New Users</Text>
+                <Text color="#319795"> Products</Text>
                 <Text color="#D53F8C">+25438</Text>
               </Box>
             </Box>
@@ -66,10 +66,10 @@ const Dashboard = () => {
               display="flex"
               boxShadow="2xl"
               rounded="md"
-              bg=" rgb(217,36,58)"
-              background="linear-gradient(90deg, rgba(217,36,58,1) 0%, rgba(215,94,94,1) 50%, rgba(232,199,203,1) 100%)"
+
+              bg="skyblue"
             >
-              <Icon as={FaUserAlt} w="40%" h={14} color="green.500" m="auto" />
+              <Icon as={FaUserAlt} w="40%" h={14} color={"whiteAlpha.900"} m="auto" />
               <Box m="auto">
                 <Text color="#9C4221">New Users</Text>
                 <Text color="#9C4221">+25438</Text>
@@ -80,14 +80,13 @@ const Dashboard = () => {
               display="flex"
               boxShadow="2xl"
               rounded="md"
-              bg=" rgb(217,75,36)"
-              background=" linear-gradient(90deg, rgba(217,75,36,1) 0%, rgba(215,94,94,1) 50%, rgba(232,199,203,1) 100%)"
+              bg="skyblue"
             >
               <Icon
                 as={BsFillCartCheckFill}
                 w="40%"
                 h={16}
-                color="#805AD5"
+                color="whiteAlpha.900"
                 m="auto"
               />
               <Box m="auto">
@@ -100,14 +99,13 @@ const Dashboard = () => {
               display="flex"
               boxShadow="2xl"
               rounded="md"
-              bg="rgb(20,179,38)"
-              background="linear-gradient(90deg, rgba(20,179,38,1) 0%, rgba(24,226,105,1) 50%, rgba(199,232,205,1) 100%)"
+              bg="skyblue"
             >
-              <Icon as={TbReportMoney} w="40%" h={16} m="auto" />
-              <Box m="auto">
-                <Text color="#319795">Profits</Text>
-                <Text color="#D53F8C">
-                  <Icon color="green" as={TriangleUpIcon} />
+              <Icon as={TbReportMoney} w="40%" color="whiteAlpha.900" h={16} m="auto" />
+              <Box m="auto" >
+                <Text color="grey">Profits</Text>
+                <Text color="whiteAlpha.900">
+                  <Icon color="green.700" as={TriangleUpIcon} />
                   1000 CR
                 </Text>
               </Box>
@@ -115,39 +113,39 @@ const Dashboard = () => {
           </SimpleGrid>
           <Box></Box>
           <Box display="flex" mt={10}>
-            <Box>
-              <Heading color="#319795">Recent Orders</Heading>
-              <TableContainer mt="5">
-                <Table variant="striped" colorScheme="red">
-                  <TableCaption>
+            <Box w="100%" m="auto">
+              <Heading  m="10px 0" color="gray.400">Recent Orders</Heading>
+             <MyTableContainer>
+                 <Box w="95%" m="auto" padding={"10px 0px"} fontWeight={"bold"} border="0.5px solid lightgray">
                     Bath and Body Works All Products List
-                  </TableCaption>
-                  <Thead>
-                    <Tr bg="yellow">
-                      <Th>No.</Th>
-                      <Th>NAME</Th>
-                      <Th>CATEGORY</Th>
-                      <Th isNumeric>PRICE</Th>
-                    </Tr>
-                  </Thead>
-                  <Tbody>
-                    {products.map((el) => (
-                      <Tr>
-                        <Td>{el.id}</Td>
-                        <Td>{el.name}</Td>
-                        <Td>{el.category}</Td>
+                  </Box>
+                <table>
 
-                        <Td isNumeric>₹{el.price}</Td>
-                      </Tr>
+                  <thead >
+
+                    <tr>
+                      <th>No.</th>
+                      <th>NAME</th>
+                      <th>CATEGORY</th>
+                      <th isNumeric>PRICE</th>
+                    </tr>
+                  </thead>
+
+                  <tbody  >
+                    {products.map((el) => (
+                      <tr key={el.id}>
+                        <td >{el.id}</td>
+                        <td>{el.name}</td>
+                        <td>{el.category}</td>
+                        <td>₹{el.price}</td>
+                      </tr>
                     ))}
-                  </Tbody>
-                  <Tfoot>
-                    <Tr>
-                      <Th>Total Products={products.length}</Th>
-                    </Tr>
-                  </Tfoot>
-                </Table>
-              </TableContainer>
+                  </tbody>
+                </table>
+                <Box w="95%" m="auto" padding={"10px 0px"} fontWeight={"bold"} border="0.5px solid lightgray" mb="20px">
+                  Total Products={products.length}
+                  </Box>
+              </MyTableContainer>
             </Box>
             <Box></Box>
           </Box>
@@ -158,3 +156,32 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+const MyTableContainer = styled.div`
+width: 100%;
+table{
+  width: 95%;
+  margin:auto;
+  padding: 5px;
+}
+td{
+  text-align:left;
+  font-size:14px;
+  padding: 10px 4px;
+  border-bottom: 0.5px solid white;
+}
+th{
+  font-size:14px;
+  padding: 10px 2px;
+  font-weight: 500;
+}
+thead{
+  background-color: #87ceeb;
+  color: black;
+  text-align: left;
+}
+tbody{
+  background-color: lightgray;
+}
+
+`
