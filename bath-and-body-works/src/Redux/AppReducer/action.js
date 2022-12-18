@@ -12,14 +12,14 @@ const getProductsError = () => {
   return { type: types.GET_PRODUCTS_ERROR };
 };
 
-const getProducts = (page) => (dispatch) => {
+const getProducts = (page, order) => (dispatch) => {
   dispatch(getProductsRequest);
   return axios
     .get(`https://database-bath-body-works-vercel.vercel.app/products`, {
       params: {
         _page: page,
         _limit: 12,
-        _order: "asc",
+        _order: order,
       },
     })
     .then((r) => {

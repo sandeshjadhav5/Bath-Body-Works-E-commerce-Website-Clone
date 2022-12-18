@@ -26,8 +26,9 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { cartSuccess } from "../Redux/CartReducer/action";
 
-const ProductList = ({ products }) => {
+const ProductList = ({ products, order, setOrder }) => {
   const [cartData, setCartData] = useState([]);
+
   // const cart = useSelector((state) => state.CartReducer.carts);
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -36,7 +37,7 @@ const ProductList = ({ products }) => {
   const loadingIndicator = useSelector(
     (state) => state.AppReducer.isProductsLoading
   );
-  console.log(loadingIndicator);
+  console.log("order is - - >", order);
 
   const addToReduxStore = () => {
     dispatch(cartSuccess(cartData));
@@ -52,7 +53,9 @@ const ProductList = ({ products }) => {
       isClosable: true,
     });
   };
-  console.log(cartData);
+  const handleChange = (e) => {
+    setOrder(e.target.value);
+  };
   if (loadingIndicator) {
     return (
       <>
@@ -68,6 +71,7 @@ const ProductList = ({ products }) => {
       </>
     );
   }
+
   return (
     <Box>
       <Heading
@@ -91,11 +95,17 @@ const ProductList = ({ products }) => {
         alignItems="center"
       >
         SORT BY
-        <Select placeholder="Most Popular" ml="2" alignItems="right" w="20%">
-          <option value="ascending">Price Low To High</option>
-          <option value="descending">Price High To Low</option>
-          <option value="bestMatches">Best Matches</option>
-          <option value="topSellers">Top Sellers</option>
+        <Select
+          onChange={(e) => {
+            handleChange(e);
+          }}
+          placeholder="Most Popular"
+          ml="2"
+          alignItems="right"
+          w="20%"
+        >
+          <option value="asc">Price Low To High</option>
+          <option value="desc">Price High To Low</option>
         </Select>
       </Box>
       <Box
