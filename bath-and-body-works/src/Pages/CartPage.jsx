@@ -12,7 +12,7 @@ let styles = {
 };
 
 export const CartPage = () => {
-  let data=useSelector((s)=>s.products)
+  let data = useSelector((s) => s.products);
   let [state, setstate] = useState(0);
   let [coupons, setcoupons] = useState(0);
   let [total, settotal] = useState(0);
@@ -34,10 +34,8 @@ export const CartPage = () => {
     setcoupons(30);
   };
   let handlecheakoutbutton = () => {
-   
     navigate("/address");
   };
-  
 
   return (
     <>

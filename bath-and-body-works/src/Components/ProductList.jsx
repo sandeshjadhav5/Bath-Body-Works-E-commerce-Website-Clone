@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   SimpleGrid,
   Grid,
@@ -10,10 +10,35 @@ import {
   Text,
   Button,
   GridItem,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
 } from "@chakra-ui/react";
+
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { cartSuccess } from "../Redux/CartReducer/action";
+
 const ProductList = ({ products }) => {
-  console.log("products - - - > ", products);
+  const [cartData, setCartData] = useState([]);
+  // const cart = useSelector((state) => state.CartReducer.carts);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const dispatch = useDispatch();
+
+  const addToReduxStore = () => {
+    dispatch(cartSuccess(cartData));
+  };
+  const addToCart = (el) => {
+    setCartData([...cartData, el]);
+    addToReduxStore();
+  };
+  console.log(cartData);
   return (
     <Box>
       <Heading
@@ -28,6 +53,7 @@ const ProductList = ({ products }) => {
         MEN'S
       </Heading>
       <Divider h="2" />
+      <Link to="/cartpage">cartpage</Link>
       <Box
         display="flex"
         m="auto"
@@ -90,6 +116,9 @@ const ProductList = ({ products }) => {
               borderRadius="0"
               bgColor="#333333"
               color="white"
+              onClick={() => {
+                addToCart(el);
+              }}
             >
               Add To Cart
             </Button>
