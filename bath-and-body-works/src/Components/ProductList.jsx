@@ -87,6 +87,7 @@ const ProductList = ({ products, order, setOrder }) => {
       </Heading>
       <Divider h="2" />
       <Link to="/cartpage">cartpage</Link>
+      <Link to="/adminorders">Admin Orders</Link>
       <Box
         display="flex"
         m="auto"
