@@ -13,7 +13,10 @@ import {
   PopoverCloseButton,
   PopoverContent,
   PopoverTrigger,
+  Spinner,
   Stack,
+  Toast,
+  useToast,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -41,10 +44,13 @@ import {
   AccordionPanel,
   AccordionIcon,
 } from "@chakra-ui/react";
+import { cartSuccess } from "../Redux/CartReducer/action";
 
 const SingleProduct = () => {
   const SingleItem = useSelector((store) => store.AppReducer.products);
   const dispatch = useDispatch();
+  const [value, setValue] = useState("1");
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const { id } = useParams();
   const [count, setCount] = useState(1);
   const SingleData = SingleItem.find((p) => p.id == id);
@@ -56,12 +62,32 @@ const SingleProduct = () => {
   //   "category": "Body Spray and Mist",
   //   "price": 1899
   // }
+  const [cartData, setCartData] = useState([]);
+  // const cart = useSelector((state) => state.CartReducer.carts);
+  const toast = useToast();
+  const loadingIndicator = useSelector(
+    (state) => state.AppReducer.isProductsLoading
+  );
 
   const dummy = {
     size: 30,
     value: 4.6,
     isHalf: true,
     edit: false,
+  };
+  const addToReduxStore = () => {
+    dispatch(cartSuccess(cartData));
+  };
+  const addToCart = (SingleData) => {
+    setCartData([...cartData, SingleData]);
+    addToReduxStore();
+    toast({
+      title: `${SingleData.name}`,
+      description: "Successfully Added To Cart",
+      status: "success",
+      duration: 9000,
+      isClosable: true,
+    });
   };
   const handleIncrement = () => {
     setCount((prev) => prev + 1);
@@ -73,12 +99,25 @@ const SingleProduct = () => {
     e.preventDefault();
     setCount(e.target.value)
   };
-  const [value, setValue] = React.useState("1");
-  const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
     dispatch(getProducts());
   }, []);
+  if (loadingIndicator) {
+    return (
+      <>
+        <Spinner
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="blue.500"
+          size="xl"
+          mt="200"
+          mb="200"
+        />
+      </>
+    );
+  }
   return (
     <div>
       <TopContainer>
@@ -94,7 +133,7 @@ const SingleProduct = () => {
 
       <MainDataWrapper>
         <div className="img-data-container">
-          <Box style={{display: "block", margin: "0px" }}>
+          <Box className="left-container">
             <Button
               style={{
                 position: "relative",
@@ -123,7 +162,7 @@ const SingleProduct = () => {
             </Box>
 
           </Box>
-          <Box className="left-Side">
+          <Box className="right-Side">
             <Box>
               <h1>{SingleData.name}</h1>
               <span style={{ fontSize: "14px" }}>{SingleData.category}</span>
@@ -293,6 +332,7 @@ const SingleProduct = () => {
                 bg={"black"}
                 _hover={{ bg: "white", color: "black" }}
                 fontSize={"small"}
+                onClick={()=>addToCart(SingleData)}
               >
                 ADD TO BAG
               </Button>
@@ -395,19 +435,7 @@ const ProductPath = styled.div`
 `;
 const MainDataWrapper = styled.div`
   margin-bottom: 30px;
-  border: 1px solid red;
-  .img-data-container {
-    width:86%;
-    padding-left: 10%;
-    margin: auto;
-    display: flex;
-    gap: 20px;
-  }
-  .left-Side {
-    text-align: left;
-    width:50%;
-    padding-top: 30px;
-  }
+
   .btn-spanvalue {
     background-color: white;
     cursor: pointer;
@@ -418,7 +446,6 @@ const MainDataWrapper = styled.div`
       }
     }
     :hover {
-      border: 1px solid gray;
       border-style: dotted;
     }
   }
@@ -463,6 +490,47 @@ const MainDataWrapper = styled.div`
     padding-left: 35px;
     font-family: TrendSansW05-One, Arial, sans-serif;
   }
+
+  ${'' /* media screensize part here */}
+
+  @media only screen and (min-width: 770px) {
+  ${'' /* DeskStop mode */}
+  .img-data-container {
+    width:86%;
+    padding-left: 10%;
+    margin: auto;
+    display: flex;
+    gap: 20px;
+  }
+  .left-container{
+    display: block;
+    margin: 0;
+  }
+  .right-Side {
+    text-align: left;
+    width:50%;
+    padding-top: 30px;
+  }
+
+}
+@media only screen and (min-width: 320px) {
+  ${'' /* DeskStop mode */}
+  .img-data-container {
+    width:95%;
+    padding-left: 10%;
+    margin: auto;
+  }
+  .left-container{
+    display: block;
+    margin: 0;
+  }
+  .right-Side {
+    text-align: left;
+    width:100%;
+    padding-top: 30px;
+  }
+
+}
 `;
 const SetstoreModelhead = styled.div`
   text-align: center;

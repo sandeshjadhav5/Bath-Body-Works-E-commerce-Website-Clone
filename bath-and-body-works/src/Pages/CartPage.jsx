@@ -13,6 +13,8 @@ let styles = {
 
 export const CartPage = () => {
   let data = useSelector((s) => s.products);
+  let cartData = useSelector((s) => s.CartReducer.carts);
+  console.log(cartData)
   let [state, setstate] = useState(0);
   let [coupons, setcoupons] = useState(0);
   let [total, settotal] = useState(0);
