@@ -18,6 +18,8 @@ import {
   Toast,
   useToast,
 } from "@chakra-ui/react";
+import Navbar from "../Components/Navbar";
+import Footer from "./Footer";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
@@ -97,7 +99,7 @@ const SingleProduct = () => {
   };
   const handleInput = (e) => {
     e.preventDefault();
-    setCount(e.target.value)
+    setCount(e.target.value);
   };
 
   useEffect(() => {
@@ -120,6 +122,7 @@ const SingleProduct = () => {
   }
   return (
     <div>
+      <Navbar />
       <TopContainer>
         Perk Alert: All new Rewards members get $10 off any $30 purchase! Join
         the VIPs
@@ -145,22 +148,21 @@ const SingleProduct = () => {
                 cursor: "pointer",
                 opacity: "1",
                 zIndex: "101",
-                padding:"0",
-                backgroundColor:"transparent"
+                padding: "0",
+                backgroundColor: "transparent",
               }}
             >
-            <Box minWidth="16px">
-              <Image
-              w="38px"
-                src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/Sites-BathAndBodyWorks-Site/-/en_US/v1671187578937/images/svg-icons/PDP-Wishlist-1.svg?yocs=o_s_"
-                alt="like"
-              />
+              <Box minWidth="16px">
+                <Image
+                  w="38px"
+                  src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/Sites-BathAndBodyWorks-Site/-/en_US/v1671187578937/images/svg-icons/PDP-Wishlist-1.svg?yocs=o_s_"
+                  alt="like"
+                />
               </Box>
             </Button>
             <Box minWidth="120px">
-            <Image  w="350px" src={SingleData.image} alt="image" />
+              <Image w="350px" src={SingleData.image} alt="image" />
             </Box>
-
           </Box>
           <Box className="right-Side">
             <Box>
@@ -317,7 +319,11 @@ const SingleProduct = () => {
               >
                 -
               </Button>
-              <Input width={"12"} value={count} onChange={(e)=>handleInput(e)}/>
+              <Input
+                width={"12"}
+                value={count}
+                onChange={(e) => handleInput(e)}
+              />
               <Button
                 _hover={{ bg: "black", color: "white" }}
                 borderRadius={"0"}
@@ -332,7 +338,7 @@ const SingleProduct = () => {
                 bg={"black"}
                 _hover={{ bg: "white", color: "black" }}
                 fontSize={"small"}
-                onClick={()=>addToCart(SingleData)}
+                onClick={() => addToCart(SingleData)}
               >
                 ADD TO BAG
               </Button>
@@ -344,7 +350,12 @@ const SingleProduct = () => {
                   <AccordionButton
                     _focus={{ borderStyle: "doted", border: "1px solid gray" }}
                   >
-                    <Box as="span" padding={"10px 10px"} flex="1" textAlign="left">
+                    <Box
+                      as="span"
+                      padding={"10px 10px"}
+                      flex="1"
+                      textAlign="left"
+                    >
                       FRAGRANCE
                     </Box>
                     <AccordionIcon />
@@ -363,7 +374,12 @@ const SingleProduct = () => {
                   <AccordionButton
                     _focus={{ borderStyle: "doted", border: "1px solid gray" }}
                   >
-                    <Box as="span" padding={"10px 10px"} flex="1" textAlign="left">
+                    <Box
+                      as="span"
+                      padding={"10px 10px"}
+                      flex="1"
+                      textAlign="left"
+                    >
                       OVERVIEW
                     </Box>
                     <AccordionIcon />
@@ -382,7 +398,12 @@ const SingleProduct = () => {
                   <AccordionButton
                     _focus={{ borderStyle: "doted", border: "1px solid gray" }}
                   >
-                    <Box as="span" padding={"10px 10px"} flex="1" textAlign="left">
+                    <Box
+                      as="span"
+                      padding={"10px 10px"}
+                      flex="1"
+                      textAlign="left"
+                    >
                       USAGE
                     </Box>
                     <AccordionIcon />
@@ -399,6 +420,7 @@ const SingleProduct = () => {
           </Box>
         </div>
       </MainDataWrapper>
+      <Footer />
     </div>
   );
 };
@@ -491,46 +513,44 @@ const MainDataWrapper = styled.div`
     font-family: TrendSansW05-One, Arial, sans-serif;
   }
 
-  ${'' /* media screensize part here */}
+  ${"" /* media screensize part here */}
 
   @media only screen and (min-width: 770px) {
-  ${'' /* DeskStop mode */}
-  .img-data-container {
-    width:86%;
-    padding-left: 10%;
-    margin: auto;
-    display: flex;
-    gap: 20px;
+    ${"" /* DeskStop mode */}
+    .img-data-container {
+      width: 86%;
+      padding-left: 10%;
+      margin: auto;
+      display: flex;
+      gap: 20px;
+    }
+    .left-container {
+      display: block;
+      margin: 0;
+    }
+    .right-Side {
+      text-align: left;
+      width: 50%;
+      padding-top: 30px;
+    }
   }
-  .left-container{
-    display: block;
-    margin: 0;
+  @media only screen and (min-width: 320px) {
+    ${"" /* DeskStop mode */}
+    .img-data-container {
+      width: 95%;
+      padding-left: 10%;
+      margin: auto;
+    }
+    .left-container {
+      display: block;
+      margin: 0;
+    }
+    .right-Side {
+      text-align: left;
+      width: 100%;
+      padding-top: 30px;
+    }
   }
-  .right-Side {
-    text-align: left;
-    width:50%;
-    padding-top: 30px;
-  }
-
-}
-@media only screen and (min-width: 320px) {
-  ${'' /* DeskStop mode */}
-  .img-data-container {
-    width:95%;
-    padding-left: 10%;
-    margin: auto;
-  }
-  .left-container{
-    display: block;
-    margin: 0;
-  }
-  .right-Side {
-    text-align: left;
-    width:100%;
-    padding-top: 30px;
-  }
-
-}
 `;
 const SetstoreModelhead = styled.div`
   text-align: center;

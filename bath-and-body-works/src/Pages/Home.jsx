@@ -8,6 +8,7 @@ import {
   Container,
   flexbox,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Footer from "./Footer";
@@ -36,7 +37,9 @@ const Caro = () => {
     <Box>
       <Navbar />
       <Box width="85%" margin="auto">
-        <Image src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw6577ea42/images/Christmas2022/ee325-soaps_c2_16x9.jpg?yocs=s_" />
+        <Link to="/products">
+          <Image src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw6577ea42/images/Christmas2022/ee325-soaps_c2_16x9.jpg?yocs=s_" />
+        </Link>
       </Box>
       <Box mt="30px">
         <Heading>TODAY`S TOP OFFERS</Heading>
@@ -55,25 +58,27 @@ const Caro = () => {
             </Button>
           </Box>
 
-          <Box bg="white" height="190px" mt="30px">
-            <Heading fontSize="20px" color="blue" mt="5px">
-              Limited Time only !
-            </Heading>
-            <Text textAlign="left" mt="15px" ml="22px">
-              $35 with any$30purchase
-            </Text>
-            <Text fontSize="15px" textAlign="left" ml="20px" mt="10px">
-              Limit 20 with code:ADORABLE
-            </Text>
-            <Button
-              bg="blackAlpha.800"
-              color="white"
-              borderRadius="0"
-              mt="15px"
-            >
-              SHOP
-            </Button>
-          </Box>
+          <Link to="/products">
+            <Box bg="white" height="190px" mt="30px">
+              <Heading fontSize="20px" color="blue" mt="5px">
+                Limited Time only !
+              </Heading>
+              <Text textAlign="left" mt="15px" ml="22px">
+                $35 with any$30purchase
+              </Text>
+              <Text fontSize="15px" textAlign="left" ml="20px" mt="10px">
+                Limit 20 with code:ADORABLE
+              </Text>
+              <Button
+                bg="blackAlpha.800"
+                color="white"
+                borderRadius="0"
+                mt="15px"
+              >
+                SHOP
+              </Button>
+            </Box>
+          </Link>
 
           <Box
             bg="white"

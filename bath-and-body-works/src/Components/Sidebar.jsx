@@ -41,6 +41,7 @@ const LinkItems = [
 
   { name: "Add Products", icon: FiPlusCircle, to: "/addproducts" },
   { name: "View Orders  ", icon: MdOutlinePreview, to: "/adminorders" },
+  { name: "Logout", to: "/" },
 ];
 //{ name: "View Payments", icon: MdPayment, to: "/adminpayments" },
 //{ name: "Settings", icon: FiSettings },

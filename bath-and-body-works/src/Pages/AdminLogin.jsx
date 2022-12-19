@@ -6,13 +6,12 @@ import {
   Input,
   Checkbox,
   Stack,
-  Link,
   Button,
   Heading,
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
-
+import { Link } from "react-router-dom";
 export default function SimpleCard() {
   return (
     <Flex
@@ -49,15 +48,18 @@ export default function SimpleCard() {
                 <Checkbox>Remember me</Checkbox>
                 <Link color={"blue.400"}>Forgot password?</Link>
               </Stack>
-              <Button
-                bg={"blue.400"}
-                color={"white"}
-                _hover={{
-                  bg: "blue.500",
-                }}
-              >
-                Sign in
-              </Button>
+              <Link to="/dashboard">
+                {" "}
+                <Button
+                  bg={"blue.400"}
+                  color={"white"}
+                  _hover={{
+                    bg: "blue.500",
+                  }}
+                >
+                  Sign in
+                </Button>
+              </Link>
             </Stack>
           </Stack>
         </Box>

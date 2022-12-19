@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
 
 /* body {
@@ -20,9 +20,10 @@
 } */
 
 .container {
-  max-width: 1200px;
+  margin-top: 300px;
+  /* max-width: 1200px; */
   margin: auto;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,8 +59,8 @@
 }
 
 #form h4 {
-  color:#555;
-  font-size: .90rem;
+  color: #555;
+  font-size: 0.9rem;
 }
 
 .mt {
@@ -86,7 +87,7 @@
   border: none;
   border-radius: 7px;
   background-color: #060a24;
-  color: #FFF;
+  color: #fff;
   letter-spacing: 1px;
   font-size: 1.25rem;
   cursor: pointer;
@@ -107,7 +108,7 @@
 
 #form button:hover:before {
   width: 100%;
-  transition: .2s all;
+  transition: 0.2s all;
 }
 
 #card {
@@ -129,7 +130,7 @@
   color: #eee;
   filter: drop-shadow(1px 3px 10px #222);
 
-  animation: fadeIn .2s linear 1;
+  animation: fadeIn 0.2s linear 1;
 }
 
 @keyframes fadeIn {
