@@ -1,7 +1,7 @@
-import { Alert, Center, Link, Button, Text, AlertIcon } from "@chakra-ui/react";
+import { Alert, Center, Link, Button, Text, AlertIcon, useFocusEffect } from "@chakra-ui/react";
 import "./CartPage.css";
 import { CalendarIcon } from "@chakra-ui/icons";
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { cartSuccess } from "../Redux/CartReducer/action";
@@ -14,12 +14,16 @@ let styles = {
 
 export const CartPage = () => {
   let data = useSelector((store) => store.CartReducer.carts);
-  console.log("data", data);
+  // console.log("data", data);
   let [state, setstate] = useState(0);
   let [coupons, setcoupons] = useState(0);
   let [total, settotal] = useState(0);
   let dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(cartSuccess())
+  },[])
   let navigate = useNavigate();
+
 
   let sumProduct = () => {
     if (data.filter((e) => e.cartquantity > 0) === 0) {
@@ -38,6 +42,9 @@ export const CartPage = () => {
   let handlecheakoutbutton = () => {
     navigate("/address");
   };
+  let handleProductbutton = () => {
+    navigate("/products");
+  };
 
   return (
     <>
@@ -55,13 +62,14 @@ export const CartPage = () => {
       </div>
       <div className="Product-Cart-main">
         <div className="Product-Cart-left">
+          {data}
           <>
             <img src="/Image/empty cart.webp" alt="" width="100%" />
             <br />
             <Center>
-              <Link to="">
-                <Button colorScheme="red">BACK TO PRODUCT PAGE</Button>
-              </Link>
+              <Button onClick={handleProductbutton} colorScheme="red">
+                BACK TO PRODUCT PAGE
+              </Button>
             </Center>
           </>
         </div>
