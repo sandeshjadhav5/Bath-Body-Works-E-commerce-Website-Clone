@@ -14,7 +14,7 @@ import {
 import { ChevronRightIcon, Search2Icon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = (newEntry) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     const breakpoints = {
@@ -103,7 +103,9 @@ const Navbar = () => {
         <div style={{width:"30px"}}>
         <Popover trigger="hover" placement="bottom-end">
   <PopoverTrigger>
+   
     <img src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/Sites-BathAndBodyWorks-Site/-/default/dw8f5c8e40/images/svg-icons/UI-MyAccount.svg?yocs=o_s_" alt="user login"/>
+  
   </PopoverTrigger>
   <PopoverContent borderRadius="none" width={"200px"}>
     <PopoverBody sx={{padding:"20px 10px",margin:"0px", textAlign:"left"}}>
