@@ -22,12 +22,13 @@ import { useEffect } from "react";
 const Products = () => {
   const products = useSelector((state) => state.AppReducer.products);
   const [page, setPage] = useState(1);
+  const [order, setOrder] = useState("asc");
   console.log("page is ", page);
   const dispatch = useDispatch();
   console.log("this are products", products);
   useEffect(() => {
-    dispatch(getProducts(page));
-  }, [page]);
+    dispatch(getProducts(page, order));
+  }, [page, order]);
   return (
     <Box w="95%" m="auto">
       <h1>Products Page</h1>
@@ -51,7 +52,7 @@ const Products = () => {
       <Box display={{ base: "grid", md: "grid", lg: "flex" }}>
         <Box
           w={{ base: "100%", sm: "100%", md: "100%", lg: "20%", xl: "20%" }}
-          display={{ base: "none", sm: "none", md: "grid", lg: "flex" }}
+          display={{ base: "none", sm: "none", md: "none", lg: "flex" }}
           border="1px"
           borderColor="gray.200"
         >
@@ -62,7 +63,7 @@ const Products = () => {
           border="1px"
           borderColor="gray.200"
         >
-          <ProductList products={products} />
+          <ProductList products={products} order={order} setOrder={setOrder} />
           <Box w="40" m="auto" mb={20} mt={10} display="flex">
             <Button
               disabled={page <= 1}

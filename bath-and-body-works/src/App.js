@@ -7,9 +7,7 @@ import { Box } from "@chakra-ui/react";
 function App() {
   return (
     <div className="App">
-    <Box>
-    <Navbar/>
-    </Box>
+      {/* <Navbar/> */}
       <MainRoutes />
     </div>
   );
