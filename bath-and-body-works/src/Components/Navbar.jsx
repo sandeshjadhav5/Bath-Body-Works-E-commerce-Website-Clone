@@ -1,33 +1,31 @@
 import { Box, Button, HStack, Image, Input, InputGroup, InputRightElement, Popover, PopoverBody, PopoverCloseButton, PopoverContent, PopoverHeader, PopoverTrigger, useDisclosure } from '@chakra-ui/react';
 import styled from 'styled-components';
 import React from 'react';
-import { extendTheme } from '@chakra-ui/react';
 import {
     Modal,
     ModalOverlay,
     ModalContent,
     ModalHeader,
-    ModalFooter,
     ModalBody,
     ModalCloseButton,
   } from '@chakra-ui/react';
 import { ChevronRightIcon, Search2Icon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import MiniNavbarDrawer from './MiniNavbarDrawer';
 
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const cartLength= useSelector((state)=>state.CartReducer.carts)
+// console.log(cartLength);
 
-    const breakpoints = {
-      sm: '320px',
-      md: '768px',
-      lg: '960px',
-      xl: '1200px',
-      '2xl': '1536px',
-    }
-    const theme = extendTheme({ breakpoints })
   return (
-    <div style={{margin:"auto",width:"100%"}}>
+    <MainDivWrapper>
+    <Box className="maindiv">
+    <div style={{margin:"auto",width:"100%",position:"fixed",
+    zIndex:"1000",background:"white"}}>
        <Upeernav>
+       <Box className="uppernav">
         <div className='unavstyled'> POINTS. PERKS. EXCLUSIVES. <a>Join Rewards!</a></div>
         <div className='navright-divflex'>
         <img src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/Sites-BathAndBodyWorks-Site/-/en_US/v1670961565504/images/svg-icons/bopis-icon-small.svg?yocs=o_s_" alt ="location"/>
@@ -70,15 +68,29 @@ const Navbar = () => {
         </ModalContent>
       </Modal>
         </div>
+        </Box>
        </Upeernav>
        <MidNavbarWrapper>
-        <div style={{height:"36px", width:"25%", minWidth:"180px",marginRight:"10%",paddingTop:"10px"}}>
+       <Box className="midNavbar">
+       <Box className='left-mini-navside'>
+       <Box><MiniNavbarDrawer/></Box>
+       <Box className='Search-btn-style'>
+       <Button
+        padding={"0px"}
+        margin={"0px"}
+        children={<Search2Icon color={"#005699"} />}
+        backgroundColor="Background"
+         size='xl' >
+        </Button>
+       </Box>
+       </Box>
+        <Box className="logo-style">
         <Link to="/">
         <img style={{cursor:"pointer"}} src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/en_US/v1671014791573/images/Christmas2022/Logos-Christmas-2022.svg?yocs=o_s_" alt ="logo" />
         </Link>
-        </div>
+        </Box>
         <div style={{display:"flex",gap:"12px",justifyContent:"right"}}>
-        <div >
+        <Box className=" input-style" >
         <InputGroup size='md'  margin={"5px"}>
       <Input
         pr='4.5rem'
@@ -99,8 +111,8 @@ const Navbar = () => {
         </Button>
       </InputRightElement>
     </InputGroup>
-        </div>
-        <div style={{width:"30px"}}>
+        </Box>
+        <Box className="login-button-style">
         <Popover trigger="hover" placement="bottom-end">
   <PopoverTrigger>
     <img src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/Sites-BathAndBodyWorks-Site/-/default/dw8f5c8e40/images/svg-icons/UI-MyAccount.svg?yocs=o_s_" alt="user login"/>
@@ -116,19 +128,40 @@ const Navbar = () => {
     </PopoverBody>
   </PopoverContent>
 </Popover>
-    </div>
+    </Box>
+        <Box className="offer-button-style">
         <div style={{width:"30px",paddingTop:"3px"}}>
-        <img src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/Sites-BathAndBodyWorks-Site/-/en_US/v1671014791573/images/svg-icons/UI-AddToBag.svg?yocs=o_s_" alt="cart"/>
+        <Image src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/Sites-BathAndBodyWorks-Site/-/default/dw6c6ff748/images/svg-icons/UI-Tag-v2.svg?yocs=o_s_" alt="offer"/>
+    </div>
+        </Box>
+    <Box className="cart-button-style">
+    {/* Bag cart initial value 0; add cart length here  */}
+    <Box style={{width:"30px",paddingTop:"3px"}}>
+        <Image src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/Sites-BathAndBodyWorks-Site/-/en_US/v1671014791573/images/svg-icons/UI-AddToBag.svg?yocs=o_s_" alt="cart"/>
+    </Box>
+        <Box as={Link} to="/cartpage" sx={{
+           position: "relative",
+           bottom:"6",
+                cursor: "pointer",
+                opacity: "1",
+                zIndex: "101",
+                padding:"0",
+                fontSize:"11px",
+                fontWeight:"bold",
+        }}>{cartLength === 0 ? "0": `${cartLength.length}`}</Box>
+
+        </Box>
         </div>
-        </div>
+        </Box>
        </MidNavbarWrapper>
        <BottomNavbar>
+       <Box className="bottomNavbar">
     <ul className='navbar-product-section'>
     <li>TOP OFFERS</li>
     {/* Body care */}
     <Popover trigger="hover" isLazy openDelay={300} placement="bottom" >
   <PopoverTrigger>
-  <li>BODY CARE</li>
+  <Link to="/products"><li>BODY CARE</li></Link>
   </PopoverTrigger>
   <PopoverContent borderRadius="none" width={"100vw"} >
     <PopoverBody sx={{padding:"20px 10%",margin:"0px", textAlign:"left", display:"flex"}}>
@@ -480,19 +513,46 @@ const Navbar = () => {
   </PopoverContent>
 </Popover>
     </ul>
+    </Box>
        </BottomNavbar>
     </div>
+    </Box>
+    </MainDivWrapper>
   )
 }
 
 export default Navbar;
 
+const MainDivWrapper = styled.div`
+@media only screen and (min-width: 768px) {
+  ${'' /* DeskStop mode */}
+  .maindiv{
+    height: 22vh;
+  }
+
+}
+@media only screen and (max-width: 766px) {
+  ${'' /* DeskStop mode */}
+  .maindiv{
+    height:10vh;
+  }
+}
+`
+
 const Upeernav = styled.div`
-padding: 10px 5%;
+
+
+@media only screen and (min-width: 768px) {
+  ${'' /* DeskStop mode */}
+
+  .uppernav{
+    padding: 10px 5%;
 display: flex;
 flex-wrap: wrap;
 justify-content: space-between;
 background-color: #f2f2f2;
+  }
+
 .unavstyled{
     color: #e20887;
     font-family: Trade Gothic W01 Bold_2,Arial,sans-serif;
@@ -507,7 +567,7 @@ background-color: #f2f2f2;
     padding-left: 10px;
     font-weight: lighter;
 }
-.navright-divflex{
+  .navright-divflex{
     display: flex;
 }
 .pickupstyle{
@@ -526,6 +586,15 @@ background-color: #f2f2f2;
     margin-left: 8px;
     color: #333;
     text-decoration: underline;
+}
+
+}
+@media only screen and (max-width: 766px) {
+  ${'' /* tablate mode */}
+  .uppernav{
+    display: none;
+  }
+
 }
 
 `
@@ -577,10 +646,16 @@ color: #333;
     margin-bottom: 8px;
 `
 const MidNavbarWrapper = styled.div`
-padding: 10px 5%;
+
+
+
+@media only screen and (min-width: 768px) {
+  ${'' /* DeskStop mode */}
+  .midNavbar{
+  padding: 10px 5%;
 display: flex;
 justify-content:right;
-
+}
 .list-login{
   list-style-type:none;
   font-size:13px;
@@ -589,12 +664,75 @@ justify-content:right;
 .list-login li{
   padding: 5px 0px;
 }
+.login-button-style{
+  width:30px;
+}
+.cart-button-style{
+  display: block ;
+  margin: 0px;
+}
+.input-style{
+}
+.logo-style{
+  height:36px;
+   width:25%;
+  min-width:280px;
+  margin-right:10%;
+  padding-top:10px;
+}
+.left-mini-navside{
+  display:none;
+}
+.offer-button-style{
+  display: none;
+}
+}
+@media only screen and (max-width: 766px) {
+  ${'' /* tablate mode */}
+  .midNavbar{
+  padding: 5px 5%;
+display: flex;
+justify-content:space-between;
+}
+.left-mini-navside{
+  display: flex;
+  gap: 10px;
+  padding-top: 5px;
+}
+  .offer-button-style{
+  display: block;
+  margin:0;
+}
+
+.login-button-style{
+  display: none;
+}
+.input-style{
+  display: none;
+}
+.Search-btn-style{
+padding-top: 5px;
+}
+.logo-style{
+  height:36px;
+   width:40%;
+  min-width:150px;
+  margin-right:10%;
+  padding-top:10px;
+}
+}
 `
 const BottomNavbar =styled.div`
-padding: 10px 5%;
-width: 100%;
 
-.navbar-product-section{
+
+
+@media only screen and (min-width: 768px) {
+  ${'' /* DeskStop mode */}
+  .bottomNavbar{
+    padding: 10px 5%;
+    width: 100%;
+  }
+  .navbar-product-section{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -607,6 +745,14 @@ width: 100%;
 
   :hover{
     border-bottom:2px solid #005699;
+  }
+}
+
+}
+@media only screen and (max-width: 766px) {
+  ${'' /* tablate mode */}
+  .navbar-product-section{
+    display:none;
   }
 }
 
