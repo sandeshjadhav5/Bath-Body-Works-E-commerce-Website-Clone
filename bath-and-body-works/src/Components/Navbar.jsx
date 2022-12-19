@@ -161,7 +161,7 @@ const Navbar = () => {
     {/* Body care */}
     <Popover trigger="hover" isLazy openDelay={300} placement="bottom" >
   <PopoverTrigger>
-  <li>BODY CARE</li>
+  <Link to="/products"><li>BODY CARE</li></Link>
   </PopoverTrigger>
   <PopoverContent borderRadius="none" width={"100vw"} >
     <PopoverBody sx={{padding:"20px 10%",margin:"0px", textAlign:"left", display:"flex"}}>
@@ -696,18 +696,22 @@ justify-content:space-between;
 }
 .left-mini-navside{
   display: flex;
-  gap: 20px;
+  gap: 10px;
   padding-top: 5px;
 }
   .offer-button-style{
   display: block;
   margin:0;
 }
+
 .login-button-style{
   display: none;
 }
 .input-style{
   display: none;
+}
+.Search-btn-style{
+padding-top: 5px;
 }
 .logo-style{
   height:36px;
