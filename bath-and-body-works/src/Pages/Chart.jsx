@@ -78,7 +78,7 @@ const data = [
 function PureComponent() {
   return (
     <SimpleGrid minChildWidth="420px" spacing="40px">
-      <Box w="100%" m={{ base: "40", sm: "30", md: "20", lg: "15" }}>
+      <Box w="100%">
         <LineChart width={400} height={200} data={data}>
           <Line
             type="monotone"
