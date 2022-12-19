@@ -41,10 +41,9 @@ const LinkItems = [
 
   { name: "Add Products", icon: FiPlusCircle, to: "/addproducts" },
   { name: "View Orders  ", icon: MdOutlinePreview, to: "/adminorders" },
-  { name: "View Payments", icon: MdPayment, to: "/adminpayments" },
-  { name: "Settings", icon: FiSettings },
 ];
-
+//{ name: "View Payments", icon: MdPayment, to: "/adminpayments" },
+//{ name: "Settings", icon: FiSettings },
 export default function SimpleSidebar({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
