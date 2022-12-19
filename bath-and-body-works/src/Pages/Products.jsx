@@ -23,9 +23,9 @@ const Products = () => {
   const products = useSelector((state) => state.AppReducer.products);
   const [page, setPage] = useState(1);
   const [order, setOrder] = useState("asc");
-  console.log("page is ", page);
+  //console.log("page is ", page);
   const dispatch = useDispatch();
-  console.log("this are products", products);
+  //console.log("this are products", products);
   useEffect(() => {
     dispatch(getProducts(page, order));
   }, [page, order]);

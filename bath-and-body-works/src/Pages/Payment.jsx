@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import Cleave from "cleave.js/react";
-
+import { useToast } from "@chakra-ui/react";
 import "animate.css";
 import "./Payment.css";
+import { useNavigate } from "react-router-dom";
 
 const imageUrls = [
-  "https://logos-world.net/wp-content/uploads/2020/04/Visa-Logo.png",
+  "https://s1.q4cdn.com/692158879/files/design/svg/american-express-logo.svg",
   "https://brand.mastercard.com/content/dam/mccom/brandcenter/thumbnails/mastercard_vrt_rev_92px_2x.png",
   "https://www.discover.com/company/images/newsroom/media-downloads/discover.png",
-  "https://s1.q4cdn.com/692158879/files/design/svg/american-express-logo.svg",
+  "https://logos-world.net/wp-content/uploads/2020/04/Visa-Logo.png",
   "https://cdn4.iconfinder.com/data/icons/simple-peyment-methods/512/diners_club-512.png",
   "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/JCB_logo.svg/1280px-JCB_logo.svg.png",
 ];
@@ -22,8 +23,9 @@ function Payment() {
   const [cardTypeUrl, setCardTypeUrl] = useState(
     "https://logos-world.net/wp-content/uploads/2020/04/Visa-Logo.png"
   );
+  const toast = useToast();
   // const [flip, setFlip] = useState(null);
-
+  const navigate = useNavigate();
   const handleNum = (e) => {
     setCreditCardNum(e.target.rawValue);
     // console.log(e.target.value);
@@ -51,6 +53,8 @@ function Payment() {
     } else if (type === "jcb") {
       console.log("JCB");
       setCardTypeUrl(imageUrls[5]);
+    } else {
+      setCardTypeUrl(imageUrls[1]);
     }
   };
 
@@ -66,11 +70,21 @@ function Payment() {
     setExpireYear(e.target.value);
   };
 
-  // cleave.js logic
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    toast({
+      title: "Order Placed",
+      description: "Your Order Will Be Delivered in 5-6 Days",
+      status: "success",
+      duration: 6000,
+      isClosable: true,
+    });
+    navigate("/");
+  };
 
   return (
     <div className="container">
-      <form id="form">
+      <form id="form" onSubmit={handleSubmit}>
         <div id="card">
           <div className="header">
             <div className="sticker"></div>
