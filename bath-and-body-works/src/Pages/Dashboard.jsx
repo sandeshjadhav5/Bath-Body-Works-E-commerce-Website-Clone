@@ -9,17 +9,6 @@ import { BsFillCartCheckFill } from "react-icons/bs";
 import PureComponent from "./Chart";
 import { Box, Heading, SimpleGrid, Icon, Image, Text } from "@chakra-ui/react";
 import { TbReportMoney } from "react-icons/tb";
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
-  TableCaption,
-  TableContainer,
-} from "@chakra-ui/react";
 import styled from "styled-components";
 const Dashboard = () => {
   const products = useSelector((state) => state.AppReducer.products);
