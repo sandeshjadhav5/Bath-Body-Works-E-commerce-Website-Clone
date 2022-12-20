@@ -22,7 +22,7 @@
 <li>Single Product</li>
 <li>Admin Dashboard</li>
 <li>Add Products to Database</li>
-<li>Order Mangagement</li>
+<li>Order Management</li>
 </ul>
 <br/>
 <h4>Deployed Link :- <a href="https://bathbodyworksbymasai.netlify.app/" target="_black"></a></h4>
