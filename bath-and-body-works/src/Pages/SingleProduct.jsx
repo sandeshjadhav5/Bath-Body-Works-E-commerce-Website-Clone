@@ -15,7 +15,6 @@ import {
   PopoverTrigger,
   Spinner,
   Stack,
-  Toast,
   useToast,
 } from "@chakra-ui/react";
 import Navbar from "../Components/Navbar";
@@ -24,7 +23,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { getProducts } from "../Redux/AppReducer/action";
+// import { getProducts } from "../Redux/AppReducer/action";
 import ReactStars from "react-rating-stars-component";
 import {
   Radio,
@@ -47,6 +46,7 @@ import {
   AccordionIcon,
 } from "@chakra-ui/react";
 import { cartSuccess } from "../Redux/CartReducer/action";
+import axios from "axios";
 
 const SingleProduct = () => {
   const SingleItem = useSelector((store) => store.AppReducer.products);
@@ -55,7 +55,7 @@ const SingleProduct = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { id } = useParams();
   const [count, setCount] = useState(1);
-  const SingleData = SingleItem.find((p) => p.id == id);
+  // const SingleData = SingleItem.find((p) => p.id == id);
   // console.log(SingleData);
   // const test ={
   //   "id": 1,
@@ -65,6 +65,7 @@ const SingleProduct = () => {
   //   "price": 1899
   // }
   const [cartData, setCartData] = useState([]);
+  const [ singleData,setSingleData] = useState({});
   // const cart = useSelector((state) => state.CartReducer.carts);
   const toast = useToast();
   const loadingIndicator = useSelector(
@@ -103,7 +104,13 @@ const SingleProduct = () => {
   };
 
   useEffect(() => {
-    dispatch(getProducts());
+    axios.get(`https://database-bath-body-works-vercel.vercel.app/products/${id}`)
+    .then((res)=>{
+      setSingleData(res.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   }, []);
   if (loadingIndicator) {
     return (
@@ -131,7 +138,7 @@ const SingleProduct = () => {
         <Link to="/">
           <span>HOME</span>
         </Link>{" "}
-        / <span>{SingleData.category}</span> / {SingleData.name}
+        / <span>{singleData.category}</span> / {singleData.name}
       </ProductPath>
 
       <MainDataWrapper>
@@ -161,13 +168,13 @@ const SingleProduct = () => {
               </Box>
             </Button>
             <Box minWidth="120px">
-              <Image w="350px" src={SingleData.image} alt="image" />
+              <Image w="350px" src={singleData.image} alt="image" />
             </Box>
           </Box>
           <Box className="right-Side">
             <Box>
-              <h1>{SingleData.name}</h1>
-              <span style={{ fontSize: "14px" }}>{SingleData.category}</span>
+              <h1>{singleData.name}</h1>
+              <span style={{ fontSize: "14px" }}>{singleData.category}</span>
             </Box>
             <Box>
               <Popover trigger="hover" placement="bottom-start">
@@ -202,7 +209,7 @@ const SingleProduct = () => {
               </Popover>
             </Box>
 
-            <Box fontWeight={"bold"}>₹ {SingleData.price}</Box>
+            <Box fontWeight={"bold"}>₹ {singleData.price}</Box>
             <Box pt="1" fontSize={"small"} color={"gray"}>
               8 fl oz / 236 mL
             </Box>
@@ -338,7 +345,7 @@ const SingleProduct = () => {
                 bg={"black"}
                 _hover={{ bg: "white", color: "black" }}
                 fontSize={"small"}
-                onClick={() => addToCart(SingleData)}
+                onClick={() => addToCart(singleData)}
               >
                 ADD TO BAG
               </Button>
