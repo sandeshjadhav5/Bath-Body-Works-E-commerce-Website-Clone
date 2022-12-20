@@ -97,7 +97,7 @@ const Foot = () => {
           Sensitive Personal Information (California)
         </Text>
         <Link to="/adminlogin">
-          <Text>ADMIN</Text>
+          <Text fontWeight="semibold">ADMIN</Text>
         </Link>
         <Text mt="40px" fontStyle="light">
           © 2022 Bath & Body Works Direct, Inc. All Rights Reserved.

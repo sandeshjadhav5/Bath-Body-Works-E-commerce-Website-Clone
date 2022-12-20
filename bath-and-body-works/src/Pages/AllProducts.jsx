@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getProducts } from "../Redux/AppReducer/action";
+import { getProductsAdmin } from "../Redux/AdminReducer/action";
 import SimpleSidebar from "../Components/Sidebar";
 import { Box, Heading, Image } from "@chakra-ui/react";
 import {
@@ -16,10 +16,10 @@ import {
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 const AllProducts = () => {
-  const products = useSelector((state) => state.AppReducer.products);
+  const products = useSelector((state) => state.AdminReducer.productsAdmin);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getProducts());
+    dispatch(getProductsAdmin());
   }, []);
   console.log(products);
   return (

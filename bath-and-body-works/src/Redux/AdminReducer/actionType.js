@@ -1,0 +1,1 @@
+export const GET_PRODUCTS_SUCC = "GET_PRODUCTS_SUCC";

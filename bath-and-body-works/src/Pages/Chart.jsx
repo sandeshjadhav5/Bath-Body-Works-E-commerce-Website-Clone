@@ -27,11 +27,6 @@ const data02 = [
   { name: "B2", value: 80 },
   { name: "B3", value: 40 },
   { name: "B4", value: 30 },
-  { name: "B5", value: 50 },
-  { name: "C1", value: 100 },
-  { name: "C2", value: 200 },
-  { name: "D1", value: 150 },
-  { name: "D2", value: 50 },
 ];
 const data = [
   {
@@ -40,7 +35,7 @@ const data = [
       "https://www.bathandbodyworks.in/on/demandware.static/-/Sites-bathandbody_master_catalog/default/dwcab0bc33/large/026335796.jpg",
     name: "Winter Candy Apple",
     category: "Body Spray and Mist",
-    price: 1099,
+    price: 599,
   },
   {
     id: 2,
@@ -48,7 +43,7 @@ const data = [
       "https://www.bathandbodyworks.in/on/demandware.static/-/Sites-bathandbody_master_catalog/default/dwc845679c/large/026338979.jpg",
     name: "Winter Candy Apple",
     category: "Body_Scrub",
-    price: 5299,
+    price: 1599,
   },
   {
     id: 3,
@@ -64,7 +59,7 @@ const data = [
       "https://www.bathandbodyworks.in/on/demandware.static/-/Sites-bathandbody_master_catalog/default/dw3c1f14ab/large/026338412.jpg",
     name: "Winter Candy Apple",
     category: "Moisturizing_Body_Wash",
-    price: 5799,
+    price: 2599,
   },
   {
     id: 5,
@@ -72,7 +67,7 @@ const data = [
       "https://www.bathandbodyworks.in/on/demandware.static/-/Sites-bathandbody_master_catalog/default/dw4a0e1e8f/large/026338987.jpg",
     name: "Vanilla Bean Noel",
     category: "Body_Lotion",
-    price: 1499,
+    price: 2609,
   },
 ];
 function PureComponent() {
@@ -87,6 +82,7 @@ function PureComponent() {
             strokeWidth={2}
           />
         </LineChart>
+        <Text>Sales Growth</Text>
       </Box>
       <Box w="100%">
         <PieChart width={400} height={200}>

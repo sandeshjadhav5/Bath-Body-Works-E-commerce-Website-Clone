@@ -41,8 +41,8 @@ const Caro = () => {
           <Image src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw6577ea42/images/Christmas2022/ee325-soaps_c2_16x9.jpg?yocs=s_" />
         </Link>
       </Box>
-      <Box mt="30px">
-        <Heading>TODAY`S TOP OFFERS</Heading>
+      <Box mt="30px" w="80%" m="auto">
+        <Heading mt="20px">TODAY`S TOP OFFERS</Heading>
         <Carousel responsive={responsive} arrows="false">
           <Box bg="white" height="190px" mt="30px">
             <Heading fontSize="20px" color="blue" mt="5px">
