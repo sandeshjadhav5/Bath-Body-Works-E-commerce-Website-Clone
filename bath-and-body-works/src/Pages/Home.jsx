@@ -357,7 +357,7 @@ const Caro = () => {
         </SimpleGrid>
       </Box>
 
-      <Box height="200px" width="85%" ml="100px" mt="30px">
+      <Box width="85%" m="auto" mt="30px" mb="30px">
         <Heading>Bath & Body Works</Heading>
         <Text mt="30px">
           Bath and Body Works is your go-to place for gifts & goodies that
