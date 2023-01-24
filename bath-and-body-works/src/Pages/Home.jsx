@@ -55,7 +55,18 @@ const Caro = () => {
             </Heading>
             <Text mt="6px">All Single Wick Candles</Text>
             <Text>$5.95</Text>
-            <Text fontSize="15px" textAlign="left" ml="10px">
+            <Text fontSize="15px">Limit 20 with code:ADORABLE</Text>
+            <Button bg="blackAlpha.800" color="white" borderRadius="0" mt="5px">
+              SHOP
+            </Button>
+          </Box>
+          <Box bg="white" height="190px" mt="30px">
+            <Heading fontSize="20" color="blue" mt="5px">
+              Today only !
+            </Heading>
+            <Text mt="6px">All Single Wick Candles</Text>
+            <Text>$5.95</Text>
+            <Text fontSize="15px" textAlign="center">
               Limit 20 with code:ADORABLE
             </Text>
             <Button bg="blackAlpha.800" color="white" borderRadius="0" mt="5px">
@@ -68,7 +79,7 @@ const Caro = () => {
             </Heading>
             <Text mt="6px">All Single Wick Candles</Text>
             <Text>$5.95</Text>
-            <Text fontSize="15px" textAlign="left" ml="10px">
+            <Text fontSize="15px" textAlign="center">
               Limit 20 with code:ADORABLE
             </Text>
             <Button bg="blackAlpha.800" color="white" borderRadius="0" mt="5px">
@@ -81,7 +92,7 @@ const Caro = () => {
             </Heading>
             <Text mt="6px">All Single Wick Candles</Text>
             <Text>$5.95</Text>
-            <Text fontSize="15px" textAlign="left" ml="10px">
+            <Text fontSize="15px" textAlign="center">
               Limit 20 with code:ADORABLE
             </Text>
             <Button bg="blackAlpha.800" color="white" borderRadius="0" mt="5px">
@@ -94,7 +105,7 @@ const Caro = () => {
             </Heading>
             <Text mt="6px">All Single Wick Candles</Text>
             <Text>$5.95</Text>
-            <Text fontSize="15px" textAlign="left" ml="10px">
+            <Text fontSize="15px" textAlign="center">
               Limit 20 with code:ADORABLE
             </Text>
             <Button bg="blackAlpha.800" color="white" borderRadius="0" mt="5px">
@@ -107,7 +118,7 @@ const Caro = () => {
             </Heading>
             <Text mt="6px">All Single Wick Candles</Text>
             <Text>$5.95</Text>
-            <Text fontSize="15px" textAlign="left" ml="10px">
+            <Text fontSize="15px" textAlign="center">
               Limit 20 with code:ADORABLE
             </Text>
             <Button bg="blackAlpha.800" color="white" borderRadius="0" mt="5px">
@@ -120,20 +131,7 @@ const Caro = () => {
             </Heading>
             <Text mt="6px">All Single Wick Candles</Text>
             <Text>$5.95</Text>
-            <Text fontSize="15px" textAlign="left" ml="10px">
-              Limit 20 with code:ADORABLE
-            </Text>
-            <Button bg="blackAlpha.800" color="white" borderRadius="0" mt="5px">
-              SHOP
-            </Button>
-          </Box>
-          <Box bg="white" height="190px" mt="30px">
-            <Heading fontSize="20" color="blue" mt="5px">
-              Today only !
-            </Heading>
-            <Text mt="6px">All Single Wick Candles</Text>
-            <Text>$5.95</Text>
-            <Text fontSize="15px" textAlign="left" ml="10px">
+            <Text fontSize="15px" textAlign="center">
               Limit 20 with code:ADORABLE
             </Text>
             <Button bg="blackAlpha.800" color="white" borderRadius="0" mt="5px">

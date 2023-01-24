@@ -10,9 +10,48 @@ import {
   Heading,
   Text,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 export default function SimpleCard() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const toast = useToast();
+
+  const handleSubmit = () => {
+    const payload = {
+      email,
+      password,
+    };
+    if (payload) {
+      axios
+        .post(`https://reqres.in/api/login`, payload)
+        .then((res) => {
+          toast({
+            title: "Logged in as Admin",
+            description: "Welcome to Admin Dashboard",
+            status: "success",
+            duration: 4000,
+            isClosable: true,
+          });
+          navigate("/dashboard");
+        })
+        .catch((err) => {
+          console.log(err);
+          toast({
+            title: "Admin Login Failed",
+            description: "Please Enter Correct Details",
+            status: "error",
+            duration: 5000,
+            isClosable: true,
+          });
+        });
+    }
+  };
+
   return (
     <Flex
       minH={"100vh"}
@@ -33,34 +72,32 @@ export default function SimpleCard() {
           <Stack spacing={4}>
             <FormControl id="email">
               <FormLabel>Email address</FormLabel>
-              <Input type="email" />
+              <Input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </FormControl>
             <FormControl id="password">
               <FormLabel>Password</FormLabel>
-              <Input type="password" />
-            </FormControl>
-            <Stack spacing={10}>
-              <Stack
-                direction={{ base: "column", sm: "row" }}
-                align={"start"}
-                justify={"space-between"}
+              <Input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <Button
+                w="100%"
+                mt="5"
+                bg={"blue.400"}
+                color={"white"}
+                _hover={{
+                  bg: "blue.700",
+                }}
+                onClick={handleSubmit}
               >
-                <Checkbox>Remember me</Checkbox>
-                <Link color={"blue.400"}>Forgot password?</Link>
-              </Stack>
-              <Link to="/dashboard">
-                {" "}
-                <Button
-                  bg={"blue.400"}
-                  color={"white"}
-                  _hover={{
-                    bg: "blue.500",
-                  }}
-                >
-                  Sign in
-                </Button>
-              </Link>
-            </Stack>
+                Sign in
+              </Button>
+            </FormControl>
           </Stack>
         </Box>
       </Stack>
