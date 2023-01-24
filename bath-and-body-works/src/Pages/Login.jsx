@@ -1,87 +1,138 @@
 import React from "react";
 import { useState } from "react";
-import { Image, Box, Text, SimpleGrid, Input, Button } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import {
+  Image,
+  Box,
+  Text,
+  SimpleGrid,
+  useToast,
+  Input,
+  Button,
+} from "@chakra-ui/react";
 
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 const LogIn = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const toast = useToast();
+
+  const handleSubmit = () => {
+    const payload = {
+      email,
+      password,
+    };
+    if (payload) {
+      axios
+        .post(`https://reqres.in/api/login`, payload)
+        .then((res) => {
+          toast({
+            title: `You are Successfully Logged in`,
+            status: "success",
+            duration: 4000,
+            isClosable: true,
+          });
+          navigate("/");
+        })
+        .catch((err) => {
+          console.log(err);
+          toast({
+            title: "Login Failed",
+            description: "Please Enter Correct Details",
+            status: "error",
+            duration: 5000,
+            isClosable: true,
+          });
+        });
+    }
+  };
   return (
     <Box>
-      <Box width="75%" ml="140px" height="200px" mt="00px">
-        <Image
-          mt="40px"
-          src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw67bc4699/images/banners/sign-in_d.png?yocs=s_"
-        ></Image>
+      <Box width="75%" margin="auto">
+        <Image src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw67bc4699/images/banners/sign-in_d.png?yocs=s_"></Image>
       </Box>
-      <Box width="75%" ml="140px">
-        <Text fontSize={"30px"} fontWeight="light" textAlign={"left"}>
+
+      <Box width="75%" m="auto" mb="10" mt="10">
+        <Text fontSize={"30"} fontWeight="semibold" textAlign={"left"}>
           Sign In or Sign Up
         </Text>
         <hr></hr>
       </Box>
-      <Box mt="30px" width="75%" ml="140px">
-        <SimpleGrid columns={2} spacing={10}>
-          <Box height="400px" mt="30px">
-            <Text textAlign={"center"}>SIGN IN</Text>
-            <Text fontWeight={"light"} mt="10px" ml="20px">
+      <SimpleGrid w="75%" m="auto" minChildWidth="350px" gap="20" mb="10">
+        <Box>
+          <Box boxShadow="dark-lg" p="6" rounded="md">
+            <Text textAlign={"center"} fontWeight="semibold">
+              SIGN IN
+            </Text>
+            <Text fontWeight={"light"} mb="3">
               If you already have an account with us, sign in below
             </Text>
-            <Text textAlign={"left"} ml="95px" mt="40px" fontWeight={"light"}>
+            <Text textAlign={"left"} fontWeight={"light"}>
               Email Address
             </Text>
-            <Input width="60%" mt="10px" required></Input>
-            <Text textAlign={"left"} ml="95px" mt="30px" fontWeight={"light"}>
+            <Input
+              placeholder="Email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            ></Input>
+            <Text textAlign={"left"} fontWeight={"light"}>
               Password
             </Text>
-            <Input width="60%" mt="10px" required></Input>
+            <Input
+              placeholder="Password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            ></Input>
 
-            <SimpleGrid columns={2} spacing={10}>
-              <Box height="80px">
-                <Text
-                  textAlign={"left"}
-                  ml="95px"
-                  mt="30px"
-                  fontWeight={"light"}
-                >
-                  Forgot Password?
-                </Text>
-              </Box>
-              <Box height="80px">
-                <Text
-                  textAlign={"left"}
-                  ml="95px"
-                  mt="30px"
-                  fontWeight={"light"}
-                >
-                  Remember Me
-                </Text>
-              </Box>
-            </SimpleGrid>
-            <Button color="aliceblue" bg="black">
+            <Button
+              onClick={handleSubmit}
+              mt="2"
+              color="aliceblue"
+              bg="black"
+              _hover={{
+                background: "blue.100",
+                color: "black",
+                borderRadius: "4",
+              }}
+            >
               <Link to="/">SIGN IN</Link>
             </Button>
           </Box>
+        </Box>
 
-          <Box height="400px">
-            <Text textAlign={"center"} mt="30px">
-              SIGN UP
-            </Text>
-            <Text fontWeight={"light"} mt="10px" ml="20px">
-              Create an account to access the best of your favorite store
-            </Text>
-            <Image
-              width="70%"
-              ml="70px"
-              mt="20px"
-              src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw0f47b7b9/images/loyalty/boc-launch-prospects_lacb_0.jpg?yocs=s_"
-            ></Image>
-            <Link to="/loginpage2">
-              <Button bg="black" mt="30px" color="aliceblue">
-                CREATE AN ACCOUNT
-              </Button>
-            </Link>
-          </Box>
-        </SimpleGrid>
-      </Box>
+        <Box boxShadow="dark-lg" p="6" rounded="md">
+          <Text textAlign={"center"} fontWeight="semibold">
+            SIGN UP
+          </Text>
+          <Text fontWeight={"light"}>
+            Create an account to access the best of your favorite store
+          </Text>
+          <Image
+            w="100%"
+            m="auto"
+            src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw0f47b7b9/images/loyalty/boc-launch-prospects_lacb_0.jpg?yocs=s_"
+          ></Image>
+          <Link to="/loginPage2">
+            <Button
+              bg="black"
+              color="aliceblue"
+              mt="5"
+              _hover={{
+                background: "blue.100",
+                color: "black",
+                borderRadius: "4",
+              }}
+            >
+              CREATE AN ACCOUNT
+            </Button>
+          </Link>
+        </Box>
+      </SimpleGrid>
     </Box>
   );
 };

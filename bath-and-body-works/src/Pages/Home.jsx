@@ -56,7 +56,17 @@ const Caro = () => {
             <Text mt="6px">All Single Wick Candles</Text>
             <Text>$5.95</Text>
             <Text fontSize="15px">Limit 20 with code:ADORABLE</Text>
-            <Button bg="blackAlpha.800" color="white" borderRadius="0" mt="5px">
+            <Button
+              bg="blackAlpha.800"
+              color="white"
+              borderRadius="0"
+              mt="5px"
+              _hover={{
+                background: "blue.100",
+                color: "black",
+                borderRadius: "4",
+              }}
+            >
               SHOP
             </Button>
           </Box>
@@ -69,7 +79,17 @@ const Caro = () => {
             <Text fontSize="15px" textAlign="center">
               Limit 20 with code:ADORABLE
             </Text>
-            <Button bg="blackAlpha.800" color="white" borderRadius="0" mt="5px">
+            <Button
+              bg="blackAlpha.800"
+              color="white"
+              borderRadius="0"
+              mt="5px"
+              _hover={{
+                background: "blue.100",
+                color: "black",
+                borderRadius: "4",
+              }}
+            >
               SHOP
             </Button>
           </Box>
@@ -82,7 +102,17 @@ const Caro = () => {
             <Text fontSize="15px" textAlign="center">
               Limit 20 with code:ADORABLE
             </Text>
-            <Button bg="blackAlpha.800" color="white" borderRadius="0" mt="5px">
+            <Button
+              bg="blackAlpha.800"
+              color="white"
+              borderRadius="0"
+              mt="5px"
+              _hover={{
+                background: "blue.100",
+                color: "black",
+                borderRadius: "4",
+              }}
+            >
               SHOP
             </Button>
           </Box>
@@ -95,7 +125,17 @@ const Caro = () => {
             <Text fontSize="15px" textAlign="center">
               Limit 20 with code:ADORABLE
             </Text>
-            <Button bg="blackAlpha.800" color="white" borderRadius="0" mt="5px">
+            <Button
+              bg="blackAlpha.800"
+              color="white"
+              borderRadius="0"
+              mt="5px"
+              _hover={{
+                background: "blue.100",
+                color: "black",
+                borderRadius: "4",
+              }}
+            >
               SHOP
             </Button>
           </Box>
@@ -108,7 +148,17 @@ const Caro = () => {
             <Text fontSize="15px" textAlign="center">
               Limit 20 with code:ADORABLE
             </Text>
-            <Button bg="blackAlpha.800" color="white" borderRadius="0" mt="5px">
+            <Button
+              bg="blackAlpha.800"
+              color="white"
+              borderRadius="0"
+              mt="5px"
+              _hover={{
+                background: "blue.100",
+                color: "black",
+                borderRadius: "4",
+              }}
+            >
               SHOP
             </Button>
           </Box>
@@ -121,7 +171,17 @@ const Caro = () => {
             <Text fontSize="15px" textAlign="center">
               Limit 20 with code:ADORABLE
             </Text>
-            <Button bg="blackAlpha.800" color="white" borderRadius="0" mt="5px">
+            <Button
+              bg="blackAlpha.800"
+              color="white"
+              borderRadius="0"
+              mt="5px"
+              _hover={{
+                background: "blue.100",
+                color: "black",
+                borderRadius: "4",
+              }}
+            >
               SHOP
             </Button>
           </Box>
@@ -134,7 +194,17 @@ const Caro = () => {
             <Text fontSize="15px" textAlign="center">
               Limit 20 with code:ADORABLE
             </Text>
-            <Button bg="blackAlpha.800" color="white" borderRadius="0" mt="5px">
+            <Button
+              bg="blackAlpha.800"
+              color="white"
+              borderRadius="0"
+              mt="5px"
+              _hover={{
+                background: "blue.100",
+                color: "black",
+                borderRadius: "4",
+              }}
+            >
               SHOP
             </Button>
           </Box>
