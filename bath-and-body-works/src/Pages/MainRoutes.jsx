@@ -14,7 +14,7 @@ import Categories from "./Categories";
 import AllProducts from "./AllProducts";
 import AdminPayments from "./AdminPayments";
 import AdminOrders from "./AdminOrders";
-import Log from "./LoginPage2";
+
 function MainRoutes() {
   return (
     <div>
@@ -34,7 +34,6 @@ function MainRoutes() {
         <Route path="/allproducts" element={<AllProducts />} />
         <Route path="/adminpayments" element={<AdminPayments />} />
         <Route path="/adminorders" element={<AdminOrders />} />
-        <Route path="/loginpage2" element={<Log />}></Route>
       </Routes>
     </div>
   );

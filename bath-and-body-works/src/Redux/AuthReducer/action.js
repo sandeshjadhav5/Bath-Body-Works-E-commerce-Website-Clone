@@ -11,7 +11,5 @@ const userLoginSuccess = () => {
 const userLoginError = () => {
   return { type: types.USER_LOGIN_ERROR };
 };
-// const Signip=(newEntry)=>{
-// console.log(newEntry)
-// }
+
 export { userLoginRequest, userLoginSuccess, userLoginError };

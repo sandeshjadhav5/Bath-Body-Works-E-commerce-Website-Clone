@@ -950,6 +950,10 @@ const MidNavbarWrapper = styled.div`
     .list-login li {
       padding: 5px 0px;
     }
+    .list-login :hover {
+      color: black;
+      font-weight: bold;
+    }
     .login-button-style {
       width: 30px;
     }

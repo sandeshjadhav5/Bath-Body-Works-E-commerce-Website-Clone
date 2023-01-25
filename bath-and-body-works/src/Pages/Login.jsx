@@ -117,7 +117,7 @@ const LogIn = () => {
             m="auto"
             src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw0f47b7b9/images/loyalty/boc-launch-prospects_lacb_0.jpg?yocs=s_"
           ></Image>
-          <Link to="/loginPage2">
+          <Link to="/signup">
             <Button
               bg="black"
               color="aliceblue"
