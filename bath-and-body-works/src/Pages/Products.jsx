@@ -25,9 +25,9 @@ const Products = () => {
   const products = useSelector((state) => state.AppReducer.products);
   const [page, setPage] = useState(1);
   const [order, setOrder] = useState("asc");
-  //console.log("page is ", page);
+  const [sort, setSort] = useState("price");
   const dispatch = useDispatch();
-  //console.log("this are products", products);
+  console.log("order is - - >", order);
   useEffect(() => {
     dispatch(getProducts(page, order));
   }, [page, order]);
@@ -46,9 +46,6 @@ const Products = () => {
               Products
             </BreadcrumbLink>
           </BreadcrumbItem>
-          {/* <BreadcrumbItem isCurrentPage>
-          <BreadcrumbLink>Contact</BreadcrumbLink>
-        </BreadcrumbItem> */}
         </Breadcrumb>
         <Divider h="4" />
         <Box display={{ base: "grid", md: "grid", lg: "flex" }}>
@@ -67,6 +64,9 @@ const Products = () => {
               products={products}
               order={order}
               setOrder={setOrder}
+              sort={sort}
+              setSort={setSort}
+              page={page}
             />
             <Box w="40" m="auto" mb={20} mt={10} display="flex">
               <Button

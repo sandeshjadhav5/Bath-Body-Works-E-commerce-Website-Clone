@@ -7,7 +7,7 @@ const reducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case types.CART_SUCCESS:
-      return { ...state, carts: payload };
+      return { ...state, carts: [...state.carts, payload] };
     case types.EMPTY_CART:
       console.log("heyyyy");
       return { ...state, initialState };

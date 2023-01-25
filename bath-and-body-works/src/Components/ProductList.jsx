@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useToast } from "@chakra-ui/react";
+import { useFocusEffect, useToast } from "@chakra-ui/react";
 import {
   Spinner,
   SimpleGrid,
@@ -25,7 +25,7 @@ import {
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { cartSuccess } from "../Redux/CartReducer/action";
-
+import { getProducts } from "../Redux/AppReducer/action";
 const ProductList = ({ products, order, setOrder }) => {
   const [cartData, setCartData] = useState([]);
 
@@ -33,29 +33,29 @@ const ProductList = ({ products, order, setOrder }) => {
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
-
+  const [sort, setSort] = useState("price");
   const loadingIndicator = useSelector(
     (state) => state.AppReducer.isProductsLoading
   );
-  console.log("order is - - >", order);
 
-  const addToReduxStore = () => {
-    dispatch(cartSuccess(cartData));
-  };
   const addToCart = (el) => {
     setCartData([...cartData, el]);
-    addToReduxStore();
+
+    dispatch(cartSuccess(el));
     toast({
       title: `${el.name}`,
       description: "Successfully Added To Cart",
       status: "success",
-      duration: 9000,
+      duration: 5000,
       isClosable: true,
     });
   };
   const handleChange = (e) => {
+    console.log("e.target.value", e.target.value);
     setOrder(e.target.value);
+    dispatch(getProducts(order));
   };
+  useFocusEffect(() => {}, [order]);
   if (loadingIndicator) {
     return (
       <>
@@ -86,8 +86,7 @@ const ProductList = ({ products, order, setOrder }) => {
         MEN'S
       </Heading>
       <Divider h="2" />
-      {/* <Link to="/cartpage">cartpage</Link>
-      <Link to="/adminorders">Admin Orders</Link> */}
+
       <Box
         display="flex"
         m="auto"

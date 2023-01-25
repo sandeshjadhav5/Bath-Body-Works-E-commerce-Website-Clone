@@ -14,11 +14,13 @@ const getProductsError = () => {
 
 const getProducts = (page, order) => (dispatch) => {
   dispatch(getProductsRequest);
+
   return axios
     .get(`https://database-bath-body-works-vercel.vercel.app/products`, {
       params: {
         _page: page,
         _limit: 12,
+        _sort: "price",
         _order: order,
       },
     })
