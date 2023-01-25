@@ -16,9 +16,15 @@ const reducer = (state = initialState, action) => {
     case types.USER_LOGIN_SUCCESS:
       return { ...state, isAuthLoading: false, isAuth: true, token: payload };
     case types.USER_LOGIN_ERROR:
-      return { ...state, isAuthError: true, isAuth: false, isLoading: false };
+      return {
+        ...state,
+        isAuthError: true,
+        isAuth: false,
+        isAuthLoading: false,
+      };
     default:
       return state;
   }
 };
+
 export { reducer };

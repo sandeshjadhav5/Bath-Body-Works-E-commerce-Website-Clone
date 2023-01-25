@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Image,
   Box,
@@ -8,45 +8,56 @@ import {
   useToast,
   Input,
   Button,
+  useFocusEffect,
 } from "@chakra-ui/react";
-
+import { loginUser } from "../Redux/AuthReducer/action";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 const LogIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-  const toast = useToast();
 
+  const toast = useToast();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isAuth = useSelector((state) => state.AuthReducer.isAuth);
+  const isAuthLoading = useSelector((state) => state.AuthReducer.isAuthLoading);
+  const isAuthError = useSelector((state) => state.isAuthError);
   const handleSubmit = () => {
+    console.log("hello");
     const payload = {
       email,
       password,
     };
+    console.log(payload);
     if (payload) {
-      axios
-        .post(`https://reqres.in/api/login`, payload)
-        .then((res) => {
-          toast({
-            title: `You are Successfully Logged in`,
-            status: "success",
-            duration: 4000,
-            isClosable: true,
-          });
-          navigate("/");
-        })
-        .catch((err) => {
-          console.log(err);
-          toast({
-            title: "Login Failed",
-            description: "Please Enter Correct Details",
-            status: "error",
-            duration: 5000,
-            isClosable: true,
-          });
-        });
+      console.log("dispatched");
+      dispatch(loginUser(payload));
+    }
+    if (isAuthError) {
+      toast({
+        title: "Failed to Log in",
+        description: `Not Found`,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
     }
   };
+
+  useEffect(() => {
+    if (isAuth) {
+      navigate("/");
+      toast({
+        title: `You are successfully logged in`,
+        description: `Login Successful`,
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      });
+    }
+  }, [isAuth]);
   return (
     <Box>
       <Box width="75%" margin="auto">
@@ -59,7 +70,7 @@ const LogIn = () => {
         </Text>
         <hr></hr>
       </Box>
-      <SimpleGrid w="75%" m="auto" minChildWidth="350px" gap="20" mb="10">
+      <SimpleGrid w="75%" m="auto" minChildWidth="300px" gap="30px" mb="10">
         <Box>
           <Box boxShadow="dark-lg" p="6" rounded="md">
             <Text textAlign={"center"} fontWeight="semibold">
@@ -90,6 +101,8 @@ const LogIn = () => {
             ></Input>
 
             <Button
+              isLoading={isAuthLoading}
+              loadingText="Submitting"
               onClick={handleSubmit}
               mt="2"
               color="aliceblue"
@@ -100,7 +113,7 @@ const LogIn = () => {
                 borderRadius: "4",
               }}
             >
-              <Link to="/">SIGN IN</Link>
+              Sign In
             </Button>
           </Box>
         </Box>
