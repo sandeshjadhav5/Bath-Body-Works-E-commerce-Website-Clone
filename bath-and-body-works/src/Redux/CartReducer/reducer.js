@@ -10,7 +10,7 @@ const reducer = (state = initialState, action) => {
       return { ...state, carts: [...state.carts, payload] };
     case types.EMPTY_CART:
       console.log("heyyyy");
-      return { ...state, initialState };
+      return { ...state, carts: [] };
     default:
       return state;
   }

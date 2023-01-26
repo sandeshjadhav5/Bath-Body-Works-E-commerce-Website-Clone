@@ -14,7 +14,7 @@ import Categories from "./Categories";
 import AllProducts from "./AllProducts";
 import AdminPayments from "./AdminPayments";
 import AdminOrders from "./AdminOrders";
-
+import ReqAuth from "../Components/ReqAuth";
 function MainRoutes() {
   return (
     <div>
@@ -22,7 +22,14 @@ function MainRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/cartpage" element={<CartPage />} />
+        <Route
+          path="/cartpage"
+          element={
+            <ReqAuth>
+              <CartPage />
+            </ReqAuth>
+          }
+        />
         <Route path="/address" element={<Address />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/products" element={<Products />} />

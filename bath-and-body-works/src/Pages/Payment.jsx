@@ -3,10 +3,12 @@ import Cleave from "cleave.js/react";
 import { useToast } from "@chakra-ui/react";
 import "animate.css";
 import "./Payment.css";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Box, Spacer } from "@chakra-ui/react";
 import Navbar from "../Components/Navbar";
 import Foot from "./Footer";
+import { emptyCart } from "../Redux/CartReducer/action";
 const imageUrls = [
   "https://s1.q4cdn.com/692158879/files/design/svg/american-express-logo.svg",
   "https://brand.mastercard.com/content/dam/mccom/brandcenter/thumbnails/mastercard_vrt_rev_92px_2x.png",
@@ -32,6 +34,7 @@ function Payment() {
     setCreditCardNum(e.target.rawValue);
     // console.log(e.target.value);
   };
+  const dispatch = useDispatch();
 
   const handleType = (type) => {
     setCardType(type);
@@ -74,6 +77,7 @@ function Payment() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     toast({
       title: "Order Placed",
       description: "Your Order Will Be Delivered in 5-6 Days",
@@ -81,6 +85,7 @@ function Payment() {
       duration: 6000,
       isClosable: true,
     });
+    dispatch(emptyCart());
     navigate("/");
   };
 
@@ -124,6 +129,7 @@ function Payment() {
               }}
               onChange={handleNum}
               placeholder="Please enter your credit card number"
+              required
             />
           </div>
 
@@ -175,7 +181,7 @@ function Payment() {
             </div>
           </div>
 
-          <button>{`Submit ${cardType} Payment`}</button>
+          <input className="paymentBtn" type="submit" />
         </form>
       </div>
       <Foot />

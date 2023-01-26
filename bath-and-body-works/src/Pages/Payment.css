@@ -7,18 +7,6 @@
   font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
 
-/* body {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  background: #eee;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-} */
-
 .container {
   margin-top: 300px;
   /* max-width: 1200px; */
@@ -79,7 +67,7 @@
   grid-gap: 0.5rem;
 }
 
-#form button {
+#form > .paymentBtn {
   width: 100%;
   padding: 1rem 0.5rem;
   margin-top: 1.5rem;
@@ -95,7 +83,7 @@
   z-index: 9;
 }
 
-#form button:before {
+#form > .paymentBtn:before {
   content: "";
   position: absolute;
   top: 0;
@@ -106,7 +94,7 @@
   z-index: -1;
 }
 
-#form button:hover:before {
+#form > .paymentBtn:hover:before {
   width: 100%;
   transition: 0.2s all;
 }

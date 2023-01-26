@@ -11,9 +11,9 @@ import {
   useFocusEffect,
 } from "@chakra-ui/react";
 import { loginUser } from "../Redux/AuthReducer/action";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, Navigate } from "react-redux";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 const LogIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,6 +24,10 @@ const LogIn = () => {
   const isAuth = useSelector((state) => state.AuthReducer.isAuth);
   const isAuthLoading = useSelector((state) => state.AuthReducer.isAuthLoading);
   const isAuthError = useSelector((state) => state.isAuthError);
+  const location = useLocation();
+
+  const comingFrom = location.state?.data || "/";
+
   const handleSubmit = () => {
     console.log("hello");
     const payload = {
@@ -46,18 +50,17 @@ const LogIn = () => {
     }
   };
 
-  useEffect(() => {
-    if (isAuth) {
-      navigate("/");
-      toast({
-        title: `You are successfully logged in`,
-        description: `Login Successful`,
-        status: "success",
-        duration: 5000,
-        isClosable: true,
-      });
-    }
-  }, [isAuth]);
+  if (isAuth) {
+    navigate(comingFrom, { replace: true });
+    toast({
+      title: `You are successfully logged in`,
+      description: `Login Successful`,
+      status: "success",
+      duration: 5000,
+      isClosable: true,
+    });
+  }
+
   return (
     <Box>
       <Box width="75%" margin="auto">
