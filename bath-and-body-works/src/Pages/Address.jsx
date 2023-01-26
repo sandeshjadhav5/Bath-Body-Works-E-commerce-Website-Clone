@@ -1,14 +1,16 @@
 import { Heading, Text, Button, Select, Input } from "@chakra-ui/react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import Navbar from "../Components/Navbar";
+import Foot from "./Footer";
 const Address = () => {
-  let Navigate=useNavigate()
+  let Navigate = useNavigate();
   let handleaddress = () => {
-    Navigate("/payment")
+    Navigate("/payment");
   };
   return (
     <>
+      <Navbar />
       <div
         style={{
           width: "80%",
@@ -88,7 +90,7 @@ const Address = () => {
               <label style={{ fontSize: "14px", fontWeight: "bold" }}>
                 Mobile number
               </label>
-              <Input size="sm" placeholder="Mobile Number"/>
+              <Input size="sm" placeholder="Mobile Number" />
               <br />
             </div>
             <div>
@@ -103,7 +105,7 @@ const Address = () => {
             <label style={{ fontSize: "14px", fontWeight: "bold" }}>
               Full Address
             </label>
-            <Input size="sm" placeholder="Full Address"/>
+            <Input size="sm" placeholder="Full Address" />
             <br />
           </div>
           <div>
@@ -124,7 +126,7 @@ const Address = () => {
               <label style={{ fontSize: "14px", fontWeight: "bold" }}>
                 Town/City
               </label>
-              <Input size="sm" placeholder="City Name"/>
+              <Input size="sm" placeholder="City Name" />
             </div>
             <div style={{ width: "50%" }}>
               <label style={{ fontSize: "14px", fontWeight: "bold" }}>
@@ -166,6 +168,7 @@ const Address = () => {
           <br />
         </div>
       </div>
+      <Foot />
     </>
   );
 };

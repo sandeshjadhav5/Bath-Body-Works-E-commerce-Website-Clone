@@ -17,7 +17,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { cartSuccess } from "../Redux/CartReducer/action";
 import SimpleCard from "./AdminLogin";
-
+import Navbar from "../Components/Navbar";
+import Foot from "./Footer";
 let styles = {
   display: "flex",
   alignItems: "center",
@@ -29,24 +30,11 @@ export const CartPage = () => {
   console.log("cartPageData is", cartPageData);
   let [state, setstate] = useState(0);
   let [coupons, setcoupons] = useState(0);
-  // const [total, setTotal] = useState(0);
+
   let dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(cartSuccess());
-  // }, []);
+
   let navigate = useNavigate();
   let total = 0;
-  // let sumProduct = () => {
-  //   if (cartPageData.filter((e) => e.cartquantity > 0) === 0) {
-  //     setTotal(0);
-  //   } else {
-  //     let sum = 0;
-  //     cartPageData
-  //       .filter((e) => e.cartquantity > 0)
-  //       .forEach((e) => (sum += e.price * e.cartquantity));
-  //     setTotal(sum);
-  //   }
-  // };
 
   for (let i = 0; i < cartPageData.length; i++) {
     total += cartPageData[i].price;
@@ -63,6 +51,7 @@ export const CartPage = () => {
 
   return (
     <>
+      <Navbar />
       <div className="Product-Cart-Heading">
         <h1 className="Product-Cart-header-h1">Shopping Bag</h1>
         <Alert status="info">
@@ -239,6 +228,7 @@ export const CartPage = () => {
           </div>
         </div>
       </div>
+      <Foot />
     </>
   );
 };

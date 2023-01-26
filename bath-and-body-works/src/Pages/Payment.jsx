@@ -5,6 +5,8 @@ import "animate.css";
 import "./Payment.css";
 import { useNavigate } from "react-router-dom";
 import { Box, Spacer } from "@chakra-ui/react";
+import Navbar from "../Components/Navbar";
+import Foot from "./Footer";
 const imageUrls = [
   "https://s1.q4cdn.com/692158879/files/design/svg/american-express-logo.svg",
   "https://brand.mastercard.com/content/dam/mccom/brandcenter/thumbnails/mastercard_vrt_rev_92px_2x.png",
@@ -84,6 +86,7 @@ function Payment() {
 
   return (
     <Box>
+      <Navbar />
       <Spacer h="100" />
       <div className="container">
         <form id="form" onSubmit={handleSubmit}>
@@ -175,6 +178,7 @@ function Payment() {
           <button>{`Submit ${cardType} Payment`}</button>
         </form>
       </div>
+      <Foot />
     </Box>
   );
 }
