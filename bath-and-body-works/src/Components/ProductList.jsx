@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useFocusEffect, useToast } from "@chakra-ui/react";
+import React, { useState, useEffect } from "react";
+import { useToast } from "@chakra-ui/react";
 import {
   Spinner,
   SimpleGrid,
@@ -26,14 +26,18 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { cartSuccess } from "../Redux/CartReducer/action";
 import { getProducts } from "../Redux/AppReducer/action";
-const ProductList = ({ products, order, setOrder }) => {
-  const [cartData, setCartData] = useState([]);
+import { useLocation, useSearchParams } from "react-router-dom";
 
-  // const cart = useSelector((state) => state.CartReducer.carts);
+const ProductList = ({ order, setOrder }) => {
   const toast = useToast();
+  const [sort, setSort] = useState("price");
+  const [cartData, setCartData] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
-  const [sort, setSort] = useState("price");
+  const location = useLocation();
+  const [searchParams] = useSearchParams();
+  const products = useSelector((state) => state.AppReducer.products);
+
   const loadingIndicator = useSelector(
     (state) => state.AppReducer.isProductsLoading
   );
@@ -55,7 +59,21 @@ const ProductList = ({ products, order, setOrder }) => {
     setOrder(e.target.value);
     dispatch(getProducts(order));
   };
-  useFocusEffect(() => {}, [order]);
+
+  useEffect(() => {
+    if (location || products.length === 0) {
+      const sortBy = searchParams.get("sort");
+      const getProductsParams = {
+        params: {
+          category: searchParams.getAll("category"),
+          _sort: sortBy && "price",
+          _order: sortBy,
+        },
+      };
+      dispatch(getProducts(getProductsParams));
+    }
+  }, [products.length, dispatch, location.search]);
+
   if (loadingIndicator) {
     return (
       <>
@@ -108,33 +126,7 @@ const ProductList = ({ products, order, setOrder }) => {
           <option value="desc">Price High To Low</option>
         </Select>
       </Box>
-      <Box
-        m="auto"
-        w="98%"
-        mt="2"
-        mb="2"
-        display="flex"
-        justifyContent="space-evenly"
-      >
-        <Select placeholder="CATEGORY" ml="2" alignItems="right" w="33%">
-          <option value="ascending">Price Low To High</option>
-          <option value="descending">Price High To Low</option>
-          <option value="bestMatches">Best Matches</option>
-          <option value="topSellers">Top Sellers</option>
-        </Select>
-        <Select placeholder="NAME" ml="2" alignItems="right" w="33%">
-          <option value="ascending">Price Low To High</option>
-          <option value="descending">Price High To Low</option>
-          <option value="bestMatches">Best Matches</option>
-          <option value="topSellers">Top Sellers</option>
-        </Select>
-        <Select placeholder="TYPE" ml="2" alignItems="right" w="33%">
-          <option value="ascending">Price Low To High</option>
-          <option value="descending">Price High To Low</option>
-          <option value="bestMatches">Best Matches</option>
-          <option value="topSellers">Top Sellers</option>
-        </Select>
-      </Box>
+
       <SimpleGrid
         // w="95%"
         minChildWidth="220px"

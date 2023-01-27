@@ -22,7 +22,7 @@ import { useEffect } from "react";
 // Function Component Starts Here //
 
 const Products = () => {
-  const products = useSelector((state) => state.AppReducer.products);
+  // const products = useSelector((state) => state.AppReducer.products);
   const [page, setPage] = useState(1);
   const [order, setOrder] = useState("asc");
   const [sort, setSort] = useState("price");
@@ -61,7 +61,6 @@ const Products = () => {
             borderColor="gray.200"
           >
             <ProductList
-              products={products}
               order={order}
               setOrder={setOrder}
               sort={sort}

@@ -12,23 +12,16 @@ const getProductsError = () => {
   return { type: types.GET_PRODUCTS_ERROR };
 };
 
-const getProducts = (page, order) => (dispatch) => {
-  dispatch(getProductsRequest);
+const getProducts = (params) => (dispatch) => {
+  dispatch(getProductsRequest());
 
   return axios
-    .get(`https://database-bath-body-works-vercel.vercel.app/products`, {
-      params: {
-        _page: page,
-        _limit: 12,
-        _sort: "price",
-        _order: order,
-      },
-    })
+    .get(`https://database-bath-body-works-vercel.vercel.app/products`, params)
     .then((r) => {
       dispatch(getProductsSuccess(r.data));
     })
     .catch((e) => {
-      dispatch(getProductsError);
+      dispatch(getProductsError());
     });
 };
 
