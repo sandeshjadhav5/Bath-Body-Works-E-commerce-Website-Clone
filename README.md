@@ -40,15 +40,14 @@
  <li> Categories</li>
 
 
-<br />
-
 <br/>
 <h4>Deployed Link :- <a href="https://bathbodyworksbymasai.netlify.app/" target="_black"></a></h4>
+
 <a href="https://bathbodyworksbymasai.netlify.app/" target="_blank" rel="noreferrer">Click Here to See Website</a>
 <br/>
 <br/>
+<h3>Screenshots</h3>
 <img src="https://i.imgur.com/eZEjHpM.png"/>
-<br/>
 <br/>
 
 ## Project Installation Guide
