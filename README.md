@@ -1,29 +1,79 @@
-<h3  align="center">Bath and Body Works - Ecommerce Website Clone</h3>
+<h1  align="center">Bath and Body Works - Ecommerce Website Clone</h1>
 
 <h3>Description :-</h3>
 <p>E-commerce Website Clone of 'Bath and Body Works' . Built with team of Four members using React JS, Redux, Chakra UI, Styled Components in Five Days . Created our own API with the help of Vercel . </p>
 <br/>
-<img src="https://3.bp.blogspot.com/-unh8D92TmRI/WOaB0KstnnI/AAAAAAAAt4g/DGI3qrYJUzk2U80UbCmJ28WJ2e3xHfB7wCLcB/s1600/bath%2Band%2Bbody%2Bworks%2Bapril%2B5%2B2017%2Bwebsite%2Bchanges.png"/>
 
-<h4>Tech Stack</h4>
-<ul>
-<li>ReactJS</li>
-<li>Redux</li>
-<li>Chakra UI</li>
-<li>JSON Server Api</li>
-<li>Styled Components</li>
-</ul>
 
-<h4>Functionalities & Pages</h4>
-<ul>
-<li>Home Page</li>
-<li>Login/Signup</li>
-<li>Products</li>
-<li>Single Product</li>
-<li>Admin Dashboard</li>
-<li>Add Products to Database</li>
-<li>Order Management</li>
-</ul>
+<h2 align="center">🖥️ Tech Stack</h2>
+<p align="center">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="reactjs" />
+  <img src="https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white" alt="redux" />
+  <img src="https://img.shields.io/badge/Chakra%20UI-3bc7bd?style=for-the-badge&logo=chakraui&logoColor=white" alt="chakra-ui" />
+  <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" alt="javascript" />
+  <img src="https://img.shields.io/badge/Rest_API-02303A?style=for-the-badge&logo=react-router&logoColor=white" alt="restAPI" />
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="css3" />
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="html5" />
+</p>
+
+<h4 align="center">Deployed On:</h4>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="netlify" />
+</p>
+
+<br />
+
+## Screens/Pages 
+- Homepage / Landing Page
+- Products Listing Page 
+- Single Product Page
+- Cart Page
+- Address Page
+- Payment Page
+- Login Page
+- Signup Page
+ <h4>Admin Side Pages</h4>
+ <li>Admin Dashboard</li>
+ <li>Add Products</li> 
+  <li>All Products</li> 
+ <li> Categories</li>
+
+
+<br />
+
 <br/>
 <h4>Deployed Link :- <a href="https://bathbodyworksbymasai.netlify.app/" target="_black"></a></h4>
 <a href="https://bathbodyworksbymasai.netlify.app/" target="_blank" rel="noreferrer">Click Here to See Website</a>
+<br/>
+<br/>
+<img src="https://i.imgur.com/eZEjHpM.png"/>
+<br/>
+<br/>
+
+## Project Installation Guide
+
+Clone the project
+
+```bash
+  git clone https://github.com/sandeshjadhav5/Bath-Body-Works-E-commerce-Website-Clone.git
+```
+
+Go to the project directory
+
+```bash
+  cd bath-and-body-works
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
+```
+
