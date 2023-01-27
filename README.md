@@ -1,7 +1,7 @@
 <h1  align="center">Bath and Body Works - Ecommerce Website Clone</h1>
 
-<h3>Description :-</h3>
-<p>E-commerce Website Clone of 'Bath and Body Works' . Built with team of Four members using React JS, Redux, Chakra UI, Styled Components in Five Days . Created our own API with the help of Vercel . </p>
+
+<h4 align="center">E-commerce Website Clone of 'Bath and Body Works' . Built with team of Four members using React JS, Redux, Chakra UI, Styled Components in Five Days . Created our own API with the help of Vercel . </h4>
 <br/>
 
 
