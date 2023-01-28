@@ -52,25 +52,16 @@ const SingleProduct = () => {
   const SingleItem = useSelector((store) => store.AppReducer.products);
   const dispatch = useDispatch();
   const [value, setValue] = useState("1");
+  const [pinCode, setPinCode] = useState("");
+  const [loadingIndicator, setLoadingIndicator] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { id } = useParams();
   const [count, setCount] = useState(1);
-  // const SingleData = SingleItem.find((p) => p.id == id);
-  // console.log(SingleData);
-  // const test ={
-  //   "id": 1,
-  //   "image": "https://www.bathandbodyworks.in/on/demandware.static/-/Sites-bathandbody_master_catalog/default/dwcab0bc33/large/026335796.jpg",
-  //   "name": "Winter Candy Apple",
-  //   "category": "Body Spray and Mist",
-  //   "price": 1899
-  // }
+
   const [cartData, setCartData] = useState([]);
-  const [ singleData,setSingleData] = useState({});
-  // const cart = useSelector((state) => state.CartReducer.carts);
+  const [singleData, setSingleData] = useState({});
   const toast = useToast();
-  const loadingIndicator = useSelector(
-    (state) => state.AppReducer.isProductsLoading
-  );
+  console.log("singleData is", singleData);
 
   const dummy = {
     size: 30,
@@ -78,12 +69,12 @@ const SingleProduct = () => {
     isHalf: true,
     edit: false,
   };
-  const addToReduxStore = () => {
-    dispatch(cartSuccess(cartData));
-  };
+
   const addToCart = (SingleData) => {
-    setCartData([...cartData, SingleData]);
-    addToReduxStore();
+    console.log("singleData after adding to cart", singleData);
+
+    dispatch(cartSuccess(singleData));
+
     toast({
       title: `${SingleData.name}`,
       description: "Successfully Added To Cart",
@@ -104,13 +95,16 @@ const SingleProduct = () => {
   };
 
   useEffect(() => {
-    axios.get(`https://database-bath-body-works-vercel.vercel.app/products/${id}`)
-    .then((res)=>{
-      setSingleData(res.data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    setLoadingIndicator(true);
+    axios
+      .get(`https://database-bath-body-works-vercel.vercel.app/products/${id}`)
+      .then((res) => {
+        setSingleData(res.data);
+        setLoadingIndicator(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
   if (loadingIndicator) {
     return (
@@ -138,7 +132,11 @@ const SingleProduct = () => {
         <Link to="/">
           <span>HOME</span>
         </Link>{" "}
-        / <span>{singleData.category}</span> / {singleData.name}
+        /{" "}
+        <span>
+          <Link to="/products">Products</Link>
+        </span>{" "}
+        / {singleData.name}
       </ProductPath>
 
       <MainDataWrapper>
@@ -291,24 +289,23 @@ const SingleProduct = () => {
                           <Location>Use my current location</Location>
 
                           <Zip>ZIP Code</Zip>
-                          <div>
-                            <InputGroup size="md" marginBottom={"20px"}>
-                              <Input
-                                pr="4.5rem"
-                                placeholder=""
-                                focusBorderColor="lightgray"
-                                borderStyle={"dotted"}
-                                borderRadius={"0px"}
-                              />
-                              <InputRightElement width="3.5rem">
-                                <Button
-                                  children={<Search2Icon size="md" />}
-                                  backgroundColor="Background"
-                                  size="md"
-                                ></Button>
-                              </InputRightElement>
-                            </InputGroup>
-                          </div>
+                          <Box borderRadius="10">
+                            <Input
+                              defaultValue="415004"
+                              onChange={(e) => setPinCode(e.target.value)}
+                              placeholder="Enter PinCode"
+                              borderRadius={"0px"}
+                              mb="2"
+                            />
+
+                            <Button
+                              w="100%"
+                              backgroundColor="green.500"
+                              size="md"
+                            >
+                              Add
+                            </Button>
+                          </Box>
                         </ModalBody>
                       </ModalContent>
                     </Modal>
@@ -319,7 +316,8 @@ const SingleProduct = () => {
             <Divider m={"4"} />
             <Box mb="3">
               <Button
-                _hover={{ bg: "black", color: "white" }}
+                disabled={count == 0 ? true : false}
+                _hover={{ bg: "#DD6B20", color: "white" }}
                 borderRadius={"0"}
                 fontSize={"small"}
                 onClick={handleDecrement}
@@ -332,7 +330,8 @@ const SingleProduct = () => {
                 onChange={(e) => handleInput(e)}
               />
               <Button
-                _hover={{ bg: "black", color: "white" }}
+                disabled={count == 9 ? true : false}
+                _hover={{ bg: "#DD6B20", color: "white" }}
                 borderRadius={"0"}
                 fontSize={"small"}
                 onClick={handleIncrement}
@@ -340,6 +339,7 @@ const SingleProduct = () => {
                 +
               </Button>
               <Button
+                ml="2"
                 borderRadius={"0"}
                 color="white"
                 bg={"black"}
