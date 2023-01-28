@@ -28,7 +28,7 @@ import { cartSuccess } from "../Redux/CartReducer/action";
 import { getProducts } from "../Redux/AppReducer/action";
 import { useLocation, useSearchParams } from "react-router-dom";
 
-const ProductList = ({ order, setOrder }) => {
+const ProductList = ({ order, setOrder, page }) => {
   const toast = useToast();
   const [sort, setSort] = useState("price");
   const [cartData, setCartData] = useState([]);
@@ -68,6 +68,8 @@ const ProductList = ({ order, setOrder }) => {
           category: searchParams.getAll("category"),
           _sort: sortBy && "price",
           _order: sortBy,
+          _limit: 12,
+          _page: page,
         },
       };
       dispatch(getProducts(getProductsParams));
