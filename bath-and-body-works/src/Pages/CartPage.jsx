@@ -26,8 +26,8 @@ let styles = {
 };
 
 export const CartPage = () => {
-  const cartPageData = useSelector((store) => store.CartReducer.carts);
-  console.log("cartPageData is", cartPageData);
+  const cartPageData = JSON.parse(localStorage.getItem("cartItems")) || [];
+  console.log("cartPageData is", JSON.parse(localStorage.getItem("cartItems")));
   let [state, setstate] = useState(0);
   let [coupons, setcoupons] = useState(0);
 

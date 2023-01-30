@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   Box,
   Button,
@@ -13,6 +14,7 @@ import {
   PopoverHeader,
   PopoverTrigger,
   useDisclosure,
+  useFocusEffect,
 } from "@chakra-ui/react";
 import styled from "styled-components";
 import React from "react";
@@ -33,7 +35,8 @@ import MiniNavbarDrawer from "./MiniNavbarDrawer";
 
 const Navbar = (newEntry) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const cartLength = useSelector((state) => state.CartReducer.carts);
+  let length = JSON.parse(localStorage.getItem("cartItems")) || [];
+  const cartLength = useSelector((state) => state.CartReducer.cartLength);
   const dispatch = useDispatch();
   const toast = useToast();
   const isAuth = useSelector((state) => state.AuthReducer.isAuth);
@@ -46,6 +49,7 @@ const Navbar = (newEntry) => {
       isClosable: true,
     });
   };
+
   return (
     <MainDivWrapper>
       <Box className="maindiv">
@@ -240,7 +244,9 @@ const Navbar = (newEntry) => {
                       fontWeight: "bold",
                     }}
                   >
-                    {cartLength === 0 ? "0" : `${cartLength.length}`}
+                    {cartLength.length === 0
+                      ? `${length.length}`
+                      : `${cartLength.length}`}
                   </Box>
                 </Box>
               </div>
