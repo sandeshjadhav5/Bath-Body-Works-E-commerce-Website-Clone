@@ -16,6 +16,8 @@ import {
   Spinner,
   Stack,
   useToast,
+  FormControl,
+  FormLabel,
 } from "@chakra-ui/react";
 import Navbar from "../Components/Navbar";
 import Footer from "./Footer";
@@ -54,15 +56,18 @@ const SingleProduct = () => {
   const [value, setValue] = useState("1");
   const [pinCode, setPinCode] = useState("");
   const [loadingIndicator, setLoadingIndicator] = useState(false);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const { id } = useParams();
   const [count, setCount] = useState(1);
 
   const [cartData, setCartData] = useState([]);
   const [singleData, setSingleData] = useState({});
   const toast = useToast();
-  console.log("singleData is", singleData);
+  // console.log("singleData is", singleData);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const initialRef = React.useRef(null);
+  const finalRef = React.useRef(null);
   const dummy = {
     size: 30,
     value: 4.6,
@@ -71,7 +76,7 @@ const SingleProduct = () => {
   };
 
   const addToCart = (SingleData) => {
-    console.log("singleData after adding to cart", singleData);
+    // console.log("singleData after adding to cart", singleData);
 
     dispatch(cartSuccess(singleData));
 
@@ -92,6 +97,15 @@ const SingleProduct = () => {
   const handleInput = (e) => {
     e.preventDefault();
     setCount(e.target.value);
+  };
+  const handleSavePinCode = () => {
+    console.log("pinCode", pinCode);
+    localStorage.setItem("pinCode", JSON.stringify(pinCode));
+    toast({
+      title: `PinCode Set`,
+      position: "bottom-right",
+      isClosable: true,
+    });
   };
 
   useEffect(() => {
@@ -265,48 +279,41 @@ const SingleProduct = () => {
                       />
                       <b className="pickupstyle">PICK UP IN STORE</b>
                     </HStack>
-                    <Box className="setstorestyle" onClick={onOpen}>
-                      Set Store
-                    </Box>
-                    <Modal isOpen={isOpen} onClose={onClose}>
+                    <Button m="2" onClick={onOpen}>
+                      Setup PinCode
+                    </Button>
+
+                    <Modal
+                      initialFocusRef={initialRef}
+                      isOpen={isOpen}
+                      onClose={onClose}
+                    >
                       <ModalOverlay />
-                      <ModalContent marginTop={"20%"} borderRadius={"0px"}>
-                        <ModalHeader padding={"0px 36px"}>
-                          <SetstoreModelhead>
-                            <img
-                              src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/Sites-BathAndBodyWorks-Site/-/en_US/v1670961565504/images/svg-icons/bopis-icon-small.svg?yocs=o_s_"
-                              alt="location"
-                            />
-                            <b className="pickupstylemodel">PICK UP IN STORE</b>
-                          </SetstoreModelhead>
-                        </ModalHeader>
-                        <ModalCloseButton onClick={() => setValue("1")} />
-                        <ModalBody>
-                          <Midmodal>
-                            Set your location. Place your order. We'll have it
-                            waiting for you.
-                          </Midmodal>
-                          <Location>Use my current location</Location>
-
-                          <Zip>ZIP Code</Zip>
-                          <Box borderRadius="10">
+                      <ModalContent>
+                        <ModalHeader>Enter Your Pincode</ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody pb={6}>
+                          <FormControl>
+                            <FormLabel>PinCode</FormLabel>
                             <Input
-                              defaultValue="415004"
+                              ref={initialRef}
+                              value={pinCode}
                               onChange={(e) => setPinCode(e.target.value)}
-                              placeholder="Enter PinCode"
-                              borderRadius={"0px"}
-                              mb="2"
+                              placeholder="First name"
                             />
-
-                            <Button
-                              w="100%"
-                              backgroundColor="green.500"
-                              size="md"
-                            >
-                              Add
-                            </Button>
-                          </Box>
+                          </FormControl>
                         </ModalBody>
+
+                        <ModalFooter>
+                          <Button
+                            colorScheme="blue"
+                            mr={3}
+                            onClick={handleSavePinCode}
+                          >
+                            Save
+                          </Button>
+                          <Button onClick={onClose}>Cancel</Button>
+                        </ModalFooter>
                       </ModalContent>
                     </Modal>
                   </Radio>

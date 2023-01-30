@@ -28,11 +28,10 @@ function Payment() {
     "https://logos-world.net/wp-content/uploads/2020/04/Visa-Logo.png"
   );
   const toast = useToast();
-  // const [flip, setFlip] = useState(null);
+
   const navigate = useNavigate();
   const handleNum = (e) => {
     setCreditCardNum(e.target.rawValue);
-    // console.log(e.target.value);
   };
   const dispatch = useDispatch();
 
