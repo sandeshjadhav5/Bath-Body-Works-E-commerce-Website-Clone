@@ -16,6 +16,8 @@ import {
 } from "@chakra-ui/react";
 import styled from "styled-components";
 import React from "react";
+import { userLogout } from "../Redux/AuthReducer/action";
+import { useToast } from "@chakra-ui/react";
 import {
   Modal,
   ModalOverlay,
@@ -26,14 +28,24 @@ import {
 } from "@chakra-ui/react";
 import { ChevronRightIcon, Search2Icon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import MiniNavbarDrawer from "./MiniNavbarDrawer";
 
 const Navbar = (newEntry) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cartLength = useSelector((state) => state.CartReducer.carts);
-  // console.log(cartLength);
+  const dispatch = useDispatch();
+  const toast = useToast();
+  const isAuth = useSelector((state) => state.AuthReducer.isAuth);
 
+  const handleLogout = () => {
+    dispatch(userLogout());
+    toast({
+      title: `Logged Out`,
+      position: "top-right",
+      isClosable: true,
+    });
+  };
   return (
     <MainDivWrapper>
       <Box className="maindiv">
@@ -163,7 +175,10 @@ const Navbar = (newEntry) => {
                 <Box className="login-button-style">
                   <Popover trigger="hover" placement="bottom-end">
                     <PopoverTrigger>
-                      <img
+                      <Image
+                        _hover={{
+                          cursor: "pointer",
+                        }}
                         src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/Sites-BathAndBodyWorks-Site/-/default/dw8f5c8e40/images/svg-icons/UI-MyAccount.svg?yocs=o_s_"
                         alt="user login"
                       />
@@ -178,11 +193,18 @@ const Navbar = (newEntry) => {
                       >
                         <ul className="list-login">
                           <Link to="/login">
-                            <li>Sign In Or Sign Up</li>
+                            {!isAuth && <li>Sign in/Sign up</li>}
                           </Link>
-                          <li>Order Tacking</li>
-                          <li>My Auto Refresh</li>
-                          <li>My Love-It List</li>
+                          <Link to="/adminlogin">
+                            {!isAuth && <li>Login as Admin</li>}
+                          </Link>
+                          {isAuth && <li onClick={handleLogout}>Logout</li>}
+                          {JSON.parse(localStorage.getItem("pinCode")) && (
+                            <li>
+                              PinCode :
+                              {JSON.parse(localStorage.getItem("pinCode"))}
+                            </li>
+                          )}
                         </ul>
                       </PopoverBody>
                     </PopoverContent>

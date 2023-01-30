@@ -14,6 +14,10 @@ const userLoginError = () => {
   return { type: types.USER_LOGIN_ERROR };
 };
 
+const userLogout = () => {
+  return { type: types.USER_LOGOUT };
+};
+
 const loginUser = (payload) => (dispatch) => {
   console.log(payload, "invoked");
   dispatch(userLoginRequest());
@@ -28,21 +32,10 @@ const loginUser = (payload) => (dispatch) => {
     });
 };
 
-export { loginUser, userLoginRequest, userLoginSuccess, userLoginError };
-
-// toast({
-//   title: `You are Successfully Logged in`,
-//   status: "success",
-//   duration: 4000,
-//   isClosable: true,
-// });
-// navigate("/");
-
-// console.log(err);
-// toast({
-//   title: "Login Failed",
-//   description: "Please Enter Correct Details",
-//   status: "error",
-//   duration: 5000,
-//   isClosable: true,
-// });
+export {
+  userLogout,
+  loginUser,
+  userLoginRequest,
+  userLoginSuccess,
+  userLoginError,
+};

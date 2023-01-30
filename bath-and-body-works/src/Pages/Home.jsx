@@ -16,7 +16,6 @@ import Navbar from "../Components/Navbar";
 const Caro = () => {
   const responsive = {
     superLargeDesktop: {
-      // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
       items: 5,
     },
@@ -45,7 +44,11 @@ const Caro = () => {
         </Link>
       </Box>
       <Box mt="30" w="80%" m="auto">
-        <Heading mt="20" mb="10">
+        <Heading
+          mt="20"
+          mb="10"
+          fontSize={{ base: 18, sm: 20, md: 25, lg: 26, xl: 28 }}
+        >
           TODAY`S TOP OFFERS
         </Heading>
         <Carousel responsive={responsive} arrows="false">
@@ -216,7 +219,7 @@ const Caro = () => {
       <Box width="85%" margin="auto" mt="20">
         <Image src="https://www.bathandbodyworks.in/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dwd9839e4b/AIA%2046.jpg" />
       </Box>
-      <SimpleGrid minChildWidth="160px" width="85%" margin="auto">
+      <SimpleGrid minChildWidth="100px" width="85%" margin="auto">
         <Box>
           <Image src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw90169280/images/Christmas2022/bc_dream-bright_c1_vn.jpg?yocs=o_s_" />
         </Box>
@@ -329,7 +332,7 @@ const Caro = () => {
       <SimpleGrid
         margin="auto"
         gap="10"
-        minChildWidth="160px"
+        minChildWidth="120px"
         width="85%"
         mt="100px"
       >
