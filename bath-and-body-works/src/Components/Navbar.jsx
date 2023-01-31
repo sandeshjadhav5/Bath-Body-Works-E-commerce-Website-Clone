@@ -19,6 +19,7 @@ import {
 import styled from "styled-components";
 import React from "react";
 import { userLogout } from "../Redux/AuthReducer/action";
+import { emptyCart } from "../Redux/CartReducer/action";
 import { useToast } from "@chakra-ui/react";
 import {
   Modal,
@@ -39,10 +40,11 @@ const Navbar = (newEntry) => {
   const cartLength = useSelector((state) => state.CartReducer.carts);
   const dispatch = useDispatch();
   const toast = useToast();
-  const isAuth = useSelector((state) => state.AuthReducer.isAuth);
+  const isAuth = JSON.parse(localStorage.getItem("isAuth")) || false;
 
   const handleLogout = () => {
     dispatch(userLogout());
+    dispatch(emptyCart);
     toast({
       title: `Logged Out`,
       position: "top-right",
