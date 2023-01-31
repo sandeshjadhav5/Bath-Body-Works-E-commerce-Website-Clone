@@ -14,6 +14,8 @@ const reducer = (state = initialState, action) => {
     case types.USER_LOGIN_REQUEST:
       return { ...state, isAuthLoading: true };
     case types.USER_LOGIN_SUCCESS:
+      localStorage.setItem("isAuth", JSON.stringify(true));
+      console.log("done");
       return { ...state, isAuthLoading: false, isAuth: true, token: payload };
     case types.USER_LOGIN_ERROR:
       return {
@@ -23,6 +25,7 @@ const reducer = (state = initialState, action) => {
         isAuthLoading: false,
       };
     case types.USER_LOGOUT:
+      localStorage.clear();
       return {
         ...state,
         isAuth: false,

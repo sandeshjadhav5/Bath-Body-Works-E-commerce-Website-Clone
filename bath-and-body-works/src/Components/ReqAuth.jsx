@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 const ReqAuth = ({ children }) => {
-  const isAuth = useSelector((state) => state.AuthReducer.isAuth);
+  const isAuth = JSON.parse(localStorage.getItem("isAuth")) || false;
   const location = useLocation();
   const navigate = useNavigate();
   const toast = useToast();
