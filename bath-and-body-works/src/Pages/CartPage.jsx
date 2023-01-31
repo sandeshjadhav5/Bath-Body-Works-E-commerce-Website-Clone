@@ -5,6 +5,7 @@ import {
   Button,
   SimpleGrid,
   Text,
+  Input,
   Box,
   Image,
   AlertIcon,
@@ -19,6 +20,7 @@ import { cartSuccess } from "../Redux/CartReducer/action";
 import SimpleCard from "./AdminLogin";
 import Navbar from "../Components/Navbar";
 import Foot from "./Footer";
+import CartItem from "../Components/CartItem";
 let styles = {
   display: "flex",
   alignItems: "center",
@@ -26,9 +28,10 @@ let styles = {
 };
 
 export const CartPage = () => {
-  const cartPageData = JSON.parse(localStorage.getItem("cartItems")) || [];
-  console.log("cartPageData is", JSON.parse(localStorage.getItem("cartItems")));
-  let [state, setstate] = useState(0);
+  const [cartPageData, setCartPageData] = useState(
+    useSelector((state) => state.CartReducer.carts) || []
+  );
+  console.log("cartPageData", cartPageData);
   let [coupons, setcoupons] = useState(0);
 
   let dispatch = useDispatch();
@@ -37,7 +40,7 @@ export const CartPage = () => {
   let total = 0;
 
   for (let i = 0; i < cartPageData.length; i++) {
-    total += cartPageData[i].price;
+    total += cartPageData[i].price * cartPageData[i].quantity;
   }
   let handlecoupons = () => {
     setcoupons(30);
@@ -48,7 +51,7 @@ export const CartPage = () => {
   let handleProductbutton = () => {
     navigate("/products");
   };
-
+  useEffect(() => {}, [cartPageData]);
   return (
     <>
       <Navbar />
@@ -81,56 +84,7 @@ export const CartPage = () => {
             <div>
               <SimpleGrid>
                 {cartPageData.map((el) => (
-                  <Box
-                    key={el.id}
-                    display="flex"
-                    boxShadow="outline"
-                    p="6"
-                    rounded="md"
-                    bg="white"
-                  >
-                    <Box>
-                      <Image
-                        w="100px"
-                        src={el.image}
-                        alignContent="center"
-                        alignItems="center"
-                        textAlign="center"
-                        m="auto"
-                      />
-                    </Box>
-                    <Box
-                      alignContent="center"
-                      alignItems="center"
-                      textAlign="center"
-                      m="auto"
-                    >
-                      {" "}
-                      <Text
-                        alignContent="center"
-                        alignItems="center"
-                        textAlign="center"
-                        fontWeight="bold"
-                      >
-                        {el.name}
-                      </Text>
-                      <Text
-                        alignContent="center"
-                        alignItems="center"
-                        textAlign="center"
-                      >
-                        {el.category}
-                      </Text>
-                      <Text
-                        alignContent="center"
-                        alignItems="center"
-                        textAlign="center"
-                        fontWeight="bold"
-                      >
-                        {`₹ ${el.price}`}
-                      </Text>
-                    </Box>
-                  </Box>
+                  <CartItem {...el} temp={setCartPageData} />
                 ))}
               </SimpleGrid>
             </div>

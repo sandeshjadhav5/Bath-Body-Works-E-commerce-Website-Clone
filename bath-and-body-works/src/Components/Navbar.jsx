@@ -36,7 +36,7 @@ import MiniNavbarDrawer from "./MiniNavbarDrawer";
 const Navbar = (newEntry) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   let length = JSON.parse(localStorage.getItem("cartItems")) || [];
-  const cartLength = useSelector((state) => state.CartReducer.cartLength);
+  const cartLength = useSelector((state) => state.CartReducer.carts);
   const dispatch = useDispatch();
   const toast = useToast();
   const isAuth = useSelector((state) => state.AuthReducer.isAuth);
