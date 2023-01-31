@@ -31,7 +31,7 @@
 - Cart Page
 - Address Page
 - Payment Page
-- Login Page
+- Login Page (```eve.holt@reqres.in``` only this email Id will work for login - using https://reqres.in/ for authentication)
 - Signup Page
  <h4>Admin Side Pages</h4>
  <li>Admin Dashboard</li>
