@@ -149,6 +149,17 @@ const LogIn = () => {
           </Link>
         </Box>
       </SimpleGrid>
+      <Text m="2">
+        Note :- use{" "}
+        <span style={{ fontWeight: "bold" }}>(eve.holt@reqres.in)</span> email
+        for login.Using{" "}
+        <span style={{ fontWeight: "bold" }}>
+          <a href="https://reqres.in/" target="_blank">
+            reqres.in
+          </a>{" "}
+        </span>
+        for Login Functinality
+      </Text>
     </Box>
   );
 };
