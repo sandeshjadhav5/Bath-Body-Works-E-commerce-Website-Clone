@@ -53,54 +53,69 @@ export default function SimpleCard() {
   };
 
   return (
-    <Flex
-      minH={"100vh"}
-      align={"center"}
-      justify={"center"}
-      bg={useColorModeValue("gray.50", "gray.800")}
-    >
-      <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
-        <Stack align={"center"}>
-          <Heading fontSize={"4xl"}>Sign in as Admin</Heading>
-        </Stack>
-        <Box
-          rounded={"lg"}
-          bg={useColorModeValue("white", "gray.700")}
-          boxShadow={"lg"}
-          p={8}
-        >
-          <Stack spacing={4}>
-            <FormControl id="email">
-              <FormLabel>Email address</FormLabel>
-              <Input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </FormControl>
-            <FormControl id="password">
-              <FormLabel>Password</FormLabel>
-              <Input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <Button
-                w="100%"
-                mt="5"
-                bg={"blue.400"}
-                color={"white"}
-                _hover={{
-                  bg: "blue.700",
-                }}
-                onClick={handleSubmit}
-              >
-                Sign in
-              </Button>
-            </FormControl>
+    <>
+      <Flex
+        minH={"90vh"}
+        align={"center"}
+        justify={"center"}
+        bg={useColorModeValue("gray.50", "gray.800")}
+      >
+        <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+          <Stack align={"center"}>
+            <Heading fontSize={"4xl"}>Sign in as Admin</Heading>
           </Stack>
-        </Box>
-      </Stack>
-    </Flex>
+          <Box
+            rounded={"lg"}
+            bg={useColorModeValue("white", "gray.700")}
+            boxShadow={"lg"}
+            p={8}
+          >
+            <Stack spacing={4}>
+              <FormControl id="email">
+                <FormLabel>Email address</FormLabel>
+                <Input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </FormControl>
+              <FormControl id="password">
+                <FormLabel>Password</FormLabel>
+                <Input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <Button
+                  w="100%"
+                  mt="5"
+                  bg={"blue.400"}
+                  color={"white"}
+                  _hover={{
+                    bg: "blue.700",
+                  }}
+                  onClick={handleSubmit}
+                >
+                  Sign in
+                </Button>
+              </FormControl>
+            </Stack>
+          </Box>
+        </Stack>
+      </Flex>
+      <Box>
+        <Text>
+          Note :- use
+          <span style={{ fontWeight: "bold" }}>(eve.holt@reqres.in)</span> email
+          for login.Using
+          <span style={{ fontWeight: "bold" }}>
+            <a href="https://reqres.in/" target="_blank">
+              reqres.in
+            </a>
+          </span>
+          for Login Functinality
+        </Text>
+      </Box>
+    </>
   );
 }

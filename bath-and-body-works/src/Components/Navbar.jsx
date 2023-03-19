@@ -50,6 +50,7 @@ const Navbar = (newEntry) => {
       position: "top-right",
       isClosable: true,
     });
+    window.location.reload();
   };
 
   return (

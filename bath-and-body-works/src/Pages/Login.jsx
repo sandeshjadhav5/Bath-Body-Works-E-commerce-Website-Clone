@@ -119,6 +119,19 @@ const LogIn = () => {
               Sign In
             </Button>
           </Box>
+          <Box mt="2">
+            <Text>
+              Note :- use{" "}
+              <span style={{ fontWeight: "bold" }}>(eve.holt@reqres.in)</span>{" "}
+              email for login.Using{" "}
+              <span style={{ fontWeight: "bold" }}>
+                <a href="https://reqres.in/" target="_blank">
+                  reqres.in
+                </a>{" "}
+              </span>
+              for Login Functinality
+            </Text>
+          </Box>
         </Box>
 
         <Box boxShadow="dark-lg" p="6" rounded="md">
@@ -149,17 +162,6 @@ const LogIn = () => {
           </Link>
         </Box>
       </SimpleGrid>
-      <Text m="2">
-        Note :- use{" "}
-        <span style={{ fontWeight: "bold" }}>(eve.holt@reqres.in)</span> email
-        for login.Using{" "}
-        <span style={{ fontWeight: "bold" }}>
-          <a href="https://reqres.in/" target="_blank">
-            reqres.in
-          </a>{" "}
-        </span>
-        for Login Functinality
-      </Text>
     </Box>
   );
 };
