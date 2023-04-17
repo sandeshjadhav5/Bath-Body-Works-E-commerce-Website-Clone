@@ -45,6 +45,8 @@
 
 <a href="https://bathbodyworksbymasai.netlify.app/" target="_blank" rel="noreferrer">Click Here to See Website</a>
 <br/>
+
+<hr/>
 <br/>
 <h3>Screenshots</h3>
 <h4>Home Page</h4>
@@ -52,7 +54,18 @@
 <br/>
 <h4>Products Page</h4>
 <img src="https://i.imgur.com/TN0GKTe.png" alt="products"/>
+<br/>
+<h4>Single Product Page</h4>
+<img src="https://i.imgur.com/wUMvBLl.png" alt="single-product"/>
+<br/>
+<h4>Single Product Page</h4>
+<img src="https://i.imgur.com/wUMvBLl.png" alt="single-product"/>
+<br/>
+<h4>Sign In Page</h4>
+<img src="https://i.imgur.com/qmFBOs8.png" alt="sign-in"/>
 
+
+<br/>
 ## Project Installation Guide
 
 Clone the project
