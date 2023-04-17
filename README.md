@@ -47,8 +47,11 @@
 <br/>
 <br/>
 <h3>Screenshots</h3>
-<img src="https://i.imgur.com/eZEjHpM.png"/>
+<h4>Home Page</h4>
+<img src="https://i.imgur.com/eZEjHpM.png" alt="home"/>
 <br/>
+<h4>Products Page</h4>
+<img src="https://i.imgur.com/TN0GKTe.png" alt="products"/>
 
 ## Project Installation Guide
 
