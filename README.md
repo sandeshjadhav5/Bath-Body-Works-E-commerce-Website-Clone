@@ -58,9 +58,7 @@
 <h4>Single Product Page</h4>
 <img src="https://i.imgur.com/wUMvBLl.png" alt="single-product"/>
 <br/>
-<h4>Single Product Page</h4>
-<img src="https://i.imgur.com/wUMvBLl.png" alt="single-product"/>
-<br/>
+
 <h4>Sign In Page</h4>
 <img src="https://i.imgur.com/qmFBOs8.png" alt="sign-in"/>
 
